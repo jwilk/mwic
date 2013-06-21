@@ -30,10 +30,10 @@ import sys
 import enchant.tokenize
 
 def misspellings_sorting_key(item):
-    word, occurences = item
-    return -sum(occurences.values()), word
+    word, occurrences = item
+    return -sum(occurrences.values()), word
 
-def occurences_sorting_key(item):
+def occurrences_sorting_key(item):
     lcontext, word, rcontext, n = item
     return (rcontext, lcontext[::-1])
 
@@ -70,20 +70,20 @@ def main():
                 for word, pos in split_words(line):
                     if not spellcheck(word):
                         misspellings[word][line.strip()] += 1
-    for word, occurences in sorted(misspellings.items(), key=misspellings_sorting_key):
+    for word, occurrences in sorted(misspellings.items(), key=misspellings_sorting_key):
         extra = ''
         if options.suggest > 0:
             suggestions = dictionary.suggest(word)[:options.suggest]
             if suggestions:
                 extra = ' ({sug})'.format(sug=', '.join(suggestions))
         print(word + extra + ':')
-        occurences = sorted(
-            (o.partition(word) + (n,) for o, n in occurences.items()),
-            key=occurences_sorting_key,
+        occurrences = sorted(
+            (o.partition(word) + (n,) for o, n in occurrences.items()),
+            key=occurrences_sorting_key,
         )
-        lwidth = max(len(lcontext) for lcontext, _, _, _ in occurences)
-        rwidth = max(len(rcontext) for _, _, rcontext, _ in occurences)
-        for (lcontext, word, rcontext, n), group in itertools.groupby(occurences):
+        lwidth = max(len(lcontext) for lcontext, _, _, _ in occurrences)
+        rwidth = max(len(rcontext) for _, _, rcontext, _ in occurrences)
+        for (lcontext, word, rcontext, n), group in itertools.groupby(occurrences):
             if n > 1:
                 extra = ' [{x}{n}]'.format(x=times_char, n=n)
             print('| {lc:>{lw}}{word}{rc:<{rw}}{extra}'.format(

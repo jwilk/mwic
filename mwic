@@ -43,19 +43,10 @@ def main():
     ap.add_argument('files', metavar='<file>', nargs='*', default=['-'])
     ap.add_argument('--language', metavar='<lang>', default='en')
     ap.add_argument('--input-encoding', metavar='<enc>', default='utf-8')
-    ap.add_argument('--output-encoding', metavar='<enc>', default='utf-8')
     ap.add_argument('--max-context-width', metavar='<n>', default=30)
     ap.add_argument('--suggest', metavar='<n>', type=int, default=0)
     options = ap.parse_args()
-    times_char = '×'
-    try:
-        times_char.encode(options.output_encoding)
-    except UnicodeError:
-        times_char = 'x'
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer,
-        encoding=options.output_encoding,
-        errors='backslashreplace'
-    )
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, 'utf-8')
     split_words = enchant.tokenize.get_tokenizer(options.language)
     dictionary = enchant.Dict(options.language)
     spellcheck = functools.lru_cache(maxsize=None)(
@@ -98,7 +89,7 @@ def main():
         rwidth = max(len(rcontext) for _, _, rcontext, _ in occurrences)
         for (lcontext, word, rcontext, n), group in itertools.groupby(occurrences):
             if n > 1:
-                extra = ' [{x}{n}]'.format(x=times_char, n=n)
+                extra = ' [×{n}]'.format(n=n)
             print('| {lc:>{lw}}{word}{rc:<{rw}}{extra}'.format(
                 lc=lcontext, lw=lwidth,
                 word=word,

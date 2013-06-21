@@ -38,7 +38,7 @@ def occurences_sorting_key(item):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('files', metavar='<file>', nargs='+')
+    ap.add_argument('files', metavar='<file>', nargs='*', default=['-'])
     ap.add_argument('--language', metavar='<lang>', default='en')
     ap.add_argument('--input-encoding', metavar='<enc>', default='utf-8')
     ap.add_argument('--output-encoding', metavar='<enc>', default='utf-8')
@@ -52,7 +52,11 @@ def main():
     )
     misspellings = collections.defaultdict(list)
     for path in options.files:
-        with open(path, 'rt', encoding=options.input_encoding) as file:
+        if path == '-':
+            file = io.TextIOWrapper(sys.stdin.buffer, encoding=options.input_encoding)
+        else:
+            file = open(path, 'rt', encoding=options.input_encoding)
+        with file:
             for line in file:
                 for word, pos in split_words(line):
                     if not spellcheck(word):

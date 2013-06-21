@@ -45,7 +45,10 @@ def main():
                 for word, pos in split_words(line):
                     if not spellcheck(word):
                         misspellings[word] += [line.strip()]
-    for word, occurences in sorted(misspellings.items()):
+    def sorting_key(item):
+        word, occurences = item
+        return -len(occurences), word
+    for word, occurences in sorted(misspellings.items(), key=sorting_key):
         extra = ''
         if options.suggest > 0:
             suggestions = dictionary.suggest(word)[:options.suggest]

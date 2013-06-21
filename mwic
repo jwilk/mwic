@@ -64,6 +64,7 @@ def main():
                 word=word,
                 rc=rcontext, rw=rwidth,
             ))
+        print('', ' ' * lwidth, '^' * len(word))
         print()
 
 if __name__ == '__main__':

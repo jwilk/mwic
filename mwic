@@ -23,8 +23,9 @@
 import argparse
 import collections
 import functools
-import itertools
 import io
+import itertools
+import re
 import sys
 
 import enchant.tokenize
@@ -71,7 +72,13 @@ def main():
                 for word, pos in split_words(line):
                     if not spellcheck(word):
                         misspellings[word][line.strip()] += 1
-    for word, occurrences in sorted(misspellings.items(), key=misspellings_sorting_key):
+    misspellings = sorted(misspellings.items(), key=misspellings_sorting_key)
+    rare_misspellings = collections.defaultdict(collections.Counter)
+    for word, occurrences in misspellings:
+        if len(occurrences) == 1:
+            [occurrence] = occurrences
+            rare_misspellings[occurrence][word] += 1
+            continue
         extra = ''
         if options.suggest > 0:
             suggestions = dictionary.suggest(word)[:options.suggest]
@@ -100,6 +107,30 @@ def main():
             ))
         print('', ' ' * lwidth, '^' * len(word))
         print()
+    rare_misspellings = sorted(rare_misspellings.items(), key=misspellings_sorting_key)
+    for occurrence, words in rare_misspellings:
+        header = []
+        regexp = []
+        for word in sorted(words):
+            extra = ''
+            if options.suggest > 0:
+                suggestions = dictionary.suggest(word)[:options.suggest]
+                if suggestions:
+                    extra = ' ({sug})'.format(sug=', '.join(suggestions))
+            header += [word + extra]
+            regexp += [re.escape(word)]
+        print(', '.join(header) + ':')
+        print('|', occurrence)
+        regexp = re.compile('({words})|.'.format(words='|'.join(regexp)))
+        def underline(match):
+            group = match.group(1)
+            if group is None:
+                return ' '
+            else:
+                return '^' * len(group)
+        print(' ', regexp.sub(underline, occurrence))
+        print()
+
 
 if __name__ == '__main__':
     main()

@@ -1,0 +1,35 @@
+#!/usr/bin/python3
+
+import argparse
+import collections
+import functools
+
+import enchant.tokenize
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('files', metavar='<file>', nargs='+')
+    ap.add_argument('--language', metavar='<lang>', default='en')
+    ap.add_argument('--encoding', metavar='<enc>', default='utf-8')
+    options = ap.parse_args()
+    split_words = enchant.tokenize.get_tokenizer(options.language)
+    spellcheck = functools.lru_cache(maxsize=None)(
+        enchant.Dict(options.language).check
+    )
+    misspellings = collections.defaultdict(list)
+    for path in options.files:
+        with open(path, 'rt', encoding=options.encoding) as file:
+            for line in file:
+                for word, pos in split_words(line):
+                    if not spellcheck(word):
+                        misspellings[word] += [line.strip()]
+    for word, occurences in sorted(misspellings.items()):
+        print('{word}:'.format(word=word))
+        for line in occurences:
+            print('|', line.strip())
+        print()
+
+if __name__ == '__main__':
+    main()
+
+# vim:ts=4 sw=4 et

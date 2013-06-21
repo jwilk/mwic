@@ -38,6 +38,27 @@ def occurrences_sorting_key(item):
     lcontext, word, rcontext, n = item
     return (rcontext, lcontext[::-1])
 
+def ltrim(s, n, *, char='…'):
+    if len(s) <= n:
+        return s
+    if n <= 1:
+        return char
+    return char + s[-n+1:]
+
+def rtrim(s, n, *, char='…'):
+    if len(s) <= n:
+        return s
+    if n <= 1:
+        return char
+    return s[:n-1] + char
+
+def subst_underline(match):
+    group = match.group(1)
+    if group is None:
+        return ' '
+    else:
+        return '^' * len(group)
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('files', metavar='<file>', nargs='*', default=['-'])
@@ -81,7 +102,12 @@ def main():
             key=occurrences_sorting_key,
         )
         occurrences = [
-            (lcontext[-options.max_context_width:], word, rcontext[:options.max_context_width:], n)
+            (
+                ltrim(lcontext, options.max_context_width),
+                word,
+                rtrim(rcontext, options.max_context_width),
+                n
+            )
             for lcontext, word, rcontext, n
             in occurrences
         ]
@@ -111,15 +137,23 @@ def main():
             header += [word + extra]
             regexp += [re.escape(word)]
         print(', '.join(header) + ':')
-        print('|', occurrence)
         regexp = re.compile('({words})|.'.format(words='|'.join(regexp)))
-        def underline(match):
-            group = match.group(1)
-            if group is None:
-                return ' '
-            else:
-                return '^' * len(group)
-        print(' ', regexp.sub(underline, occurrence))
+        underline = regexp.sub(subst_underline, occurrence)
+        lwidth = len(underline) - len(underline.lstrip())
+        rwidth = len(underline) - len(underline.rstrip())
+        lexceed = lwidth - options.max_context_width
+        rexceed = rwidth - options.max_context_width
+        print((lwidth, rwidth), (lexceed, rexceed))
+        if lexceed > 0:
+            lwidth = len(occurrence) - lexceed
+            occurrence = ltrim(occurrence, lwidth)
+            underline = ltrim(underline, lwidth, char=' ')
+        if rexceed > 0:
+            rwidth = len(occurrence) - rexceed
+            occurrence = rtrim(occurrence, rwidth)
+            underline = rtrim(underline, rwidth, char=' ')
+        print('|', occurrence)
+        print(' ', underline)
         print()
 
 

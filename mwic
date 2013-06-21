@@ -23,6 +23,8 @@
 import argparse
 import collections
 import functools
+import io
+import sys
 
 import enchant.tokenize
 
@@ -38,9 +40,11 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('files', metavar='<file>', nargs='+')
     ap.add_argument('--language', metavar='<lang>', default='en')
-    ap.add_argument('--encoding', metavar='<enc>', default='utf-8')
+    ap.add_argument('--input-encoding', metavar='<enc>', default='utf-8')
+    ap.add_argument('--output-encoding', metavar='<enc>', default='utf-8')
     ap.add_argument('--suggest', metavar='<n>', type=int, default=0)
     options = ap.parse_args()
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding=options.output_encoding)
     split_words = enchant.tokenize.get_tokenizer(options.language)
     dictionary = enchant.Dict(options.language)
     spellcheck = functools.lru_cache(maxsize=None)(
@@ -48,7 +52,7 @@ def main():
     )
     misspellings = collections.defaultdict(list)
     for path in options.files:
-        with open(path, 'rt', encoding=options.encoding) as file:
+        with open(path, 'rt', encoding=options.input_encoding) as file:
             for line in file:
                 for word, pos in split_words(line):
                     if not spellcheck(word):

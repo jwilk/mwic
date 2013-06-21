@@ -143,7 +143,6 @@ def main():
         rwidth = len(underline) - len(underline.rstrip())
         lexceed = lwidth - options.max_context_width
         rexceed = rwidth - options.max_context_width
-        print((lwidth, rwidth), (lexceed, rexceed))
         if lexceed > 0:
             lwidth = len(occurrence) - lexceed
             occurrence = ltrim(occurrence, lwidth)

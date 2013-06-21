@@ -26,6 +26,14 @@ import functools
 
 import enchant.tokenize
 
+def misspellings_sorting_key(item):
+    word, occurences = item
+    return -len(occurences), word
+
+def occurences_sorting_key(item):
+    lcontext, word, rcontext = item
+    return (rcontext, lcontext[::-1])
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('files', metavar='<file>', nargs='+')
@@ -45,17 +53,17 @@ def main():
                 for word, pos in split_words(line):
                     if not spellcheck(word):
                         misspellings[word] += [line.strip()]
-    def sorting_key(item):
-        word, occurences = item
-        return -len(occurences), word
-    for word, occurences in sorted(misspellings.items(), key=sorting_key):
+    for word, occurences in sorted(misspellings.items(), key=misspellings_sorting_key):
         extra = ''
         if options.suggest > 0:
             suggestions = dictionary.suggest(word)[:options.suggest]
             if suggestions:
                 extra = ' ({sug})'.format(sug=', '.join(suggestions))
         print(word + extra + ':')
-        occurences = [o.partition(word) for o in occurences]
+        occurences = sorted(
+            (o.partition(word) for o in occurences),
+            key=occurences_sorting_key,
+        )
         lwidth = max(len(lcontext) for lcontext, _, _ in occurences)
         rwidth = max(len(rcontext) for _, _, rcontext in occurences)
         for lcontext, word, rcontext in occurences:

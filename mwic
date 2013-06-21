@@ -43,6 +43,7 @@ def main():
     ap.add_argument('--language', metavar='<lang>', default='en')
     ap.add_argument('--input-encoding', metavar='<enc>', default='utf-8')
     ap.add_argument('--output-encoding', metavar='<enc>', default='utf-8')
+    ap.add_argument('--max-context-width', metavar='<n>', default=30)
     ap.add_argument('--suggest', metavar='<n>', type=int, default=0)
     options = ap.parse_args()
     times_char = '×'
@@ -81,6 +82,11 @@ def main():
             (o.partition(word) + (n,) for o, n in occurrences.items()),
             key=occurrences_sorting_key,
         )
+        occurrences = [
+            (lcontext[-options.max_context_width:], word, rcontext[:options.max_context_width:], n)
+            for lcontext, word, rcontext, n
+            in occurrences
+        ]
         lwidth = max(len(lcontext) for lcontext, _, _, _ in occurrences)
         rwidth = max(len(rcontext) for _, _, rcontext, _ in occurrences)
         for (lcontext, word, rcontext, n), group in itertools.groupby(occurrences):

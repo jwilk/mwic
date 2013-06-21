@@ -32,8 +32,15 @@ def main():
             if suggestions:
                 extra = ' ({sug})'.format(sug=', '.join(suggestions))
         print(word + extra + ':')
-        for line in occurences:
-            print('|', line.strip())
+        occurences = [o.partition(word) for o in occurences]
+        lwidth = max(len(lcontext) for lcontext, _, _ in occurences)
+        rwidth = max(len(rcontext) for _, _, rcontext in occurences)
+        for lcontext, word, rcontext in occurences:
+            print('| {lc:>{lw}}{word}{rc:<{rw}}'.format(
+                lc=lcontext, lw=lwidth,
+                word=word,
+                rc=rcontext, rw=rwidth,
+            ))
         print()
 
 if __name__ == '__main__':

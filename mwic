@@ -127,7 +127,6 @@ def main():
     rare_misspellings = sorted(rare_misspellings.items(), key=misspellings_sorting_key)
     for occurrence, words in rare_misspellings:
         header = []
-        regexp = []
         for word in sorted(words):
             extra = ''
             if options.suggest > 0:
@@ -135,9 +134,10 @@ def main():
                 if suggestions:
                     extra = ' ({sug})'.format(sug=', '.join(suggestions))
             header += [word + extra]
-            regexp += [re.escape(word)]
         print(', '.join(header) + ':')
-        regexp = re.compile('({words})|.'.format(words='|'.join(regexp)))
+        regexp = re.compile('({words})|.'.format(words='|'.join(
+            re.escape(word) for word in sorted(words, key=len, reverse=True)
+        )))
         underline = regexp.sub(subst_underline, occurrence)
         lwidth = len(underline) - len(underline.lstrip())
         rwidth = len(underline) - len(underline.rstrip())

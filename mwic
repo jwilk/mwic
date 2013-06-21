@@ -11,10 +11,12 @@ def main():
     ap.add_argument('files', metavar='<file>', nargs='+')
     ap.add_argument('--language', metavar='<lang>', default='en')
     ap.add_argument('--encoding', metavar='<enc>', default='utf-8')
+    ap.add_argument('--suggest', metavar='<n>', type=int, default=0)
     options = ap.parse_args()
     split_words = enchant.tokenize.get_tokenizer(options.language)
+    dictionary = enchant.Dict(options.language)
     spellcheck = functools.lru_cache(maxsize=None)(
-        enchant.Dict(options.language).check
+        dictionary.check
     )
     misspellings = collections.defaultdict(list)
     for path in options.files:
@@ -24,7 +26,12 @@ def main():
                     if not spellcheck(word):
                         misspellings[word] += [line.strip()]
     for word, occurences in sorted(misspellings.items()):
-        print('{word}:'.format(word=word))
+        extra = ''
+        if options.suggest > 0:
+            suggestions = dictionary.suggest(word)[:options.suggest]
+            if suggestions:
+                extra = ' ({sug})'.format(sug=', '.join(suggestions))
+        print(word + extra + ':')
         for line in occurences:
             print('|', line.strip())
         print()

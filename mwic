@@ -23,6 +23,7 @@
 import argparse
 import collections
 import functools
+import itertools
 import io
 import sys
 
@@ -30,10 +31,10 @@ import enchant.tokenize
 
 def misspellings_sorting_key(item):
     word, occurences = item
-    return -len(occurences), word
+    return -sum(occurences.values()), word
 
 def occurences_sorting_key(item):
-    lcontext, word, rcontext = item
+    lcontext, word, rcontext, n = item
     return (rcontext, lcontext[::-1])
 
 def main():
@@ -44,6 +45,11 @@ def main():
     ap.add_argument('--output-encoding', metavar='<enc>', default='utf-8')
     ap.add_argument('--suggest', metavar='<n>', type=int, default=0)
     options = ap.parse_args()
+    times_char = '×'
+    try:
+        times_char.encode(options.output_encoding)
+    except UnicodeError:
+        times_char = 'x'
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer,
         encoding=options.output_encoding,
         errors='backslashreplace'
@@ -53,7 +59,7 @@ def main():
     spellcheck = functools.lru_cache(maxsize=None)(
         dictionary.check
     )
-    misspellings = collections.defaultdict(list)
+    misspellings = collections.defaultdict(collections.Counter)
     for path in options.files:
         if path == '-':
             file = io.TextIOWrapper(sys.stdin.buffer, encoding=options.input_encoding)
@@ -63,7 +69,7 @@ def main():
             for line in file:
                 for word, pos in split_words(line):
                     if not spellcheck(word):
-                        misspellings[word] += [line.strip()]
+                        misspellings[word][line.strip()] += 1
     for word, occurences in sorted(misspellings.items(), key=misspellings_sorting_key):
         extra = ''
         if options.suggest > 0:
@@ -72,16 +78,19 @@ def main():
                 extra = ' ({sug})'.format(sug=', '.join(suggestions))
         print(word + extra + ':')
         occurences = sorted(
-            (o.partition(word) for o in occurences),
+            (o.partition(word) + (n,) for o, n in occurences.items()),
             key=occurences_sorting_key,
         )
-        lwidth = max(len(lcontext) for lcontext, _, _ in occurences)
-        rwidth = max(len(rcontext) for _, _, rcontext in occurences)
-        for lcontext, word, rcontext in occurences:
-            print('| {lc:>{lw}}{word}{rc:<{rw}}'.format(
+        lwidth = max(len(lcontext) for lcontext, _, _, _ in occurences)
+        rwidth = max(len(rcontext) for _, _, rcontext, _ in occurences)
+        for (lcontext, word, rcontext, n), group in itertools.groupby(occurences):
+            if n > 1:
+                extra = ' [{x}{n}]'.format(x=times_char, n=n)
+            print('| {lc:>{lw}}{word}{rc:<{rw}}{extra}'.format(
                 lc=lcontext, lw=lwidth,
                 word=word,
                 rc=rcontext, rw=rwidth,
+                extra=extra,
             ))
         print('', ' ' * lwidth, '^' * len(word))
         print()

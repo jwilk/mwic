@@ -68,7 +68,10 @@ def main():
     ap.add_argument('--suggest', metavar='<n>', type=int, default=0)
     options = ap.parse_args()
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, 'utf-8')
-    split_words = enchant.tokenize.get_tokenizer(options.language)
+    try:
+        split_words = enchant.tokenize.get_tokenizer(options.language)
+    except enchant.errors.TokenizerNotFoundError:
+        split_words = enchant.tokenize.get_tokenizer(None)
     dictionary = enchant.Dict(options.language)
     spellcheck = functools.lru_cache(maxsize=None)(
         dictionary.check

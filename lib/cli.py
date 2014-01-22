@@ -27,13 +27,13 @@ import functools
 
 import enchant.tokenize
 
-from . import text
-from . import data
+import lib.text as libtext
+import lib.data as libdata
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('files', metavar='<file>', nargs='*', default=['-'])
-    ap.add_argument('--language', metavar='<lang>', default='en')
+    ap.add_argument('-l', '--language', metavar='<lang>', default='en')
     ap.add_argument('--input-encoding', metavar='<enc>', default='utf-8')
     ap.add_argument('--max-context-width', metavar='<n>', default=30)
     ap.add_argument('--suggest', metavar='<n>', type=int, default=0)
@@ -47,7 +47,7 @@ def main():
     spellcheck = functools.lru_cache(maxsize=None)(
         dictionary.check
     )
-    misspellings = data.Misspellings()
+    misspellings = libdata.Misspellings()
     for path in options.files:
         if path == '-':
             file = io.TextIOWrapper(sys.stdin.buffer, encoding=options.input_encoding)
@@ -59,7 +59,7 @@ def main():
                 for word, pos in split_words(line):
                     if not spellcheck(word):
                         misspellings.add(word, line, pos)
-    rare_misspellings = data.Misspellings()
+    rare_misspellings = libdata.Misspellings()
     for word, occurrences in misspellings.sorted_words():
         if len(occurrences) == 1:
             [(word, line, positions)] = occurrences
@@ -73,9 +73,9 @@ def main():
         print(word + extra + ':')
         occurrences = [
             (
-                text.ltrim(lcontext, options.max_context_width),
+                libtext.ltrim(lcontext, options.max_context_width),
                 word,
-                text.rtrim(rcontext, options.max_context_width),
+                libtext.rtrim(rcontext, options.max_context_width),
             )
             for lcontext, word, rcontext
             in occurrences.sorted_context()
@@ -112,12 +112,12 @@ def main():
         rexceed = rwidth - options.max_context_width
         if lexceed > 0:
             lwidth = len(line) - lexceed
-            line = text.ltrim(line, lwidth)
-            underline = text.ltrim(underline, lwidth, char=' ')
+            line = libtext.ltrim(line, lwidth)
+            underline = libtext.ltrim(underline, lwidth, char=' ')
         if rexceed > 0:
             rwidth = len(line) - rexceed
-            line = text.rtrim(line, rwidth)
-            underline = text.rtrim(underline, rwidth, char=' ')
+            line = libtext.rtrim(line, rwidth)
+            underline = libtext.rtrim(underline, rwidth, char=' ')
         print('|', line)
         print(' ', underline.rstrip())
         print()

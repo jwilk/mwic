@@ -1,0 +1,9 @@
+Generated automatically by private/update-line-coverage. Do not edit.
+
+Name       Stmts   Miss  Cover   Missing
+----------------------------------------
+lib.cli       81     12    85%   44-45, 53, 70-72, 101-103, 118-120
+lib.data      43      0   100%
+lib.text      18      2    89%   35, 42
+----------------------------------------
+TOTAL        142     14    90%

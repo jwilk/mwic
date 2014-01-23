@@ -20,14 +20,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import argparse
-import collections
-import functools
-import io
-import sys
-
-import enchant.tokenize
-
 def ltrim(s, n, *, char='…'):
     if len(s) <= n:
         return s

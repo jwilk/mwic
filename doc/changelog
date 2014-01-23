@@ -1,5 +1,5 @@
-mwic (0.1) UNRELEASED; urgency=low
+mwic (0.1) unstable; urgency=low
 
   * Initial release.
 
- -- Jakub Wilk <jwilk@jwilk.net>  Thu, 23 Jan 2014 13:53:37 +0100
+ -- Jakub Wilk <jwilk@jwilk.net>  Thu, 23 Jan 2014 13:55:49 +0100

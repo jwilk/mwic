@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+# encoding=UTF-8
 
 # Copyright © 2013, 2014 Jakub Wilk <jwilk@jwilk.net>
 #
@@ -19,6 +20,32 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
+
+import sys
+
+# ----------------------------------------
+
+def error(message):
+    try:
+        import argparse
+        ap = argparse.ArgumentParser()
+        prog = ap.prog
+    except ImportError:
+        import optparse
+        ap = optparse.OptionParser()
+        prog = ap.get_prog_name()
+    message = ''.join((prog, ': error: ', message, '\n'))
+    ap.exit(1, message)
+
+def require_python(*version):
+    if sys.version_info < version:
+        version_str = '.'.join(map(str, version))
+        message = 'Python >= %s is required' % version_str
+        error(message)
+
+require_python(3, 2)
+
+# ----------------------------------------
 
 import lib.cli as libcli
 

@@ -1,0 +1,29 @@
+#!/bin/sh
+name=mwic
+url=http://bitbucket.org/jwilk/$name
+if [ $# -ne 1 ]
+then
+    printf "%s <version>\n" "$0" >&2
+    exit 1
+fi
+set -e -x
+pwd="$PWD"
+version="$1"
+sourceroot=$(mktemp -d -t "$name-source-XXXXXX")
+export TAR_OPTIONS="--owner root --group root --mode a+rX --format ustar"
+export GZIP="-9 -n"
+mkdir -p "$sourceroot/$name-$version"
+if [ -d .hg ]
+then
+    hg archive -r "$version" "$sourceroot/$name-$version"
+else
+    hg clone -r "$version" "$url" "$sourceroot/$name-$version"
+fi
+cd "$sourceroot"/*
+find -name '__pycache__' | xargs rm -rf
+rm -rf .hg*
+cd ..
+tar -czf "$pwd/$name-$version.tar.gz" */
+rm -rf "$sourceroot"
+
+# vim:ts=4 sw=4 et

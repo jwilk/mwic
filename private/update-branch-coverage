@@ -52,7 +52,7 @@ def main():
     )
     plugin = Coverage()
     report_stream = plugin.stream = io.StringIO()
-    print('Generated automatically by private/update-line-coverage. '
+    print('Generated automatically by private/update-branch-coverage. '
         'Do not edit.\n', file=report_stream)
     ok = nose.run(argv=argv, plugins=[plugin])
     if not ok:

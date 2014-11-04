@@ -40,6 +40,9 @@ Options
 -h, --help
    Show the help message and exit.
 
+--version
+   Show the program's version number and exit.
+
 Example
 -------
 

@@ -30,8 +30,12 @@ import enchant.tokenize
 import lib.text as libtext
 import lib.data as libdata
 
+
+__version__ = '0.1.1'
+
 def main():
     ap = argparse.ArgumentParser()
+    ap.add_argument('--version', action='version', version='%(prog)s {}'.format(__version__))
     ap.add_argument('files', metavar='<file>', nargs='*', default=['-'])
     ap.add_argument('-l', '--language', metavar='<lang>', default='en')
     ap.add_argument('--input-encoding', metavar='<enc>', default='utf-8')

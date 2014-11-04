@@ -1,8 +1,9 @@
 mwic (0.1.1) UNRELEASED; urgency=low
 
+  * Add the --version option.
   * Add the manual page.
 
- -- Jakub Wilk <jwilk@jwilk.net>  Tue, 04 Nov 2014 23:11:27 +0100
+ -- Jakub Wilk <jwilk@jwilk.net>  Tue, 04 Nov 2014 23:25:02 +0100
 
 mwic (0.1) unstable; urgency=low
 

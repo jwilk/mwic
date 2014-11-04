@@ -1,0 +1,45 @@
+====
+mwic
+====
+
+---------------------------
+Misspelled Words In Context
+---------------------------
+
+:manual section: 1
+:version: mwic 0.1.1
+:date: |date|
+
+Synopsis
+--------
+**mwic** [-l *lang*] [*option*...] [*file*...]
+
+Description
+-----------
+*mwic* is a spell-checking frontend that groups misspellings and shows them in their contexts.
+This is useful for checking technical documents that often contain words that are not included in standard dictionaries.
+
+
+Options
+-------
+
+-l lang, --language lang
+   Spell-check for this language.
+
+--input-encoding enc
+   Assume this input encoding.
+   The default is UTF-8.
+
+--max-context-width *n*
+   Limit context width to *n* characters.
+   The default is 30.
+
+--suggest N
+   Suggest up to *n* corrections.
+
+-h, --help
+   Show the help message and exit.
+
+.. |date| date:: %Y-%m-%d
+
+.. vim:ts=3 sts=3 sw=3 ft=rst

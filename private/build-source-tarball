@@ -20,6 +20,7 @@ else
     hg clone -r "$version" "$url" "$sourceroot/$name-$version"
 fi
 cd "$sourceroot"/*
+make -C doc/
 find -name '__pycache__' | xargs rm -rf
 rm -rf .hg*
 cd ..

@@ -58,4 +58,4 @@ def test_text():
     for path in paths:
         yield _test_text, path
 
-# vim:ts=4 sw=4 et
+# vim:ts=4 sts=4 sw=4 et

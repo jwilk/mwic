@@ -34,4 +34,4 @@ def rtrim(s, n, *, char='…'):
         return char
     return s[:n-1] + char
 
-# vim:ts=4 sw=4 et
+# vim:ts=4 sts=4 sw=4 et

@@ -25,6 +25,7 @@ Options
 
 -l lang, --language lang
    Spell-check for this language.
+   The default is ``en``.
 
 --input-encoding enc
    Assume this input encoding.

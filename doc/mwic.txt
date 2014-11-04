@@ -40,6 +40,38 @@ Options
 -h, --help
    Show the help message and exit.
 
+Example
+-------
+
+::
+
+   $ mwic debian-social-contract.txt
+   DFSG:
+   | …an Free Software Guidelines (DFSG)
+   | …an Free Software Guidelines (DFSG) part of the
+                                   ^^^^
+
+   Perens:
+   |    Bruce Perens later removed the Debian-spe…
+   | by Bruce Perens, refined by the other Debian…
+              ^^^^^^
+
+   Ean, Schuessler:
+   | community" was suggested by Ean Schuessler. This document was drafted
+                                 ^^^ ^^^^^^^^^^
+
+   GPL:
+   | The "GPL", "BSD", and "Artistic" lice…
+          ^^^
+
+   contrib:
+   | created "contrib" and "non-free" areas in our…
+              ^^^^^^^
+
+   CDs:
+   | their CDs. Thus, although non-free wor…
+           ^^^
+
 .. |date| date:: %Y-%m-%d
 
 .. vim:ts=3 sts=3 sw=3 ft=rst

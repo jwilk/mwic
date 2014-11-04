@@ -30,11 +30,11 @@ Options
    Assume this input encoding.
    The default is UTF-8.
 
---max-context-width *n*
+--max-context-width n
    Limit context width to *n* characters.
    The default is 30.
 
---suggest N
+--suggest n
    Suggest up to *n* corrections.
 
 -h, --help

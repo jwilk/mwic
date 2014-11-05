@@ -37,6 +37,7 @@ def main():
     ap.add_argument('--version', action='version', version='%(prog)s {}'.format(__version__))
     ap.add_argument('files', metavar='<file>', nargs='*', default=['-'])
     ap.add_argument('-l', '--language', metavar='<lang>', default='en')
+    ap.add_argument('--list-languages', nargs=0, action=list_languages)
     ap.add_argument('--input-encoding', metavar='<enc>', default='utf-8')
     ap.add_argument('--max-context-width', metavar='<n>', default=30)
     ap.add_argument('--suggest', metavar='<n>', type=int, default=0)
@@ -124,5 +125,11 @@ def main():
         print('|', line)
         print(' ', underline.rstrip())
         print()
+
+class list_languages(argparse.Action):
+    def __call__(self, *args, **kwargs):
+        for lang in sorted(enchant.list_languages()):
+            print(lang)
+        sys.exit(0)
 
 # vim:ts=4 sts=4 sw=4 et

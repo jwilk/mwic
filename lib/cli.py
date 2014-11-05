@@ -30,7 +30,6 @@ import enchant.tokenize
 import lib.text as libtext
 import lib.data as libdata
 
-
 __version__ = '0.1.1'
 
 def main():

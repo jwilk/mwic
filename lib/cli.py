@@ -87,11 +87,10 @@ def main():
         lwidth = max(len(lcontext) for lcontext, _, _, in occurrences)
         rwidth = max(len(rcontext) for _, _, rcontext, in occurrences)
         for lcontext, word, rcontext in occurrences:
-            print('| {lc:>{lw}}{word}{rc}{extra}'.format(
+            print('| {lc:>{lw}}{word}{rc}'.format(
                 lc=lcontext, lw=lwidth,
                 word=word,
                 rc=rcontext,
-                extra=extra,
             ))
         print('', ' ' * lwidth, '^' * len(word))
         print()

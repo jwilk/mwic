@@ -1,11 +1,12 @@
 mwic (0.1.1) UNRELEASED; urgency=low
 
+  * Print suggestions only once per group, not by every misspelling instance.
   * Add the --version option.
   * Add the --list-languages option.
   * Add the manual page.
   * Improve the test suite.
 
- -- Jakub Wilk <jwilk@jwilk.net>  Wed, 05 Nov 2014 14:56:07 +0100
+ -- Jakub Wilk <jwilk@jwilk.net>  Wed, 05 Nov 2014 15:17:11 +0100
 
 mwic (0.1) unstable; urgency=low
 

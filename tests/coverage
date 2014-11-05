@@ -3,8 +3,8 @@ Generated automatically by private/update-branch-coverage. Do not edit.
 Name       Stmts   Miss Branch BrMiss  Cover   Missing
 ------------------------------------------------------
 lib            0      0      0      0   100%
-lib.cli       81     12     40      9    83%   44-45, 53, 70-72, 101-103, 118-120
+lib.cli       89     15     42     11    80%   48-49, 57, 74-76, 105-107, 122-124, 131-133
 lib.data      43      0     10      0   100%
-lib.text      12      2      8      2    80%   27, 34
+lib.text      12      0      8      0   100%
 ------------------------------------------------------
-TOTAL        136     14     58     11    87%
+TOTAL        144     15     60     11    87%

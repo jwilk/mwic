@@ -35,7 +35,7 @@ def _test_text(path):
     binstdout = io.BytesIO()
     [old_stdin, old_stdout, old_argv] = [sys.stdin, sys.stdout, sys.argv]
     try:
-        sys.argv = ['mwic', path]
+        sys.argv = ['mwic', '--language', 'en-US', path]
         with open(path, 'rt', encoding='utf-8') as sys.stdin:
             textstdout = sys.stdout = io.TextIOWrapper(binstdout, encoding='utf-8')
             try:

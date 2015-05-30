@@ -1,0 +1,12 @@
+language: python
+python:
+ - "3.2"
+ - "3.3"
+ - "3.4"
+before_install:
+ - sudo apt-get update -qq
+ - sudo apt-get install --no-install-recommends -y libenchant1c2a aspell-en
+install:
+ - pip install pyenchant
+script:
+ - nosetests --verbose

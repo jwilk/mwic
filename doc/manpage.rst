@@ -81,4 +81,4 @@ Example
 
 .. |date| date:: %Y-%m-%d
 
-.. vim:ts=3 sts=3 sw=3 ft=rst
+.. vim:ts=3 sts=3 sw=3

@@ -6,7 +6,7 @@ exe = mwic
 .PHONY: all
 all: $(exe).1
 
-$(exe).1: $(exe).txt
+$(exe).1: manpage.rst
 	$(rst2man) --input-encoding=UTF-8:strict < $(<) > $(@).tmp
 	mv $(@).tmp $(@)
 

@@ -37,7 +37,7 @@ def test_changelog():
     assert_equal(changelog_version, __version__)
 
 def test_manpage():
-    path = os.path.join(docdir, 'mwic.txt')
+    path = os.path.join(docdir, 'manpage.rst')
     manpage_version = None
     with open(path, 'rt', encoding='UTF-8') as file:
         for line in file:

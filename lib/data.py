@@ -28,7 +28,7 @@ class Occurrences(object):
     def __init__(self):
         self._data = collections.defaultdict(set)
 
-    def add(self, word, line,  pos):
+    def add(self, word, line, pos):
         if isinstance(pos, int):
             self._data[(word, line)].add(pos)
         else:

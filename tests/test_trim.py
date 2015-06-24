@@ -48,7 +48,7 @@ def test_rtrim():
     def t(s, n, expected):
         result = M.rtrim(s, n)
         assert_equal(result, expected)
-    truncations=  [
+    truncations = [
         '…',
         '…',
         'e…',

@@ -14,7 +14,10 @@ cache:
   - $HOME/.cache/pip
 install:
 - pip install pyenchant
+- pip install docutils
 script:
 - nosetests --verbose
+- find -name "*.rst" | xargs -L1 -t -I{} rst2xml.py --strict {} /dev/null
+- make -C doc
 
 # vim:ts=2 sts=2 sw=2 et

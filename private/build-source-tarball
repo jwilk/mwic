@@ -49,7 +49,7 @@ cd "$sourceroot"/*
 make -C doc/
 find -name '__pycache__' | xargs rm -rf
 rm -rf .hg*
-rm -f .travis*
+rm -f .travis.yml
 rm -f private/build-source-tarball
 cd ..
 tar -czf "$pwd/$name-$version.tar.gz" */

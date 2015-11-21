@@ -3,4 +3,4 @@ version=${1:?"no version number provided"}
 set -e -x
 dch -m -v "$version" -u low -c doc/changelog
 sed -i -r -e "s/(__version__) = '\S+'/\1 = '$version'/" lib/*.py
-sed -i -r -e "s/^(:version: \S+) \S+$/\1 $version/" doc/*.txt
+sed -i -r -e "s/^(:version: \S+) \S+$/\1 $version/" doc/*.rst

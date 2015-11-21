@@ -1,8 +1,8 @@
 mwic (0.2) UNRELEASED; urgency=low
 
-  * 
+  * Add option to print rare words first (-r/--reverse).
 
- -- Jakub Wilk <jwilk@jwilk.net>  Sat, 21 Nov 2015 13:04:01 +0100
+ -- Jakub Wilk <jwilk@jwilk.net>  Sat, 21 Nov 2015 16:08:19 +0100
 
 mwic (0.1.1) unstable; urgency=low
 

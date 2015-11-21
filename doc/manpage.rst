@@ -27,6 +27,10 @@ Options
    Spell-check for this language.
    The default is ``en``.
 
+-r, --reverse
+   Print words in reverse order,
+   that is, the rarest words first.
+
 --list-languages
    Print list of available languages.
 

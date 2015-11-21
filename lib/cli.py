@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-# Copyright © 2013-2014 Jakub Wilk <jwilk@jwilk.net>
+# Copyright © 2013-2015 Jakub Wilk <jwilk@jwilk.net>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the “Software”), to deal
@@ -36,6 +36,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--version', action='version', version='%(prog)s {}'.format(__version__))
     ap.add_argument('files', metavar='<file>', nargs='*', default=['-'])
+    ap.add_argument('-r', '--reverse', action='store_true')
     ap.add_argument('-l', '--language', metavar='<lang>', default='en')
     ap.add_argument('--list-languages', nargs=0, action=list_languages)
     ap.add_argument('--input-encoding', metavar='<enc>', default='utf-8')
@@ -68,11 +69,18 @@ def main():
         if len(occurrences) == 1:
             [(word, line, positions)] = occurrences
             rare_misspellings.add(word, line, positions)
-    print_common_misspellings(misspellings, options=options)
-    print_rare_misspellings(rare_misspellings, options=options)
+    if options.reverse:
+        print_rare_misspellings(rare_misspellings, options=options)
+        print_common_misspellings(misspellings, options=options)
+    else:
+        print_common_misspellings(misspellings, options=options)
+        print_rare_misspellings(rare_misspellings, options=options)
 
 def print_common_misspellings(misspellings, *, options):
-    for word, occurrences in misspellings.sorted_words():
+    sorted_words = misspellings.sorted_words()
+    if options.reverse:
+        sorted_words = reversed(sorted_words)
+    for word, occurrences in sorted_words:
         if len(occurrences) == 1:
             continue
         extra = ''

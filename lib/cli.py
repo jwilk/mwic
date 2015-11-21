@@ -68,6 +68,12 @@ def main():
         if len(occurrences) == 1:
             [(word, line, positions)] = occurrences
             rare_misspellings.add(word, line, positions)
+    print_common_misspellings(misspellings, options=options)
+    print_rare_misspellings(rare_misspellings, options=options)
+
+def print_common_misspellings(misspellings, *, options):
+    for word, occurrences in misspellings.sorted_words():
+        if len(occurrences) == 1:
             continue
         extra = ''
         if options.suggest > 0:
@@ -94,7 +100,9 @@ def main():
             ))
         print('', ' ' * lwidth, '^' * len(word))
         print()
-    for line, occurrences in rare_misspellings.sorted_lines():
+
+def print_rare_misspellings(misspellings, *, options):
+    for line, occurrences in misspellings.sorted_lines():
         header = []
         underline = bytearray(b' ' * len(line))
         for word, line, positions in sorted(occurrences):

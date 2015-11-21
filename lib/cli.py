@@ -94,7 +94,6 @@ def main():
             ))
         print('', ' ' * lwidth, '^' * len(word))
         print()
-
     for line, occurrences in rare_misspellings.sorted_lines():
         header = []
         underline = bytearray(b' ' * len(line))

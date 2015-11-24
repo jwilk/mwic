@@ -75,20 +75,25 @@ class Misspellings(object):
         self._line_index[line].add(word, line, pos)
 
     @staticmethod
-    def _sorting_key(item):
-        s, occurrences = item
-        return -occurrences.count(), s
+    def _sorting_key(*, reverse=False):
+        sign = -1
+        if reverse:
+            sign = 1
+        def k(item):
+            s, occurrences = item
+            return sign * occurrences.count(), s
+        return k
 
-    def sorted_words(self):
+    def sorted_words(self, *, reverse=False):
         return sorted(
             self._word_index.items(),
-            key=self._sorting_key
+            key=self._sorting_key(reverse=reverse)
         )
 
-    def sorted_lines(self):
+    def sorted_lines(self, *, reverse=False):
         return sorted(
             self._line_index.items(),
-            key=self._sorting_key
+            key=self._sorting_key(reverse=reverse)
         )
 
 # vim:ts=4 sts=4 sw=4 et

@@ -89,10 +89,7 @@ def main():
         print_rare_misspellings(dictionary, rare_misspellings, options=options)
 
 def print_common_misspellings(dictionary, misspellings, *, options):
-    sorted_words = misspellings.sorted_words()
-    if options.reverse:
-        sorted_words = reversed(sorted_words)
-    for word, occurrences in sorted_words:
+    for word, occurrences in misspellings.sorted_words(reverse=options.reverse):
         if len(occurrences) == 1:
             continue
         extra = ''
@@ -121,7 +118,7 @@ def print_common_misspellings(dictionary, misspellings, *, options):
         print()
 
 def print_rare_misspellings(dictionary, misspellings, *, options):
-    for line, occurrences in misspellings.sorted_lines():
+    for line, occurrences in misspellings.sorted_lines(reverse=options.reverse):
         header = []
         underline = bytearray(b' ' * len(line))
         for word, line, positions in sorted(occurrences):

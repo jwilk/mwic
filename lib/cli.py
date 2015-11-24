@@ -73,6 +73,7 @@ def main():
         with file:
             for line in file:
                 line = line.strip()
+                line = line.expandtabs()
                 for word, pos in split_words(line):
                     if not spellcheck(word):
                         misspellings.add(word, line, pos)

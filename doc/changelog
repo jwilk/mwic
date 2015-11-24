@@ -3,8 +3,9 @@ mwic (0.2) UNRELEASED; urgency=low
   * Add option to print rare words first (-r/--reverse).
   * Make it possible to specify input encoding error handler.
   * Make “UTF-8:replace” the default input encoding.
+  * Expand tabs when reading input.
 
- -- Jakub Wilk <jwilk@jwilk.net>  Tue, 24 Nov 2015 14:14:07 +0100
+ -- Jakub Wilk <jwilk@jwilk.net>  Tue, 24 Nov 2015 20:28:20 +0100
 
 mwic (0.1.1) unstable; urgency=low
 

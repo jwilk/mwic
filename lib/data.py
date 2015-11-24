@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 # Copyright © 2013-2015 Jakub Wilk <jwilk@jwilk.net>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy

@@ -16,9 +16,11 @@ cache:
   - $HOME/.cache/pip
 install:
 - pip install pyenchant
+- pip install pyflakes
 - pip install docutils
 script:
 - nosetests --verbose
+- ./private/run-pyflakes
 - find -name "*.rst" | xargs -L1 -t -I{} rst2xml.py --strict {} /dev/null
 - make -C doc
 

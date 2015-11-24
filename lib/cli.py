@@ -111,7 +111,6 @@ def print_common_misspellings(dictionary, misspellings, *, options):
             in occurrences.sorted_context()
         ]
         lwidth = max(len(lcontext) for lcontext, _, _, in occurrences)
-        rwidth = max(len(rcontext) for _, _, rcontext, in occurrences)
         for lcontext, word, rcontext in occurrences:
             print('| {lc:>{lw}}{word}{rc}'.format(
                 lc=lcontext, lw=lwidth,

@@ -36,7 +36,9 @@ Options
 
 --input-encoding enc
    Assume this input encoding.
-   The default is UTF-8.
+   The default is ``UTF-8:replace``
+   (UTF-8 encoding
+   with error handler replacing malformed characters with U+FFFD).
 
 --max-context-width n
    Limit context width to *n* characters.

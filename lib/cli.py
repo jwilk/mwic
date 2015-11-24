@@ -39,7 +39,7 @@ def main():
     ap.add_argument('-r', '--reverse', action='store_true')
     ap.add_argument('-l', '--language', metavar='<lang>', default='en')
     ap.add_argument('--list-languages', nargs=0, action=list_languages)
-    ap.add_argument('--input-encoding', metavar='<enc>', default='utf-8')
+    ap.add_argument('--input-encoding', metavar='<enc>', default='utf-8:replace')
     ap.add_argument('--max-context-width', metavar='<n>', default=30)
     ap.add_argument('--suggest', metavar='<n>', type=int, default=0)
     options = ap.parse_args()
@@ -53,11 +53,23 @@ def main():
         dictionary.check
     )
     misspellings = libdata.Misspellings()
+    encoding = options.input_encoding
+    enc_errors = 'strict'
+    if ':' in encoding:
+        [encoding, enc_errors] = encoding.rsplit(':', 1)
     for path in options.files:
         if path == '-':
-            file = io.TextIOWrapper(sys.stdin.buffer, encoding=options.input_encoding)
+            file = io.TextIOWrapper(
+                sys.stdin.buffer,
+                encoding=encoding,
+                errors=enc_errors,
+            )
         else:
-            file = open(path, 'rt', encoding=options.input_encoding)
+            file = open(
+                path, 'rt',
+                encoding=encoding,
+                errors=enc_errors,
+            )
         with file:
             for line in file:
                 line = line.strip()

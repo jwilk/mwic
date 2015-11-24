@@ -1,4 +1,4 @@
-mwic (0.2) UNRELEASED; urgency=low
+mwic (0.2) unstable; urgency=low
 
   * Add option to print rare words first (-r/--reverse).
   * Make it possible to specify input encoding error handler.
@@ -6,7 +6,7 @@ mwic (0.2) UNRELEASED; urgency=low
   * Expand tabs when reading input.
   * Improve the test suite.
 
- -- Jakub Wilk <jwilk@jwilk.net>  Tue, 24 Nov 2015 20:54:09 +0100
+ -- Jakub Wilk <jwilk@jwilk.net>  Tue, 24 Nov 2015 20:56:17 +0100
 
 mwic (0.1.1) unstable; urgency=low
 

@@ -82,13 +82,13 @@ def main():
             [(word, line, positions)] = occurrences
             rare_misspellings.add(word, line, positions)
     if options.reverse:
-        print_rare_misspellings(rare_misspellings, options=options)
-        print_common_misspellings(misspellings, options=options)
+        print_rare_misspellings(dictionary, rare_misspellings, options=options)
+        print_common_misspellings(dictionary, misspellings, options=options)
     else:
-        print_common_misspellings(misspellings, options=options)
-        print_rare_misspellings(rare_misspellings, options=options)
+        print_common_misspellings(dictionary, misspellings, options=options)
+        print_rare_misspellings(dictionary, rare_misspellings, options=options)
 
-def print_common_misspellings(misspellings, *, options):
+def print_common_misspellings(dictionary, misspellings, *, options):
     sorted_words = misspellings.sorted_words()
     if options.reverse:
         sorted_words = reversed(sorted_words)
@@ -121,7 +121,7 @@ def print_common_misspellings(misspellings, *, options):
         print('', ' ' * lwidth, '^' * len(word))
         print()
 
-def print_rare_misspellings(misspellings, *, options):
+def print_rare_misspellings(dictionary, misspellings, *, options):
     for line, occurrences in misspellings.sorted_lines():
         header = []
         underline = bytearray(b' ' * len(line))

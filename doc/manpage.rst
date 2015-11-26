@@ -16,7 +16,7 @@ Synopsis
 
 Description
 -----------
-*mwic* is a spell-checking frontend that groups misspellings and shows them in their contexts.
+**mwic** is a spell-checking frontend that groups misspellings and shows them in their contexts.
 This is useful for checking technical documents that often contain words that are not included in standard dictionaries.
 
 

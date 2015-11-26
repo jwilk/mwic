@@ -25,8 +25,8 @@ import functools
 
 import enchant.tokenize
 
-import lib.text as libtext
 import lib.data as libdata
+import lib.text as libtext
 
 __version__ = '0.2.1'
 

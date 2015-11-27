@@ -25,6 +25,7 @@ import functools
 
 import enchant.tokenize
 
+import lib.colors as libcolors
 import lib.data as libdata
 import lib.text as libtext
 
@@ -37,6 +38,7 @@ def main():
     ap.add_argument('-l', '--language', metavar='<lang>', default='en')
     ap.add_argument('--list-languages', nargs=0, action=list_languages)
     ap.add_argument('--input-encoding', metavar='<enc>', default='utf-8:replace')
+    ap.add_argument('-f', '--output-format', choices=('plain', 'color'), default='plain')
     ap.add_argument('-r', '--reverse', action='store_true')
     ap.add_argument('--max-context-width', metavar='<n>', default=30)
     ap.add_argument('--suggest', metavar='<n>', type=int, default=0)
@@ -108,12 +110,21 @@ def print_common_misspellings(dictionary, misspellings, *, options):
         ]
         lwidth = max(len(lcontext) for lcontext, _, _, in occurrences)
         for lcontext, word, rcontext in occurrences:
-            print('| {lc:>{lw}}{word}{rc}'.format(
-                lc=lcontext, lw=lwidth,
+            lcontext = lcontext.rjust(lwidth)
+            if options.output_format == 'color':
+                lcontext = libcolors.escape(lcontext)
+                word = libcolors.highlight(word)
+                rcontext = libcolors.escape(rcontext)
+                print(libcolors.dim('|'), end=' ')
+            else:
+                print('|', end=' ')
+            print('{lc}{word}{rc}'.format(
+                lc=lcontext,
                 word=word,
                 rc=rcontext,
             ))
-        print('', ' ' * lwidth, '^' * len(word))
+        if options.output_format != 'color':
+            print('', ' ' * lwidth, '^' * len(word))
         print()
 
 def print_rare_misspellings(dictionary, misspellings, *, options):
@@ -143,8 +154,16 @@ def print_rare_misspellings(dictionary, misspellings, *, options):
             rwidth = len(line) - rexceed
             line = libtext.rtrim(line, rwidth)
             underline = libtext.rtrim(underline, rwidth, char=' ')
-        print('|', line)
-        print(' ', underline.rstrip())
+        if options.output_format == 'color':
+            hline = libcolors.highlight(
+                line,
+                (c != ' ' for c in underline),
+            )
+            print(libcolors.dim('|'), hline)
+            print()
+        else:
+            print('|', line)
+            print(' ', underline.rstrip())
         print()
 
 class list_languages(argparse.Action):

@@ -36,6 +36,14 @@ Options
    (UTF-8 encoding
    with error handler replacing malformed characters with U+FFFD).
 
+-f fmt, --output-format fmt
+   If *fmt* is ``plain``,
+   output plain text verbatim and highlight misspellings with the ``^`` character.
+   This is the default.
+
+   If *fmt* is ``color``,
+   escape control characters and highlight misspellings with colors.
+
 -r, --reverse
    Print words in reverse order,
    that is, the rarest words first.

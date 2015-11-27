@@ -28,7 +28,7 @@ import enchant.tokenize
 import lib.data as libdata
 import lib.text as libtext
 
-__version__ = '0.2.1'
+__version__ = '0.3'
 
 def main():
     ap = argparse.ArgumentParser()

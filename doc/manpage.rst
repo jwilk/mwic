@@ -27,10 +27,6 @@ Options
    Spell-check for this language.
    The default is ``en``.
 
--r, --reverse
-   Print words in reverse order,
-   that is, the rarest words first.
-
 --list-languages
    Print list of available languages.
 
@@ -39,6 +35,10 @@ Options
    The default is ``UTF-8:replace``
    (UTF-8 encoding
    with error handler replacing malformed characters with U+FFFD).
+
+-r, --reverse
+   Print words in reverse order,
+   that is, the rarest words first.
 
 --max-context-width n
    Limit context width to *n* characters.

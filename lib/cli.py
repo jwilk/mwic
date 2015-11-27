@@ -38,7 +38,8 @@ def main():
     ap.add_argument('-l', '--language', metavar='<lang>', default='en')
     ap.add_argument('--list-languages', nargs=0, action=list_languages)
     ap.add_argument('--input-encoding', metavar='<enc>', default='utf-8:replace')
-    ap.add_argument('-f', '--output-format', choices=('plain', 'color'), default='plain')
+    default_output_format = 'color' if sys.stdout.isatty() else 'plain'
+    ap.add_argument('-f', '--output-format', choices=('plain', 'color'), default=default_output_format)
     ap.add_argument('-r', '--reverse', action='store_true')
     ap.add_argument('--max-context-width', metavar='<n>', default=30)
     ap.add_argument('--suggest', metavar='<n>', type=int, default=0)

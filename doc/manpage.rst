@@ -39,10 +39,11 @@ Options
 -f fmt, --output-format fmt
    If *fmt* is ``plain``,
    output plain text verbatim and highlight misspellings with the ``^`` character.
-   This is the default.
+   This is the default if stdout is not a terminal.
 
    If *fmt* is ``color``,
    escape control characters and highlight misspellings with colors.
+   This is the default if stdout is a terminal.
 
 -r, --reverse
    Print words in reverse order,

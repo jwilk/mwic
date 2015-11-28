@@ -48,7 +48,7 @@ def highlight(s, w=None):
             fp.write(color)
             old_color = color
         if unicodedata.category(cs) == 'Cc':
-            if cs >= '\0' and cs < ' ':
+            if cs < ' ':
                 cs = '^' + chr(ord('@') + ord(cs))
             else:
                 cs = '<U+{0:04X}>'.format(ord(cs))

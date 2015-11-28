@@ -52,6 +52,7 @@ def highlight(s, w=None):
                 cs = '^' + chr(ord('@') + ord(cs))
             else:
                 cs = '<U+{0:04X}>'.format(ord(cs))
+            cs = '{t.reverse}{c}{t.unreverse}'.format(c=cs, t=_seq)
         fp.write(cs)
     fp.write(off)
     return fp.getvalue()

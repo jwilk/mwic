@@ -2,8 +2,9 @@ mwic (0.3) UNRELEASED; urgency=low
 
   * Reorder options in the help message and in the manual page.
   * Add option to highlight misspelling with color (-f/--output-format).
+  * Print rare words first by default.
 
- -- Jakub Wilk <jwilk@jwilk.net>  Fri, 27 Nov 2015 15:07:06 +0100
+ -- Jakub Wilk <jwilk@jwilk.net>  Sat, 28 Nov 2015 16:12:31 +0100
 
 mwic (0.2) unstable; urgency=low
 

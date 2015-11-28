@@ -47,7 +47,7 @@ Options
 
 -r, --reverse
    Print words in reverse order,
-   that is, the rarest words first.
+   that is, the most common words first.
 
 --max-context-width n
    Limit context width to *n* characters.

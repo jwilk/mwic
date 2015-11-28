@@ -74,9 +74,9 @@ class Misspellings(object):
 
     @staticmethod
     def _sorting_key(*, reverse=False):
-        sign = -1
+        sign = 1
         if reverse:
-            sign = 1
+            sign = -1
         def k(item):
             s, occurrences = item
             return sign * occurrences.count(), s

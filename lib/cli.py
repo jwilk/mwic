@@ -84,11 +84,11 @@ def main():
             [(word, line, positions)] = occurrences
             rare_misspellings.add(word, line, positions)
     if options.reverse:
-        print_rare_misspellings(dictionary, rare_misspellings, options=options)
         print_common_misspellings(dictionary, misspellings, options=options)
+        print_rare_misspellings(dictionary, rare_misspellings, options=options)
     else:
-        print_common_misspellings(dictionary, misspellings, options=options)
         print_rare_misspellings(dictionary, rare_misspellings, options=options)
+        print_common_misspellings(dictionary, misspellings, options=options)
 
 def print_common_misspellings(dictionary, misspellings, *, options):
     for word, occurrences in misspellings.sorted_words(reverse=options.reverse):

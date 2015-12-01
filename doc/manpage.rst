@@ -68,20 +68,6 @@ Example
 ::
 
    $ mwic debian-social-contract.txt
-   DFSG:
-   | …an Free Software Guidelines (DFSG)
-   | …an Free Software Guidelines (DFSG) part of the
-                                   ^^^^
-
-   Perens:
-   |    Bruce Perens later removed the Debian-spe…
-   | by Bruce Perens, refined by the other Debian…
-              ^^^^^^
-
-   Ean, Schuessler:
-   | community" was suggested by Ean Schuessler. This document was drafted
-                                 ^^^ ^^^^^^^^^^
-
    GPL:
    | The "GPL", "BSD", and "Artistic" lice…
           ^^^
@@ -93,6 +79,20 @@ Example
    CDs:
    | their CDs. Thus, although non-free wor…
            ^^^
+
+   Ean, Schuessler:
+   | community" was suggested by Ean Schuessler. This document was drafted
+                                 ^^^ ^^^^^^^^^^
+
+   DFSG:
+   | …an Free Software Guidelines (DFSG)
+   | …an Free Software Guidelines (DFSG) part of the
+                                   ^^^^
+
+   Perens:
+   |    Bruce Perens later removed the Debian-spe…
+   | by Bruce Perens, refined by the other Debian…
+              ^^^^^^
 
 .. |date| date:: %Y-%m-%d
 

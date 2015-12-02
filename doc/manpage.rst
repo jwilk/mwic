@@ -62,6 +62,22 @@ Options
 --version
    Show the program's version number and exit.
 
+Environment
+-----------
+
+PAGER
+   If stdout is a terminal, mwic pipes the output through ``$PAGER``.
+   The default is ``pager``.
+
+LESS
+   If this variable is unset, mwic sets it
+   to ``FX``,
+   or to ``FXR`` if the output is in color.
+
+LV
+   If this variable in unset, and the output is in color,
+   mwic sets this variable to ``-c``.
+
 Example
 -------
 

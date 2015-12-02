@@ -54,7 +54,8 @@ def highlight(s, w=None):
                 cs = '<U+{0:04X}>'.format(ord(cs))
             cs = '{t.reverse}{c}{t.unreverse}'.format(c=cs, t=_seq)
         fp.write(cs)
-    fp.write(off)
+    if old_color != off:
+        fp.write(off)
     return fp.getvalue()
 
 __all__ = [

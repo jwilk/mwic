@@ -3,9 +3,10 @@ mwic (0.3) UNRELEASED; urgency=low
   * Reorder options in the help message and in the manual page.
   * Add option to highlight misspelling with color (-f/--output-format).
   * Print rare words first by default.
+  * If stdout is a terminal, automatically pipe the output through a pager.
   * Fix option formatting in the manual page.
 
- -- Jakub Wilk <jwilk@jwilk.net>  Sun, 29 Nov 2015 17:28:44 +0100
+ -- Jakub Wilk <jwilk@jwilk.net>  Wed, 02 Dec 2015 17:47:30 +0100
 
 mwic (0.2) unstable; urgency=low
 

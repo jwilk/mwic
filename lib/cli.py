@@ -27,6 +27,7 @@ import enchant.tokenize
 
 import lib.colors as libcolors
 import lib.data as libdata
+import lib.pager as libpager
 import lib.text as libtext
 
 __version__ = '0.3'
@@ -45,6 +46,10 @@ def main():
     ap.add_argument('--suggest', metavar='<n>', type=int, default=0)
     options = ap.parse_args()
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, 'utf-8')
+    with libpager.autopager(raw_control_chars=(options.output_format == 'color')):
+        _main(options)
+
+def _main(options):
     try:
         split_words = enchant.tokenize.get_tokenizer(options.language)
     except enchant.errors.TokenizerNotFoundError:

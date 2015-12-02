@@ -48,8 +48,8 @@ def highlight(s, w=None):
             fp.write(color)
             old_color = color
         if unicodedata.category(cs) == 'Cc':
-            if cs < ' ':
-                cs = '^' + chr(ord('@') + ord(cs))
+            if cs < ' ' or cs == '\x7F':
+                cs = '^' + chr(ord(cs) ^ ord('@'))
             else:
                 cs = '<U+{0:04X}>'.format(ord(cs))
             cs = '{t.reverse}{c}{t.unreverse}'.format(c=cs, t=_seq)

@@ -30,7 +30,7 @@ import lib.data as libdata
 import lib.pager as libpager
 import lib.text as libtext
 
-__version__ = '0.3'
+__version__ = '0.3.1'
 
 def main():
     ap = argparse.ArgumentParser()

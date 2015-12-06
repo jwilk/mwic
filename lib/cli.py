@@ -25,10 +25,10 @@ import functools
 
 import enchant.tokenize
 
-import lib.colors as libcolors
-import lib.data as libdata
-import lib.pager as libpager
-import lib.text as libtext
+import lib.colors
+import lib.data
+import lib.pager
+import lib.text
 
 __version__ = '0.3.1'
 
@@ -46,7 +46,7 @@ def main():
     ap.add_argument('--suggest', metavar='<n>', type=int, default=0)
     options = ap.parse_args()
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, 'utf-8')
-    with libpager.autopager(raw_control_chars=(options.output_format == 'color')):
+    with lib.pager.autopager(raw_control_chars=(options.output_format == 'color')):
         _main(options)
 
 def _main(options):
@@ -58,7 +58,7 @@ def _main(options):
     spellcheck = functools.lru_cache(maxsize=None)(
         dictionary.check
     )
-    misspellings = libdata.Misspellings()
+    misspellings = lib.data.Misspellings()
     encoding = options.input_encoding
     enc_errors = 'strict'
     if ':' in encoding:
@@ -83,7 +83,7 @@ def _main(options):
                 for word, pos in split_words(line):
                     if not spellcheck(word):
                         misspellings.add(word, line, pos)
-    rare_misspellings = libdata.Misspellings()
+    rare_misspellings = lib.data.Misspellings()
     for word, occurrences in misspellings.sorted_words():
         if len(occurrences) == 1:
             [(word, line, positions)] = occurrences
@@ -107,9 +107,9 @@ def print_common_misspellings(dictionary, misspellings, *, options):
         print(word + extra + ':')
         occurrences = [
             (
-                libtext.ltrim(lcontext, options.max_context_width),
+                lib.text.ltrim(lcontext, options.max_context_width),
                 word,
-                libtext.rtrim(rcontext, options.max_context_width),
+                lib.text.rtrim(rcontext, options.max_context_width),
             )
             for lcontext, word, rcontext
             in occurrences.sorted_context()
@@ -118,10 +118,10 @@ def print_common_misspellings(dictionary, misspellings, *, options):
         for lcontext, word, rcontext in occurrences:
             lcontext = lcontext.rjust(lwidth)
             if options.output_format == 'color':
-                lcontext = libcolors.escape(lcontext)
-                word = libcolors.highlight(word)
-                rcontext = libcolors.escape(rcontext)
-                print(libcolors.dim('|'), end=' ')
+                lcontext = lib.colors.escape(lcontext)
+                word = lib.colors.highlight(word)
+                rcontext = lib.colors.escape(rcontext)
+                print(lib.colors.dim('|'), end=' ')
             else:
                 print('|', end=' ')
             print('{lc}{word}{rc}'.format(
@@ -154,18 +154,18 @@ def print_rare_misspellings(dictionary, misspellings, *, options):
         rexceed = rwidth - options.max_context_width
         if lexceed > 0:
             lwidth = len(line) - lexceed
-            line = libtext.ltrim(line, lwidth)
-            underline = libtext.ltrim(underline, lwidth, char=' ')
+            line = lib.text.ltrim(line, lwidth)
+            underline = lib.text.ltrim(underline, lwidth, char=' ')
         if rexceed > 0:
             rwidth = len(line) - rexceed
-            line = libtext.rtrim(line, rwidth)
-            underline = libtext.rtrim(underline, rwidth, char=' ')
+            line = lib.text.rtrim(line, rwidth)
+            underline = lib.text.rtrim(underline, rwidth, char=' ')
         if options.output_format == 'color':
-            hline = libcolors.highlight(
+            hline = lib.colors.highlight(
                 line,
                 (c != ' ' for c in underline),
             )
-            print(libcolors.dim('|'), hline)
+            print(lib.colors.dim('|'), hline)
             print()
         else:
             print('|', line)

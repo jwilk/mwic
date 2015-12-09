@@ -27,6 +27,7 @@ import enchant.tokenize
 
 import lib.colors
 import lib.data
+import lib.ns
 import lib.pager
 import lib.text
 
@@ -81,29 +82,35 @@ def main():
                         misspellings.add(word, line, pos)
     if not misspellings:
         return
+    ctxt = lib.ns.Namespace(
+        dictionary=dictionary,
+        misspellings=misspellings,
+        options=options,
+    )
     with lib.pager.autopager(raw_control_chars=(options.output_format == 'color')):
-        print_misspellings(dictionary, misspellings, options=options)
+        print_misspellings(ctxt)
 
-def print_misspellings(dictionary, misspellings, *, options):
+def print_misspellings(ctxt):
     rare_misspellings = lib.data.Misspellings()
-    for word, occurrences in misspellings.sorted_words():
+    for word, occurrences in ctxt.misspellings.sorted_words():
         if len(occurrences) == 1:
             [(word, line, positions)] = occurrences
             rare_misspellings.add(word, line, positions)
-    if options.reverse:
-        print_common_misspellings(dictionary, misspellings, options=options)
-        print_rare_misspellings(dictionary, rare_misspellings, options=options)
+    if ctxt.options.reverse:
+        print_common_misspellings(ctxt)
+        print_rare_misspellings(ctxt)
     else:
-        print_rare_misspellings(dictionary, rare_misspellings, options=options)
-        print_common_misspellings(dictionary, misspellings, options=options)
+        print_rare_misspellings(ctxt)
+        print_common_misspellings(ctxt)
 
-def print_common_misspellings(dictionary, misspellings, *, options):
-    for word, occurrences in misspellings.sorted_words(reverse=options.reverse):
+def print_common_misspellings(ctxt):
+    options = ctxt.options
+    for word, occurrences in ctxt.misspellings.sorted_words(reverse=options.reverse):
         if len(occurrences) == 1:
             continue
         extra = ''
         if options.suggest > 0:
-            suggestions = dictionary.suggest(word)[:options.suggest]
+            suggestions = ctxt.dictionary.suggest(word)[:options.suggest]
             if suggestions:
                 extra = ' ({sug})'.format(sug=', '.join(suggestions))
         print(word + extra + ':')
@@ -135,14 +142,15 @@ def print_common_misspellings(dictionary, misspellings, *, options):
             print('', ' ' * lwidth, '^' * len(word))
         print()
 
-def print_rare_misspellings(dictionary, misspellings, *, options):
-    for line, occurrences in misspellings.sorted_lines(reverse=options.reverse):
+def print_rare_misspellings(ctxt):
+    options = ctxt.options
+    for line, occurrences in ctxt.misspellings.sorted_lines(reverse=options.reverse):
         header = []
         underline = bytearray(b' ' * len(line))
         for word, line, positions in sorted(occurrences):
             extra = ''
             if options.suggest > 0:
-                suggestions = dictionary.suggest(word)[:options.suggest]
+                suggestions = ctxt.dictionary.suggest(word)[:options.suggest]
                 if suggestions:
                     extra = ' ({sug})'.format(sug=', '.join(suggestions))
             header += [word + extra]

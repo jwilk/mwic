@@ -46,10 +46,6 @@ def main():
     ap.add_argument('--suggest', metavar='<n>', type=int, default=0)
     options = ap.parse_args()
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, 'utf-8')
-    with lib.pager.autopager(raw_control_chars=(options.output_format == 'color')):
-        _main(options)
-
-def _main(options):
     try:
         split_words = enchant.tokenize.get_tokenizer(options.language)
     except enchant.errors.TokenizerNotFoundError:
@@ -83,6 +79,12 @@ def _main(options):
                 for word, pos in split_words(line):
                     if not spellcheck(word):
                         misspellings.add(word, line, pos)
+    if not misspellings:
+        return
+    with lib.pager.autopager(raw_control_chars=(options.output_format == 'color')):
+        print_misspellings(dictionary, misspellings, options=options)
+
+def print_misspellings(dictionary, misspellings, *, options):
     rare_misspellings = lib.data.Misspellings()
     for word, occurrences in misspellings.sorted_words():
         if len(occurrences) == 1:

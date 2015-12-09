@@ -82,6 +82,9 @@ class Misspellings(object):
             return sign * occurrences.count(), s
         return k
 
+    def __bool__(self):
+        return bool(self._word_index)
+
     def sorted_words(self, *, reverse=False):
         return sorted(
             self._word_index.items(),

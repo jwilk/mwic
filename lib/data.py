@@ -101,4 +101,9 @@ class Misspellings(object):
             key=self._sorting_key(reverse=reverse)
         )
 
+__all__ = [
+    'Misspellings',
+    'Occurrences',
+]
+
 # vim:ts=4 sts=4 sw=4 et

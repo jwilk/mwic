@@ -192,4 +192,6 @@ class list_languages(argparse.Action):
             print(lang)
         sys.exit(0)
 
+__all__ = ['main']
+
 # vim:ts=4 sts=4 sw=4 et

@@ -1,9 +1,9 @@
-mwic (0.3.1) UNRELEASED; urgency=low
+mwic (0.3.1) unstable; urgency=low
 
   * Delay spawning the pager until the input is fully read.
     Thanks to Paul Tagliamonte for the bug report.
 
- -- Jakub Wilk <jwilk@jwilk.net>  Wed, 09 Dec 2015 13:13:20 +0100
+ -- Jakub Wilk <jwilk@jwilk.net>  Wed, 09 Dec 2015 16:38:52 +0100
 
 mwic (0.3) unstable; urgency=low
 

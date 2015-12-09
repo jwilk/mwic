@@ -38,4 +38,6 @@ Namespace()  # make pyflakes and coverage.py happy
 if sys.version_info >= (3, 3):
     Namespace = types.SimpleNamespace
 
+__all__ = ['Namespace']
+
 # vim:ts=4 sts=4 sw=4 et

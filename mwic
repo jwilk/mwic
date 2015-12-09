@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # encoding=UTF-8
 
-# Copyright © 2013-2014 Jakub Wilk <jwilk@jwilk.net>
+# Copyright © 2013-2015 Jakub Wilk <jwilk@jwilk.net>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the “Software”), to deal
@@ -47,9 +47,9 @@ require_python(3, 2)
 
 # ----------------------------------------
 
-import lib.cli as libcli
+import lib.cli
 
 if __name__ == '__main__':
-    libcli.main()
+    lib.cli.main()
 
 # vim:ts=4 sts=4 sw=4 et

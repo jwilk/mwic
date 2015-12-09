@@ -35,7 +35,7 @@ import lib.ns
 import lib.pager
 import lib.text
 
-__version__ = '0.3.1'
+__version__ = '0.3.2'
 
 def main():
     ap = argparse.ArgumentParser()

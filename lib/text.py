@@ -18,6 +18,10 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+'''
+text manipulation functions
+'''
+
 def ltrim(s, n, *, char='…'):
     if len(s) <= n:
         return s

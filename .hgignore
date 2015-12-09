@@ -1,5 +1,5 @@
 syntax: glob
 
-__pycache__/
 .coverage
+__pycache__/
 doc/*.1

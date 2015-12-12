@@ -56,6 +56,7 @@ def main():
     except enchant.errors.TokenizerNotFoundError:
         split_words = enchant.tokenize.get_tokenizer(None)
     dictionary = enchant.Dict(options.language)
+    force_ucs2 = dictionary.provider.name == 'myspell'
     spellcheck = functools.lru_cache(maxsize=None)(
         dictionary.check
     )
@@ -79,6 +80,9 @@ def main():
             )
         with file:
             for line in file:
+                if force_ucs2:
+                    # https://github.com/rfk/pyenchant/issues/58
+                    line = ''.join(c if c <= '\uFFFF' else '\uFFFD' for c in line)
                 line = line.strip()
                 line = line.expandtabs()
                 for word, pos in split_words(line):

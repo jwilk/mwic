@@ -47,6 +47,7 @@ def main():
     default_output_format = 'color' if sys.stdout.isatty() else 'plain'
     ap.add_argument('-f', '--output-format', choices=('plain', 'color'), default=default_output_format)
     ap.add_argument('-r', '--reverse', action='store_true')
+    ap.add_argument('--limit', type=int, default=1e999)
     ap.add_argument('--max-context-width', metavar='<n>', default=30)
     ap.add_argument('--suggest', metavar='<n>', type=int, default=0)
     options = ap.parse_args()
@@ -117,6 +118,8 @@ def print_common_misspellings(ctxt):
     for word, occurrences in ctxt.misspellings.sorted_words(reverse=options.reverse):
         if len(occurrences) == 1:
             continue
+        if occurrences.count() > options.limit:
+            continue
         extra = ''
         if options.suggest > 0:
             suggestions = ctxt.dictionary.suggest(word)[:options.suggest]
@@ -157,6 +160,8 @@ def print_rare_misspellings(ctxt):
         header = []
         underline = bytearray(b' ' * len(line))
         for word, line, positions in sorted(occurrences):
+            if len(positions) > options.limit:
+                continue
             extra = ''
             if options.suggest > 0:
                 suggestions = ctxt.dictionary.suggest(word)[:options.suggest]
@@ -165,6 +170,8 @@ def print_rare_misspellings(ctxt):
             header += [word + extra]
             for x in positions:
                 underline[x : x + len(word)] = b'^' * len(word)
+        if not header:
+            continue
         print(', '.join(header) + ':')
         underline = underline.decode()
         lwidth = len(underline) - len(underline.lstrip())

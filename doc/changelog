@@ -3,8 +3,9 @@ mwic (0.4) UNRELEASED; urgency=low
   * Add work-around for Hunspell's stderr warnings about characters in
     Supplementary Planes.
     https://github.com/rfk/pyenchant/issues/58
+  * Add option for hiding words with many occurrences (--limit).
 
- -- Jakub Wilk <jwilk@jwilk.net>  Tue, 15 Dec 2015 12:01:28 +0100
+ -- Jakub Wilk <jwilk@jwilk.net>  Tue, 15 Dec 2015 12:37:25 +0100
 
 mwic (0.3.1) unstable; urgency=low
 

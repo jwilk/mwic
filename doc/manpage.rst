@@ -49,6 +49,9 @@ Options
    Print words in reverse order,
    that is, the most common words first.
 
+--limit n
+   Assume that words that occurred more than *n* times are spelled correctly.
+
 --max-context-width n
    Limit context width to *n* characters.
    The default is 30.

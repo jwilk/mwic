@@ -1,8 +1,8 @@
 mwic (0.5) UNRELEASED; urgency=low
 
-  * 
+  * Check for some multi-word misspellings.
 
- -- Jakub Wilk <jwilk@jwilk.net>  Sat, 26 Dec 2015 13:30:17 +0100
+ -- Jakub Wilk <jwilk@jwilk.net>  Sat, 26 Dec 2015 13:30:45 +0100
 
 mwic (0.4) unstable; urgency=low
 

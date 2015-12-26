@@ -1,0 +1,3 @@
+(?P<dupl>[A-Za-zĄĆĘŁŃÓŚŻŹąćęłńóśżź]+) (?P=dupl)
+
+Publiczn\w+ Licencj\w+ GNU

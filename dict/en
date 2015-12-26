@@ -1,0 +1,32 @@
+(?P<dupl>[A-Za-z]+) (?P=dupl)
+
+a an
+a the
+an a
+an the
+the a
+the an
+
+allow(ing|s)? to
+permit(ing|s)? to
+
+let's one
+let's (me|you|him|her|it|us|them)
+let's (a|an|the)
+
+(be|is|are|was|were|been|being) (enable|disable)
+(be|is|are|was|were|been|being) not (enable|disable)
+
+GNU Lesser Public Licen[cs]e
+GNU Public Licen[cs]e
+either version 2 of the License[.]
+
+per say
+
+none? the less
+
+an unary
+an uniform
+an union
+an unique(ly)?
+an unit

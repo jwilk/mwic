@@ -31,6 +31,7 @@ import enchant.tokenize
 
 import lib.colors
 import lib.data
+import lib.mdict
 import lib.ns
 import lib.pager
 import lib.text
@@ -57,6 +58,7 @@ def main():
     except enchant.errors.TokenizerNotFoundError:
         split_words = enchant.tokenize.get_tokenizer(None)
     dictionary = enchant.Dict(options.language)
+    mdict = lib.mdict.Dictionary(options.language)
     force_ucs2 = dictionary.provider.name == 'myspell'
     spellcheck = functools.lru_cache(maxsize=None)(
         dictionary.check
@@ -86,6 +88,8 @@ def main():
                     line = ''.join(c if c <= '\uFFFF' else '\uFFFD' for c in line)
                 line = line.strip()
                 line = line.expandtabs()
+                for word, pos in mdict.find(line):
+                    misspellings.add(word, line, pos)
                 for word, pos in split_words(line):
                     if not spellcheck(word):
                         misspellings.add(word, line, pos)

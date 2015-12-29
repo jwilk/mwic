@@ -1,4 +1,4 @@
-(?P<dupl>[A-Za-z]+) (?P=dupl)
+(?P<dupl>[A-Za-z]+(['’][a-z]+)*) (?P=dupl)
 
 a an
 a the

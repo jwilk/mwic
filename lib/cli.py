@@ -88,10 +88,18 @@ def main():
                     line = ''.join(c if c <= '\uFFFF' else '\uFFFD' for c in line)
                 line = line.strip()
                 line = line.expandtabs()
-                for word, pos in mdict.find(line):
-                    misspellings.add(word, line, pos)
+                taken = bytearray(len(line))
                 for word, pos in split_words(line):
-                    if not spellcheck(word):
+                    if spellcheck(word):
+                        continue
+                    for i, ch in enumerate(word, start=pos):
+                        taken[i] = True
+                    misspellings.add(word, line, pos)
+                for word, pos in mdict.find(line):
+                    for i, ch in enumerate(word, start=pos):
+                        if taken[i]:
+                            break
+                    else:
                         misspellings.add(word, line, pos)
     if not misspellings:
         return

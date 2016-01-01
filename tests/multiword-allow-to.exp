@@ -1,0 +1,20 @@
+allow to:
+| I allow to go.
+    ^^^^^^^^
+
+permit to:
+| I permit to go.
+    ^^^^^^^^^
+
+allowing to:
+| I'm allowing to go.
+      ^^^^^^^^^^^
+
+allows to:
+| It allows to go.
+     ^^^^^^^^^
+
+permits to:
+| It permits to go.
+     ^^^^^^^^^^
+

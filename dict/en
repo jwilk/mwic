@@ -10,9 +10,9 @@ the an
 allow(ing|s)? to
 permit(ing|s)? to
 
-let's one
-let's (me|you|him|her|it|us|them)
-let's (a|an|the)
+let['’]s one
+let['’]s (me|you|him|her|it|us|them)
+let['’]s (a|an|the)
 
 (be|is|are|was|were|been|being) (enable|disable)
 (be|is|are|was|were|been|being) not (enable|disable)

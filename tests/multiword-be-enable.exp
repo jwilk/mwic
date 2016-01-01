@@ -1,0 +1,96 @@
+been disable:
+| It has been disable.
+         ^^^^^^^^^^^^
+
+been enable:
+| It has been enable.
+         ^^^^^^^^^^^
+
+been not disable:
+| It has been not disable.
+         ^^^^^^^^^^^^^^^^
+
+been not enable:
+| It has been not enable.
+         ^^^^^^^^^^^^^^^
+
+being disable:
+| It is being disable.
+        ^^^^^^^^^^^^^
+
+being enable:
+| It is being enable.
+        ^^^^^^^^^^^^
+
+being not disable:
+| It is being not disable.
+        ^^^^^^^^^^^^^^^^^
+
+being not enable:
+| It is being not enable.
+        ^^^^^^^^^^^^^^^^
+
+is disable:
+| It is disable.
+     ^^^^^^^^^^
+
+is enable:
+| It is enable.
+     ^^^^^^^^^
+
+is not disable:
+| It is not disable
+     ^^^^^^^^^^^^^^
+
+is not enable:
+| It is not enable.
+     ^^^^^^^^^^^^^
+
+was enable:
+| It was enable.
+     ^^^^^^^^^^
+
+was not disable:
+| It was not disable
+     ^^^^^^^^^^^^^^^
+
+was not enable:
+| It was not enable.
+     ^^^^^^^^^^^^^^
+
+be disable:
+| It will be disable.
+          ^^^^^^^^^^
+
+be enable:
+| It will be enable.
+          ^^^^^^^^^
+
+be not disable:
+| It will be not disable.
+          ^^^^^^^^^^^^^^
+
+be not enable:
+| It will be not enable.
+          ^^^^^^^^^^^^^
+
+were disable:
+| They were disable
+       ^^^^^^^^^^^^
+
+were enable:
+| They were enable.
+       ^^^^^^^^^^^
+
+were not disable:
+| They were not disable.
+       ^^^^^^^^^^^^^^^^
+
+were not enable:
+| They were not enable.
+       ^^^^^^^^^^^^^^^
+
+was disable:
+| it was disable.
+     ^^^^^^^^^^^
+

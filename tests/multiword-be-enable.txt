@@ -1,0 +1,27 @@
+It will be enable.
+It is enable.
+It was enable.
+They were enable.
+It has been enable.
+It is being enable.
+
+It will be disable.
+It is disable.
+it was disable.
+They were disable
+It has been disable.
+It is being disable.
+
+It will be not enable.
+It is not enable.
+It was not enable.
+They were not enable.
+It has been not enable.
+It is being not enable.
+
+It will be not disable.
+It is not disable
+It was not disable
+They were not disable.
+It has been not disable.
+It is being not disable.

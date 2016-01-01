@@ -1,0 +1,11 @@
+a a
+a an
+a the
+
+an a
+an an
+an the
+
+the a
+the an
+the the

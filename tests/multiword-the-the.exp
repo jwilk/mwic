@@ -1,0 +1,36 @@
+a a:
+| a a
+  ^^^
+
+a an:
+| a an
+  ^^^^
+
+a the:
+| a the
+  ^^^^^
+
+an a:
+| an a
+  ^^^^
+
+an an:
+| an an
+  ^^^^^
+
+an the:
+| an the
+  ^^^^^^
+
+the a:
+| the a
+  ^^^^^
+
+the an:
+| the an
+  ^^^^^^
+
+the the:
+| the the
+  ^^^^^^^
+

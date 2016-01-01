@@ -4,5 +4,7 @@ an union
 an unique
 an uniquely
 an unit
+an useful
+an useless
 an user
 an username  # FIXME

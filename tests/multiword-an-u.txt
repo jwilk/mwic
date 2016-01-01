@@ -4,6 +4,8 @@ an union
 an unique
 an uniquely
 an unit
+an usage
+an use
 an useful
 an useless
 an user

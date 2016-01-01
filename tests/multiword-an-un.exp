@@ -1,0 +1,24 @@
+an uniform:
+| an uniform
+  ^^^^^^^^^^
+
+an union:
+| an union
+  ^^^^^^^^
+
+an unique:
+| an unique
+  ^^^^^^^^^
+
+an uniquely:
+| an uniquely
+  ^^^^^^^^^^^
+
+an unit:
+| an unit
+  ^^^^^^^
+
+FIXME, unary:
+| an unary  # FIXME
+     ^^^^^    ^^^^^
+

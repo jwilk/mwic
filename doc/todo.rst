@@ -12,13 +12,23 @@ Whitelist the following English words,
 which are commonly found in software code or documentation,
 but are not present in dictionaries::
 
+   backend
+   backends
    boolean
    booleans
    endian
    endianness
    executable
    executables
+   filename
+   filenames
+   filesystem
+   filesystems
    natively
+   prepend
+   prepended
+   prepending
+   prepends
    tuple
    tuples
 

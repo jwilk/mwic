@@ -32,4 +32,6 @@ but are not present in dictionaries::
    tuple
    tuples
 
+Spell-check camel-cased words.
+
 .. vim:ts=3 sts=3 sw=3

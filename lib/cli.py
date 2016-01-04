@@ -59,7 +59,6 @@ def main():
         split_words = enchant.tokenize.get_tokenizer(None)
     dictionary = enchant.Dict(options.language)
     mdict = lib.mdict.Dictionary(options.language)
-    force_ucs2 = dictionary.provider.name == 'myspell'
     spellcheck = functools.lru_cache(maxsize=None)(
         dictionary.check
     )
@@ -68,6 +67,14 @@ def main():
     enc_errors = 'strict'
     if ':' in encoding:
         [encoding, enc_errors] = encoding.rsplit(':', 1)
+    ctxt = lib.ns.Namespace(
+        dictionary=dictionary,
+        mdict=mdict,
+        split_words=split_words,
+        spellcheck=spellcheck,
+        misspellings=misspellings,
+        options=options,
+    )
     for path in options.files:
         if path == '-':
             file = io.TextIOWrapper(
@@ -82,34 +89,33 @@ def main():
                 errors=enc_errors,
             )
         with file:
-            for line in file:
-                if force_ucs2:
-                    # https://github.com/rfk/pyenchant/issues/58
-                    line = ''.join(c if c <= '\uFFFF' else '\uFFFD' for c in line)
-                line = line.strip()
-                line = line.expandtabs()
-                taken = bytearray(len(line))
-                for word, pos in split_words(line):
-                    if spellcheck(word):
-                        continue
-                    for i, ch in enumerate(word, start=pos):
-                        taken[i] = True
-                    misspellings.add(word, line, pos)
-                for word, pos in mdict.find(line):
-                    for i, ch in enumerate(word, start=pos):
-                        if taken[i]:
-                            break
-                    else:
-                        misspellings.add(word, line, pos)
+            spellcheck_file(ctxt, file)
     if not misspellings:
         return
-    ctxt = lib.ns.Namespace(
-        dictionary=dictionary,
-        misspellings=misspellings,
-        options=options,
-    )
     with lib.pager.autopager(raw_control_chars=(options.output_format == 'color')):
         print_misspellings(ctxt)
+
+def spellcheck_file(ctxt, file):
+    force_ucs2 = ctxt.dictionary.provider.name == 'myspell'
+    for line in file:
+        if force_ucs2:
+            # https://github.com/rfk/pyenchant/issues/58
+            line = ''.join(c if c <= '\uFFFF' else '\uFFFD' for c in line)
+        line = line.strip()
+        line = line.expandtabs()
+        taken = bytearray(len(line))
+        for word, pos in ctxt.split_words(line):
+            if ctxt.spellcheck(word):
+                continue
+            for i, ch in enumerate(word, start=pos):
+                taken[i] = True
+            ctxt.misspellings.add(word, line, pos)
+        for word, pos in ctxt.mdict.find(line):
+            for i, ch in enumerate(word, start=pos):
+                if taken[i]:
+                    break
+            else:
+                ctxt.misspellings.add(word, line, pos)
 
 def print_misspellings(ctxt):
     rare_misspellings = lib.data.Misspellings()

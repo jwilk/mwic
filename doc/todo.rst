@@ -16,6 +16,8 @@ but are not present in dictionaries::
    backends
    boolean
    booleans
+   charset
+   charsets
    endian
    endianness
    executable
@@ -29,6 +31,8 @@ but are not present in dictionaries::
    prepended
    prepending
    prepends
+   symlink
+   symlinks
    tuple
    tuples
 

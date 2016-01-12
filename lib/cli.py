@@ -210,7 +210,6 @@ def print_rare_misspellings(ctxt):
                 (c != ' ' for c in underline),
             )
             print(lib.colors.dim('|'), hline)
-            print()
         else:
             print('|', line)
             print(' ', underline.rstrip())

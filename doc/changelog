@@ -2,8 +2,9 @@ mwic (0.5) UNRELEASED; urgency=low
 
   * Check for some multi-word misspellings.
   * Shorten vertical space between misspellings in colored mode.
+  * Make all metavariables in the help message uppercase.
 
- -- Jakub Wilk <jwilk@jwilk.net>  Tue, 12 Jan 2016 13:15:32 +0100
+ -- Jakub Wilk <jwilk@jwilk.net>  Wed, 13 Jan 2016 18:28:22 +0100
 
 mwic (0.4) unstable; urgency=low
 

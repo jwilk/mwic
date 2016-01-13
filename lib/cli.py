@@ -41,16 +41,16 @@ __version__ = '0.5'
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--version', action='version', version='%(prog)s {}'.format(__version__))
-    ap.add_argument('files', metavar='<file>', nargs='*', default=['-'])
-    ap.add_argument('-l', '--language', metavar='<lang>', default='en')
+    ap.add_argument('files', metavar='FILE', nargs='*', default=['-'])
+    ap.add_argument('-l', '--language', metavar='LANG', default='en')
     ap.add_argument('--list-languages', nargs=0, action=list_languages)
-    ap.add_argument('--input-encoding', metavar='<enc>', default='utf-8:replace')
+    ap.add_argument('--input-encoding', metavar='ENC', default='utf-8:replace')
     default_output_format = 'color' if sys.stdout.isatty() else 'plain'
     ap.add_argument('-f', '--output-format', choices=('plain', 'color'), default=default_output_format)
     ap.add_argument('-r', '--reverse', action='store_true')
-    ap.add_argument('--limit', type=int, default=1e999)
-    ap.add_argument('--max-context-width', metavar='<n>', default=30)
-    ap.add_argument('--suggest', metavar='<n>', type=int, default=0)
+    ap.add_argument('--limit', metavar='N', type=int, default=1e999)
+    ap.add_argument('--max-context-width', metavar='N', default=30)
+    ap.add_argument('--suggest', metavar='N', type=int, default=0)
     options = ap.parse_args()
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, 'utf-8')
     try:

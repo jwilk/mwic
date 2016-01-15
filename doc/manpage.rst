@@ -30,6 +30,13 @@ Options
 --list-languages
    Print list of available languages.
 
+--blacklist file
+   Treat words from the external dictionary as misspelled.
+   The dictionary can be in the format used by *Lintian*,
+   or in the format used by *codespell*;
+   or it can be plain newline-separated word list.
+   This option can be used multiple times.
+
 --camel-case
    Split camel-cased compound words.
    For example, treat “eggBaconAndSpam” as 4 separate words.

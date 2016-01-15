@@ -35,6 +35,7 @@ import lib.mdict
 import lib.ns
 import lib.pager
 import lib.text
+import lib.xdict
 
 __version__ = '0.5'
 
@@ -44,6 +45,7 @@ def main():
     ap.add_argument('files', metavar='FILE', nargs='*', default=['-'])
     ap.add_argument('-l', '--language', metavar='LANG', default='en')
     ap.add_argument('--list-languages', nargs=0, action=list_languages)
+    ap.add_argument('--blacklist', metavar='FILE', action='append', default=[])
     ap.add_argument('--camel-case', action='store_true')
     ap.add_argument('--input-encoding', metavar='ENC', default='utf-8:replace')
     default_output_format = 'color' if sys.stdout.isatty() else 'plain'
@@ -62,6 +64,7 @@ def main():
         split_words = lib.text.camel_case_tokenizer(split_words)
     dictionary = enchant.Dict(options.language)
     mdict = lib.mdict.Dictionary(options.language)
+    xdict = lib.xdict.Dictionary(*options.blacklist)
     spellcheck = functools.lru_cache(maxsize=None)(
         dictionary.check
     )
@@ -73,6 +76,7 @@ def main():
     ctxt = lib.ns.Namespace(
         dictionary=dictionary,
         mdict=mdict,
+        xdict=xdict,
         split_words=split_words,
         spellcheck=spellcheck,
         misspellings=misspellings,
@@ -108,7 +112,9 @@ def spellcheck_file(ctxt, file):
         line = line.expandtabs()
         taken = bytearray(len(line))
         for word, pos in ctxt.split_words(line):
-            if ctxt.spellcheck(word):
+            if word in ctxt.xdict:
+                pass
+            elif ctxt.spellcheck(word):
                 continue
             for i, ch in enumerate(word, start=pos):
                 taken[i] = True

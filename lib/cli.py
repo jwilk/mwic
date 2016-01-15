@@ -44,6 +44,7 @@ def main():
     ap.add_argument('files', metavar='FILE', nargs='*', default=['-'])
     ap.add_argument('-l', '--language', metavar='LANG', default='en')
     ap.add_argument('--list-languages', nargs=0, action=list_languages)
+    ap.add_argument('--camel-case', action='store_true')
     ap.add_argument('--input-encoding', metavar='ENC', default='utf-8:replace')
     default_output_format = 'color' if sys.stdout.isatty() else 'plain'
     ap.add_argument('-f', '--output-format', choices=('plain', 'color'), default=default_output_format)
@@ -57,6 +58,8 @@ def main():
         split_words = enchant.tokenize.get_tokenizer(options.language)
     except enchant.errors.TokenizerNotFoundError:
         split_words = enchant.tokenize.get_tokenizer(None)
+    if options.camel_case:
+        split_words = lib.text.camel_case_tokenizer(split_words)
     dictionary = enchant.Dict(options.language)
     mdict = lib.mdict.Dictionary(options.language)
     spellcheck = functools.lru_cache(maxsize=None)(

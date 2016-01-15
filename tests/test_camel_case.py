@@ -1,4 +1,4 @@
-# Copyright © 2013-2016 Jakub Wilk <jwilk@jwilk.net>
+# Copyright © 2016 Jakub Wilk <jwilk@jwilk.net>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the “Software”), to deal
@@ -18,37 +18,41 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-'''
-text manipulation functions
-'''
+import lib.text as M
 
-import functools
-import re
+from nose.tools import (
+    assert_equal,
+)
 
-def ltrim(s, n, *, char='…'):
-    if len(s) <= n:
-        return s
-    if n <= 1:
-        return char
-    return char + s[-n+1:]
+def naive_tokenizer(s):
+    offset = 0
+    for word in s.split():
+        yield (word, offset)
+        offset += len(word) + 1
 
-def rtrim(s, n, *, char='…'):
-    if len(s) <= n:
-        return s
-    if n <= 1:
-        return char
-    return s[:n-1] + char
+tokenize = M.camel_case_tokenizer(naive_tokenizer)
 
-_camel_case_split = re.compile('([A-Z][^A-Z]*)').split
-
-def camel_case_tokenizer(tokenizer):
-    @functools.wraps(tokenizer)
-    def new_tokenizer(s):
-        for word, offset in tokenizer(s):
-            for subword in _camel_case_split(word):
-                if subword:
-                    yield subword, offset
-                offset += len(subword)
-    return new_tokenizer
+def test_tokenizer():
+    s = 'bacon eggAndSpam EggBaconAndSpam SPAM'
+    r = list(tokenize(s))
+    assert_equal(r, [
+	('bacon', 0),
+	('egg', 6),
+	('And', 9),
+	('Spam', 12),
+	('Egg', 17),
+	('Bacon', 20),
+	('And', 25),
+	('Spam', 28),
+	('S', 33),
+	('P', 34),
+	('A', 35),
+	('M', 36),
+    ])
+    w = r[-1]
+    assert_equal(
+        len(w[0]) + w[1],
+        len(s)
+    )
 
 # vim:ts=4 sts=4 sw=4 et

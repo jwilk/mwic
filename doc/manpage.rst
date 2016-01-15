@@ -30,6 +30,10 @@ Options
 --list-languages
    Print list of available languages.
 
+--camel-case
+   Split camel-cased compound words.
+   For example, treat “eggBaconAndSpam” as 4 separate words.
+
 --input-encoding enc
    Assume this input encoding.
    The default is ``UTF-8:replace``

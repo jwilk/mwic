@@ -31,21 +31,24 @@ from nose.tools import (
 
 assert_multi_line_equal.__self__.maxDiff = None
 
-def _test_text(path):
+def _get_output(path, language='en-US'):
     binstdout = io.BytesIO()
     [old_stdin, old_stdout, old_argv] = [sys.stdin, sys.stdout, sys.argv]
     try:
-        sys.argv = ['mwic', '--language', 'en-US', path]
+        sys.argv = ['mwic', '--language', language, path]
         with open(path, 'rt', encoding='utf-8') as sys.stdin:
             textstdout = sys.stdout = io.TextIOWrapper(binstdout, encoding='utf-8')
             try:
                 M.main()
                 sys.stdout.flush()
-                text = binstdout.getvalue().decode('utf-8')
+                return binstdout.getvalue().decode('utf-8')
             finally:
                 textstdout.close()
     finally:
         [sys.stdin, sys.stdout, sys.argv] = [old_stdin, old_stdout, old_argv]
+
+def _test_text(path):
+    text = _get_output(path)
     pathbase, pathsuffix = os.path.splitext(path)
     with open(pathbase + '.exp', 'rt', encoding='utf-8') as file:
         expected = file.read()

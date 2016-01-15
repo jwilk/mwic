@@ -1,4 +1,4 @@
-an unary  # FIXME
+an unary
 an uniform
 an union
 an unique

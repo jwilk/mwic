@@ -31,7 +31,7 @@ from nose.tools import (
 
 assert_multi_line_equal.__self__.maxDiff = None
 
-def _get_output(path, language='en-US'):
+def _get_output(path, language):
     binstdout = io.BytesIO()
     [old_stdin, old_stdout, old_argv] = [sys.stdin, sys.stdout, sys.argv]
     try:
@@ -47,18 +47,24 @@ def _get_output(path, language='en-US'):
     finally:
         [sys.stdin, sys.stdout, sys.argv] = [old_stdin, old_stdout, old_argv]
 
-def _test_text(path):
-    text = _get_output(path)
-    pathbase, pathsuffix = os.path.splitext(path)
-    with open(pathbase + '.exp', 'rt', encoding='utf-8') as file:
+def _test_text(ipath, xpath):
+    assert xpath.endswith('.exp')
+    if '@' in xpath:
+        language = xpath[:-4].rsplit('@')[1]
+    else:
+        language = 'en-US'
+    text = _get_output(ipath, language)
+    with open(xpath, 'rt', encoding='utf-8') as file:
         expected = file.read()
     assert_multi_line_equal(text, expected)
 
 def test_text():
     here = os.path.dirname(__file__)
     here = os.path.relpath(here)
-    paths = glob.glob(os.path.join(here, '*.txt'))
-    for path in paths:
-        yield _test_text, path
+    ipaths = glob.glob(os.path.join(here, '*.txt'))
+    for ipath in ipaths:
+        pathbase, pathsuffix = os.path.splitext(ipath)
+        for xpath in glob.glob(pathbase + '*.exp'):
+            yield _test_text, ipath, xpath
 
 # vim:ts=4 sts=4 sw=4 et

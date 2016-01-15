@@ -11,6 +11,7 @@ addons:
     packages:
     - libenchant-dev
     - hunspell-en-us
+    - myspell-en-gb
 cache:
   directories:
   - $HOME/.cache/pip

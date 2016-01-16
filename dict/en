@@ -1,3 +1,4 @@
+# X X → X
 (?P<dupl>[A-Za-z]+(['’][a-z]+)*) (?P=dupl)
 
 a an
@@ -7,36 +8,48 @@ an the
 the a
 the an
 
+# allow VERB to → allow VERBing | allow SB VERB
 allow(ing|s)? to
 permit(ing|s)? to
 
+# let's SB → lets SB
 let['’]s one
 let['’]s (me|you|him|her|it|us|them)
 let['’]s (a|an|the)
 
+# BE enable → BE enabled
 (be|is|are|was|were|been|being) (enable|disable)
 (be|is|are|was|were|been|being) not (enable|disable)
 
+# GNU Public License → GNU General Public License
 GNU Lesser Public Licen[cs]e
 GNU Library Public Licen[cs]e
 GNU Public Licen[cs]e
+
 either version 2 of the Licen[cs]e(?=[.])
 
+# per say → per se
 per say
 
+# none the less → nonetheless
 none? the less
 
+# AUX of -> AUX have
 could of(?! course)
 must of(?! course)
 should of(?! course)
 would of(?! course)
 
+# sneak peak → sneak peek
 sneak peak
 
+# amount of times → number of times
 amount of times
 
+# even tough → even though
 even tough
 
+# an → a
 an unary
 an uniform
 an union

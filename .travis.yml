@@ -10,8 +10,7 @@ addons:
   apt:
     packages:
     - libenchant-dev
-    - hunspell-en-us
-    - myspell-en-gb
+    - aspell-en
 cache:
   directories:
   - $HOME/.cache/pip

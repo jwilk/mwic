@@ -33,19 +33,18 @@ assert_multi_line_equal.__self__.maxDiff = None
 
 def _get_output(path, language):
     binstdout = io.BytesIO()
-    [old_stdin, old_stdout, old_argv] = [sys.stdin, sys.stdout, sys.argv]
+    [old_stdout, old_argv] = [sys.stdout, sys.argv]
     try:
         sys.argv = ['mwic', '--language', language, path]
-        with open(path, 'rt', encoding='utf-8') as sys.stdin:
-            textstdout = sys.stdout = io.TextIOWrapper(binstdout, encoding='utf-8')
-            try:
-                M.main()
-                sys.stdout.flush()
-                return binstdout.getvalue().decode('utf-8')
-            finally:
-                textstdout.close()
+        textstdout = sys.stdout = io.TextIOWrapper(binstdout, encoding='utf-8')
+        try:
+            M.main()
+            sys.stdout.flush()
+            return binstdout.getvalue().decode('utf-8')
+        finally:
+            textstdout.close()
     finally:
-        [sys.stdin, sys.stdout, sys.argv] = [old_stdin, old_stdout, old_argv]
+        [sys.stdout, sys.argv] = [old_stdout, old_argv]
 
 def _test_text(ipath, xpath):
     assert xpath.endswith('.exp')

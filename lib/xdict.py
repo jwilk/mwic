@@ -19,7 +19,7 @@
 # SOFTWARE.
 
 '''
-external (codespell, Lintian) mispelling dictionary
+external (codespell, Lintian) misspelling dictionary
 '''
 
 def normalize_case(s):

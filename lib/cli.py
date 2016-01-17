@@ -99,7 +99,8 @@ def main():
             spellcheck_file(ctxt, file)
     if not misspellings:
         return
-    with lib.pager.autopager(raw_control_chars=(options.output_format == 'color')):
+    raw_cc = options.output_format == 'color'
+    with lib.pager.autopager(raw_control_chars=raw_cc):
         print_misspellings(ctxt)
 
 def spellcheck_file(ctxt, file):

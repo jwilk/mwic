@@ -1,4 +1,7 @@
 [run]
 branch = true
 
+[report]
+exclude_lines = <no-coverage>
+
 # vim:ft=dosini

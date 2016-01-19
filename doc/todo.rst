@@ -18,6 +18,8 @@ but are not present in dictionaries::
    booleans
    charset
    charsets
+   destructor
+   destructors
    endian
    endianness
    executable
@@ -26,6 +28,7 @@ but are not present in dictionaries::
    filenames
    filesystem
    filesystems
+   iteratively
    natively
    prepend
    prepended
@@ -35,6 +38,8 @@ but are not present in dictionaries::
    symlinks
    tuple
    tuples
+   unencrypted
+   versioned
 
 Whitelist long hex strings.
 

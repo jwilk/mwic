@@ -36,18 +36,18 @@ def test_tokenizer():
     s = 'bacon eggAndSpam EggBaconAndSpam SPAM'
     r = list(tokenize(s))
     assert_equal(r, [
-	('bacon', 0),
-	('egg', 6),
-	('And', 9),
-	('Spam', 12),
-	('Egg', 17),
-	('Bacon', 20),
-	('And', 25),
-	('Spam', 28),
-	('S', 33),
-	('P', 34),
-	('A', 35),
-	('M', 36),
+        ('bacon', 0),
+        ('egg', 6),
+        ('And', 9),
+        ('Spam', 12),
+        ('Egg', 17),
+        ('Bacon', 20),
+        ('And', 25),
+        ('Spam', 28),
+        ('S', 33),
+        ('P', 34),
+        ('A', 35),
+        ('M', 36),
     ])
     w = r[-1]
     assert_equal(

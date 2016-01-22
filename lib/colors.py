@@ -29,7 +29,8 @@ import unicodedata
 class _seq:
     dim = '\x1b[1;30m'
     off = '\x1b[0m'
-    on = '\x1b[30;43m'
+    warn = '\x1b[30;43m'
+    error = '\x1b[30;41m'
     reverse = '\x1b[7m'
     unreverse = '\x1b[27m'
 
@@ -37,17 +38,16 @@ def dim(s):
     return _seq.dim + escape(s) + _seq.off
 
 def escape(s):
-    return highlight(s, itertools.repeat(False))
+    return highlight(s, itertools.repeat('off'))
 
-def highlight(s, w=None):
-    if w is None:
-        w = itertools.repeat(True)
+def highlight(s, w):
+    if isinstance(w, str):
+        w = itertools.repeat(w)
     fp = io.StringIO()
-    on = _seq.on
     off = _seq.off
     old_color = off
     for (cs, cw) in zip(s, w):
-        color = on if cw else off
+        color = getattr(_seq, cw)
         if color != old_color:
             fp.write(color)
             old_color = color

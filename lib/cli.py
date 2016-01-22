@@ -156,6 +156,7 @@ def print_common_misspellings(ctxt):
             if suggestions:
                 extra = ' ({sug})'.format(sug=', '.join(suggestions))
         print(word + extra + ':')
+        hightlight_color = 'error' if occurrences.certainty > 0 else 'warn'
         occurrences = [
             (
                 lib.text.ltrim(lcontext, options.max_context_width),
@@ -170,7 +171,7 @@ def print_common_misspellings(ctxt):
             lcontext = lcontext.rjust(lwidth)
             if options.output_format == 'color':
                 lcontext = lib.colors.escape(lcontext)
-                word = lib.colors.highlight(word)
+                word = lib.colors.highlight(word, hightlight_color)
                 rcontext = lib.colors.escape(rcontext)
                 print(lib.colors.dim('|'), end=' ')
             else:
@@ -186,7 +187,11 @@ def print_common_misspellings(ctxt):
 
 def print_rare_misspellings(ctxt):
     options = ctxt.options
+    use_color = options.output_format == 'color'
     for line, occurrences in ctxt.rare_misspellings.sorted_lines(reverse=options.reverse):
+        underline_char = b'^'
+        if use_color and (occurrences.certainty > 0):
+            underline_char = b'!'
         header = []
         underline = bytearray(b' ' * len(line))
         for word, line, positions in sorted(occurrences):
@@ -199,7 +204,7 @@ def print_rare_misspellings(ctxt):
                     extra = ' ({sug})'.format(sug=', '.join(suggestions))
             header += [word + extra]
             for x in positions:
-                underline[x : x + len(word)] = b'^' * len(word)
+                underline[x : x + len(word)] = underline_char * len(word)
         if not header:
             continue
         print(', '.join(header) + ':')
@@ -216,10 +221,14 @@ def print_rare_misspellings(ctxt):
             rwidth = len(line) - rexceed
             line = lib.text.rtrim(line, rwidth)
             underline = lib.text.rtrim(underline, rwidth, char=' ')
-        if options.output_format == 'color':
+        if use_color:
             hline = lib.colors.highlight(
-                line,
-                (c != ' ' for c in underline),
+                line, (
+                    'warn' if u == '^' else
+                    'error' if u == '!' else
+                    'off'
+                    for u in underline
+                )
             )
             print(lib.colors.dim('|'), hline)
         else:

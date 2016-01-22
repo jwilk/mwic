@@ -28,14 +28,15 @@ import sys
 class Occurrences(object):
 
     def __init__(self):
-        self._data = collections.defaultdict(set)
+        self._data = collections.defaultdict(dict)
         self.certainty = 0
 
     def add(self, word, line, pos, certainty):
         if isinstance(pos, int):
-            self._data[(word, line)].add(pos)
+            self._data[(word, line)][pos] = certainty
         else:
-            self._data[(word, line)] |= pos
+            for p in pos:
+                self._data[(word, line)][p] = certainty
         self.certainty = max(self.certainty, certainty)
 
     def count(self):

@@ -134,7 +134,8 @@ def print_misspellings(ctxt):
     for word, occurrences in ctxt.misspellings.sorted_words():
         if len(occurrences) == 1:
             [(word, line, positions)] = occurrences
-            rare_misspellings.add(word, line, positions, occurrences.certainty)
+            for pos, certainty in positions.items():
+                rare_misspellings.add(word, line, pos, certainty)
     ctxt.rare_misspellings = rare_misspellings
     if ctxt.options.reverse:
         print_common_misspellings(ctxt)
@@ -189,12 +190,13 @@ def print_rare_misspellings(ctxt):
     options = ctxt.options
     use_color = options.output_format == 'color'
     for line, occurrences in ctxt.rare_misspellings.sorted_lines(reverse=options.reverse):
-        underline_char = b'^'
-        if use_color and (occurrences.certainty > 0):
-            underline_char = b'!'
         header = []
         underline = bytearray(b' ' * len(line))
         for word, line, positions in sorted(occurrences):
+            if use_color and (max(positions.values()) > 0):
+                underline_char = b'!'
+            else:
+                underline_char = b'^'
             if len(positions) > options.limit:
                 continue
             extra = ''

@@ -45,6 +45,9 @@ def camel_case_tokenizer(tokenizer):
     @functools.wraps(tokenizer)
     def new_tokenizer(s):
         for word, offset in tokenizer(s):
+            if word.isupper():
+                yield word, offset
+                continue
             for subword in _camel_case_split(word):
                 if subword:
                     yield subword, offset

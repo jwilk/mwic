@@ -33,7 +33,7 @@ def naive_tokenizer(s):
 tokenize = M.camel_case_tokenizer(naive_tokenizer)
 
 def test_tokenizer():
-    s = 'bacon eggAndSpam EggBaconAndSpam SPAM'
+    s = 'bacon eggAndSpam EggBaconAndSpam spamSPAM SPAM'
     r = list(tokenize(s))
     assert_equal(r, [
         ('bacon', 0),
@@ -44,10 +44,12 @@ def test_tokenizer():
         ('Bacon', 20),
         ('And', 25),
         ('Spam', 28),
-        ('S', 33),
-        ('P', 34),
-        ('A', 35),
-        ('M', 36),
+        ('spam', 33),
+        ('S', 37),
+        ('P', 38),
+        ('A', 39),
+        ('M', 40),
+        ('SPAM', 42),
     ])
     w = r[-1]
     assert_equal(

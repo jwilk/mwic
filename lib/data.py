@@ -29,12 +29,14 @@ class Occurrences(object):
 
     def __init__(self):
         self._data = collections.defaultdict(set)
+        self.certainty = 0
 
-    def add(self, word, line, pos):
+    def add(self, word, line, pos, certainty):
         if isinstance(pos, int):
             self._data[(word, line)].add(pos)
         else:
             self._data[(word, line)] |= pos
+        self.certainty = max(self.certainty, certainty)
 
     def count(self):
         return sum(
@@ -70,11 +72,11 @@ class Misspellings(object):
         self._word_index = collections.defaultdict(Occurrences)
         self._line_index = collections.defaultdict(Occurrences)
 
-    def add(self, word, line, pos):
+    def add(self, word, line, pos, certainty):
         word = sys.intern(word)
         line = sys.intern(line)
-        self._word_index[word].add(word, line, pos)
-        self._line_index[line].add(word, line, pos)
+        self._word_index[word].add(word, line, pos, certainty)
+        self._line_index[line].add(word, line, pos, certainty)
 
     @staticmethod
     def _sorting_key(*, reverse=False):
@@ -83,7 +85,11 @@ class Misspellings(object):
             sign = -1
         def k(item):
             s, occurrences = item
-            return sign * occurrences.count(), s
+            return (
+                sign * -occurrences.certainty,
+                sign * occurrences.count(),
+                s
+            )
         return k
 
     def __bool__(self):

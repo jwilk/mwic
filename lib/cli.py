@@ -114,25 +114,27 @@ def spellcheck_file(ctxt, file):
         taken = bytearray(len(line))
         for word, pos in ctxt.split_words(line):
             if word in ctxt.xdict:
-                pass
+                certainty = 1
             elif ctxt.spellcheck(word):
                 continue
+            else:
+                certainty = 0
             for i, ch in enumerate(word, start=pos):
                 taken[i] = True
-            ctxt.misspellings.add(word, line, pos)
+            ctxt.misspellings.add(word, line, pos, certainty)
         for word, pos in ctxt.mdict.find(line):
             for i, ch in enumerate(word, start=pos):
                 if taken[i]:
                     break
             else:
-                ctxt.misspellings.add(word, line, pos)
+                ctxt.misspellings.add(word, line, pos, 1)
 
 def print_misspellings(ctxt):
     rare_misspellings = lib.data.Misspellings()
     for word, occurrences in ctxt.misspellings.sorted_words():
         if len(occurrences) == 1:
             [(word, line, positions)] = occurrences
-            rare_misspellings.add(word, line, positions)
+            rare_misspellings.add(word, line, positions, occurrences.certainty)
     ctxt.rare_misspellings = rare_misspellings
     if ctxt.options.reverse:
         print_common_misspellings(ctxt)

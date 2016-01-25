@@ -1,3 +1,7 @@
+an unary:
+| an unary
+  ^^^^^^^^
+
 an uniform:
 | an uniform
   ^^^^^^^^^^
@@ -38,16 +42,7 @@ an user:
 | an user
   ^^^^^^^
 
-unary:
-| an unary  # FIXME
-     ^^^^^
-
-username:
-| an username  # FIXME
-     ^^^^^^^^
-
-FIXME:
-| an username  # FIXME
-|    an unary  # FIXME
-                 ^^^^^
+an username:
+| an username
+  ^^^^^^^^^^^
 

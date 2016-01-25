@@ -31,7 +31,7 @@ import enchant.tokenize
 
 import lib.colors
 import lib.data
-import lib.mdict
+import lib.intdict
 import lib.ns
 import lib.pager
 import lib.text
@@ -63,7 +63,7 @@ def main():
     if options.camel_case:
         split_words = lib.text.camel_case_tokenizer(split_words)
     dictionary = enchant.Dict(options.language)
-    mdict = lib.mdict.Dictionary(options.language)
+    intdict = lib.intdict.Dictionary(options.language)
     xdict = lib.xdict.Dictionary(*options.blacklist)
     spellcheck = functools.lru_cache(maxsize=None)(
         dictionary.check
@@ -75,7 +75,7 @@ def main():
         [encoding, enc_errors] = encoding.rsplit(':', 1)
     ctxt = lib.ns.Namespace(
         dictionary=dictionary,
-        mdict=mdict,
+        intdict=intdict,
         xdict=xdict,
         split_words=split_words,
         spellcheck=spellcheck,
@@ -117,12 +117,14 @@ def spellcheck_file(ctxt, file):
                 certainty = 1
             elif ctxt.spellcheck(word):
                 continue
+            elif ctxt.intdict.is_whitelisted(word):
+                continue
             else:
                 certainty = 0
             for i, ch in enumerate(word, start=pos):
                 taken[i] = True
             ctxt.misspellings.add(word, line, pos, certainty)
-        for word, pos in ctxt.mdict.find(line):
+        for word, pos in ctxt.intdict.find(line):
             for i, ch in enumerate(word, start=pos):
                 if taken[i]:
                     break

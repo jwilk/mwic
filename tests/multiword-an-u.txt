@@ -1,4 +1,4 @@
-an unary  # FIXME
+an unary
 an uniform
 an union
 an unique
@@ -9,4 +9,4 @@ an use
 an useful
 an useless
 an user
-an username  # FIXME
+an username

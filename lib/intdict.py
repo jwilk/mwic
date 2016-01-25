@@ -1,4 +1,4 @@
-# Copyright © 2015 Jakub Wilk <jwilk@jwilk.net>
+# Copyright © 2015-2016 Jakub Wilk <jwilk@jwilk.net>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the “Software”), to deal
@@ -19,7 +19,10 @@
 # SOFTWARE.
 
 '''
-multi-word misspelling dictionary
+internal dictionary, which can contain:
++ blacklist of multi-word misspellings;
++ whitelist of words that are commonly found in software code or documentation,
+  but are not present in standard dictionaries.
 '''
 
 import errno
@@ -38,6 +41,7 @@ os.stat(datadir)
 class Dictionary(object):
 
     def __init__(self, lang):
+        self._whitelist = set()
         regexes = []
         lang = lang.lower().replace('_', '-')
         while True:
@@ -59,9 +63,15 @@ class Dictionary(object):
                     line = line.split()
                     if not line:
                         continue
-                    regexes += [
-                        r'\s+'.join(line)
-                    ]
+                    if line[0] == '*':
+                        [word] = line[1:]
+                        self._whitelist.add(word.lower())
+                        self._whitelist.add(word.upper())
+                        self._whitelist.add(word.title())
+                    else:
+                        regexes += [
+                            r'\s+'.join(line)
+                        ]
             break
         regex = r'\b(?:(?i){0})\b'.format(
             '|'.join(regexes)
@@ -71,6 +81,9 @@ class Dictionary(object):
     def find(self, s):
         for match in self._find(s):
             yield (match.group(), match.start())
+
+    def is_whitelisted(self, word):
+        return word in self._whitelist
 
 __all__ = ['Dictionary']
 

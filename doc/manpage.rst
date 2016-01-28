@@ -60,6 +60,9 @@ Options
    Print words in reverse order,
    that is, the most common words first.
 
+--compact
+   Omit blank lines in output.
+
 --limit n
    Assume that words that occurred more than *n* times are spelled correctly.
 

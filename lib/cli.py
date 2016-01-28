@@ -51,6 +51,7 @@ def main():
     default_output_format = 'color' if sys.stdout.isatty() else 'plain'
     ap.add_argument('-f', '--output-format', choices=('plain', 'color'), default=default_output_format)
     ap.add_argument('-r', '--reverse', action='store_true')
+    ap.add_argument('--compact', action='store_true')
     ap.add_argument('--limit', metavar='N', type=int, default=1e999)
     ap.add_argument('--max-context-width', metavar='N', default=30)
     ap.add_argument('--suggest', metavar='N', type=int, default=0)
@@ -186,7 +187,8 @@ def print_common_misspellings(ctxt):
             ))
         if options.output_format != 'color':
             print('', ' ' * lwidth, '^' * len(word))
-        print()
+        if not options.compact:
+            print()
 
 def print_rare_misspellings(ctxt):
     options = ctxt.options
@@ -238,7 +240,8 @@ def print_rare_misspellings(ctxt):
         else:
             print('|', line)
             print(' ', underline.rstrip())
-        print()
+        if not options.compact:
+            print()
 
 class list_languages(argparse.Action):
     def __call__(self, *args, **kwargs):

@@ -4,9 +4,10 @@ mwic (0.5) UNRELEASED; urgency=low
   * Shorten vertical space between misspellings in colored mode.
   * Make all metavariables in the help message uppercase.
   * Add option for splitting camel-cased compound words (--camel-case).
+  * Add option for omitting blank lines between in output (--compact).
   * Add option for using external blacklist dictionary (--blacklist).
 
- -- Jakub Wilk <jwilk@jwilk.net>  Fri, 15 Jan 2016 22:23:24 +0100
+ -- Jakub Wilk <jwilk@jwilk.net>  Thu, 28 Jan 2016 13:49:33 +0100
 
 mwic (0.4) unstable; urgency=low
 

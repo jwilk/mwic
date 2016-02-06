@@ -35,7 +35,7 @@ import lib.intdict
 import lib.ns
 import lib.pager
 import lib.text
-import lib.xdict
+import lib.extdict
 
 __version__ = '0.5'
 
@@ -65,7 +65,7 @@ def main():
         split_words = lib.text.camel_case_tokenizer(split_words)
     dictionary = enchant.Dict(options.language)
     intdict = lib.intdict.Dictionary(options.language)
-    xdict = lib.xdict.Dictionary(*options.blacklist)
+    extdict = lib.extdict.Dictionary(*options.blacklist)
     spellcheck = functools.lru_cache(maxsize=None)(
         dictionary.check
     )
@@ -77,7 +77,7 @@ def main():
     ctxt = lib.ns.Namespace(
         dictionary=dictionary,
         intdict=intdict,
-        xdict=xdict,
+        extdict=extdict,
         split_words=split_words,
         spellcheck=spellcheck,
         misspellings=misspellings,
@@ -114,7 +114,7 @@ def spellcheck_file(ctxt, file):
         line = line.expandtabs()
         taken = bytearray(len(line))
         for word, pos in ctxt.split_words(line):
-            if word in ctxt.xdict:
+            if word in ctxt.extdict:
                 certainty = 1
             elif ctxt.spellcheck(word):
                 continue

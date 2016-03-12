@@ -130,6 +130,9 @@ Example
 See also
 --------
 
+**spellintian**\ (1),
+**codespell**\ (1);
+
 “English for software localisation”
 <http://jbr.me.uk/linux/esl.html>
 by Justin B Rye

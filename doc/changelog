@@ -6,8 +6,7 @@ mwic (0.5) UNRELEASED; urgency=low
   * Add option for splitting camel-cased compound words (--camel-case).
   * Add option for omitting blank lines between in output (--compact).
   * Add option for using external blacklist dictionary (--blacklist).
-  * Add link to “English for software localisation” (by Justin B Rye) to the
-    “SEE ALSO” section of the manual page.
+  * Add the “SEE ALSO” section to the manual page.
 
  -- Jakub Wilk <jwilk@jwilk.net>  Sat, 12 Mar 2016 23:18:38 +0100
 

@@ -127,6 +127,13 @@ Example
    | by Bruce Perens, refined by the other Debian…
               ^^^^^^
 
+See also
+--------
+
+“English for software localisation”
+<http://jbr.me.uk/linux/esl.html>
+by Justin B Rye
+
 .. |date| date:: %Y-%m-%d
 
 .. vim:ts=3 sts=3 sw=3

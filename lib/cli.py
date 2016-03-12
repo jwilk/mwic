@@ -31,11 +31,11 @@ import enchant.tokenize
 
 import lib.colors
 import lib.data
+import lib.extdict
 import lib.intdict
 import lib.ns
 import lib.pager
 import lib.text
-import lib.extdict
 
 __version__ = '0.5'
 

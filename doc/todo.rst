@@ -1,5 +1,3 @@
-Print blacklisted words earlier than dictionary misspellings.
-
 Add support for third-party blacklists:
 
 * `kde-spellcheck <https://github.com/KDE/kde-dev-scripts/blob/master/kde-spellcheck.pl>`_

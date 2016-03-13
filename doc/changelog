@@ -1,4 +1,4 @@
-mwic (0.5) UNRELEASED; urgency=low
+mwic (0.5) unstable; urgency=low
 
   * Check for some multi-word misspellings.
   * Shorten vertical space between misspellings in colored mode.
@@ -8,7 +8,7 @@ mwic (0.5) UNRELEASED; urgency=low
   * Add option for using external blacklist dictionary (--blacklist).
   * Add the “SEE ALSO” section to the manual page.
 
- -- Jakub Wilk <jwilk@jwilk.net>  Sat, 12 Mar 2016 23:18:38 +0100
+ -- Jakub Wilk <jwilk@jwilk.net>  Sun, 13 Mar 2016 16:04:43 +0100
 
 mwic (0.4) unstable; urgency=low
 

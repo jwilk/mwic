@@ -71,6 +71,9 @@ worst than
 # easy of X → ease of X
 easy of
 
+# can not → cannot
+can not(?! only)
+
 # an → a
 an unary
 an uniform

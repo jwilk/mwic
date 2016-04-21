@@ -74,6 +74,9 @@ easy of
 # can not → cannot
 can not(?! only)
 
+# comprised of X → composed of X
+comprised of
+
 # an → a
 an unary
 an uniform

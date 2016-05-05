@@ -92,6 +92,9 @@ an user(name)?
 # a → an
 a Ubuntu
 
+# a → an
+a old
+
 # whitelist:
 * backend
 * backends

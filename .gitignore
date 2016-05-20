@@ -1,0 +1,4 @@
+.coverage
+__pycache__
+doc/*.1
+secret

@@ -77,6 +77,9 @@ can not(?! only)
 # comprised of X → composed of X
 comprised of
 
+# Oh, well. → Oh well.
+oh, well(?=[.])
+
 # an → a
 an unary
 an uniform

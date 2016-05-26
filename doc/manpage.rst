@@ -84,7 +84,7 @@ Environment
 
 PAGER
    If stdout is a terminal, mwic pipes the output through ``$PAGER``.
-   The default is ``pager``.
+   The default is ``pager`` (if it exists) or ``more``.
 
 LESS
    If this variable is unset, mwic sets it

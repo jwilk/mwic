@@ -2,8 +2,11 @@ mwic (0.5.1) UNRELEASED; urgency=low
 
   * Update the description in the manual page.
   * Add new multi-word misspellings to the dictionary.
+  * Fall back to "more" if $PAGER is not set and "pager" doesn't exist.
+    Thanks to John Vandenberg for the bug report.
+    https://github.com/jwilk/mwic/issues/1
 
- -- Jakub Wilk <jwilk@jwilk.net>  Tue, 15 Mar 2016 00:02:59 +0100
+ -- Jakub Wilk <jwilk@jwilk.net>  Thu, 26 May 2016 16:12:40 +0200
 
 mwic (0.5) unstable; urgency=low
 

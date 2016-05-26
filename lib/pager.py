@@ -1,4 +1,4 @@
-# Copyright © 2015 Jakub Wilk <jwilk@jwilk.net>
+# Copyright © 2015-2016 Jakub Wilk <jwilk@jwilk.net>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the “Software”), to deal
@@ -28,12 +28,29 @@ import os
 import subprocess as ipc
 import sys
 
+def _find_command(command):
+    PATH = os.environ.get('PATH', os.defpath)
+    directories = PATH.split(os.pathsep)
+    for directory in directories:
+        path = os.path.join(directory, command)
+        if os.access(path, os.X_OK):
+            return command
+
+def get_default_pager():
+    # Use "pager" if it exist:
+    # https://www.debian.org/doc/debian-policy/ch-customized-programs.html#s11.4
+    # Fall back to "more", which is in POSIX.
+    return (
+        _find_command('pager')
+        or 'more'
+    )
+
 @contextlib.contextmanager
 def autopager(*, raw_control_chars=False):
     if not sys.stdout.isatty():
         yield
         return
-    cmdline = os.environ.get('PAGER', 'pager')
+    cmdline = os.environ.get('PAGER') or get_default_pager()
     if cmdline == 'cat':
         yield
         return

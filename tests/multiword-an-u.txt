@@ -1,5 +1,6 @@
 an unary
 an uniform
+an uniformly
 an union
 an unique
 an uniquely

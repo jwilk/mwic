@@ -1,13 +1,13 @@
-an unary
-an uniform
-an uniformly
+an unary object
+an uniform object
+an uniformly sized object
 an union
-an unique
-an uniquely
+an unique object
+an uniquely named object
 an unit
 an usage
 an use
-an useful
-an useless
+an useful object
+an useless object
 an user
 an username

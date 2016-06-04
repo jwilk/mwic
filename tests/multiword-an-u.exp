@@ -1,13 +1,13 @@
 an unary:
-| an unary
+| an unary object
   ^^^^^^^^
 
 an uniform:
-| an uniform
+| an uniform object
   ^^^^^^^^^^
 
 an uniformly:
-| an uniformly
+| an uniformly sized object
   ^^^^^^^^^^^^
 
 an union:
@@ -15,11 +15,11 @@ an union:
   ^^^^^^^^
 
 an unique:
-| an unique
+| an unique object
   ^^^^^^^^^
 
 an uniquely:
-| an uniquely
+| an uniquely named object
   ^^^^^^^^^^^
 
 an unit:
@@ -35,11 +35,11 @@ an use:
   ^^^^^^
 
 an useful:
-| an useful
+| an useful object
   ^^^^^^^^^
 
 an useless:
-| an useless
+| an useless object
   ^^^^^^^^^^
 
 an user:

@@ -105,6 +105,8 @@ a old
 * booleans
 * charset
 * charsets
+* committer
+* committers
 * destructor
 * destructors
 * endian
@@ -130,5 +132,3 @@ a old
 * user
 * username
 * versioned
-* committer
-* committers

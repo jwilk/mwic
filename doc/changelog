@@ -2,6 +2,7 @@ mwic (0.5.2) UNRELEASED; urgency=low
 
   * Add Makefile.
   * Add new multi-word misspellings to the dictionary.
+  * Add new words to the whitelist.
 
  -- Jakub Wilk <jwilk@jwilk.net>  Thu, 26 May 2016 23:04:49 +0200
 
@@ -18,6 +19,8 @@ mwic (0.5.1) unstable; urgency=low
 mwic (0.5) unstable; urgency=low
 
   * Check for some multi-word misspellings.
+  * Whitelist some words that are common in technical texts, but might not be
+    recognized by general-purpose spellchecking dictionaries.
   * Shorten vertical space between misspellings in colored mode.
   * Make all metavariables in the help message uppercase.
   * Add option for splitting camel-cased compound words (--camel-case).

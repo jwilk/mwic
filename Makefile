@@ -1,7 +1,4 @@
-#!/usr/bin/python3
-# encoding=UTF-8
-
-# Copyright © 2013-2016 Jakub Wilk <jwilk@jwilk.net>
+# Copyright © 2012-2016 Jakub Wilk <jwilk@jwilk.net>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the “Software”), to deal
@@ -21,39 +18,45 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import sys
+PYTHON = python3
+INSTALL = install
 
-# ----------------------------------------
+PREFIX = /usr/local
+DESTDIR =
 
-def error(message):
-    try:
-        import argparse
-        ap = argparse.ArgumentParser()
-        prog = ap.prog
-    except ImportError:
-        import optparse
-        ap = optparse.OptionParser()
-        prog = ap.get_prog_name()
-    message = ''.join((prog, ': error: ', message, '\n'))
-    ap.exit(1, message)
+exe = mwic
 
-def require_python(*version):
-    if sys.version_info < version:
-        version_str = '.'.join(map(str, version))
-        message = 'Python >= %s is required' % version_str
-        error(message)
+bindir = $(PREFIX)/bin
+basedir = $(PREFIX)/share/$(exe)
+mandir = $(PREFIX)/share/man
 
-require_python(3, 2)
+.PHONY: all
+all: ;
 
-# ----------------------------------------
+.PHONY: install
+install:
+	# binary:
+	$(INSTALL) -d -m755 $(DESTDIR)$(bindir)
+	sed -e "s#^basedir = .*#basedir = '$(basedir)/'#" $(exe) > $(DESTDIR)$(bindir)/$(exe)
+	chmod 0755 $(DESTDIR)$(bindir)/$(exe)
+	# library:
+	( cd lib && find . -type f ! -name '*.py[co]' ) \
+	| sed -e 's#^[.]/##' \
+	| xargs -t -I {} $(INSTALL) -p -D -m644 lib/{} $(DESTDIR)$(basedir)/lib/{}
+	# data:
+	( cd dict && find . -type f ) \
+	| sed -e 's#^[.]/##' \
+	| xargs -t -I {} $(INSTALL) -p -D -m644 dict/{} $(DESTDIR)$(basedir)/dict/{}
+	# manual page:
+	$(INSTALL) -p -D -m644 doc/$(exe).1 $(DESTDIR)$(mandir)/man1/$(exe).1
 
-basedir = None
-if basedir is not None:
-    sys.path[:0] = [basedir]
+.PHONY: test
+test:
+	$(PYTHON) -c 'import nose; nose.main()' --verbose
 
-import lib.cli
+.PHONY: clean
+clean:
+	find . -type f -name '*.py[co]' -delete
+	find . -type d -name '__pycache__' -delete
 
-if __name__ == '__main__':
-    lib.cli.main()
-
-# vim:ts=4 sts=4 sw=4 et
+# vim:ts=4 sts=4 sw=4 noet

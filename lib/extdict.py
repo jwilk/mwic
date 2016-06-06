@@ -24,8 +24,11 @@ external (codespell, Lintian) misspelling dictionary
 Supported dictionary formats:
 + Lintian <https://anonscm.debian.org/cgit/lintian/lintian.git/tree/data/spelling/corrections>
 + codespell <https://github.com/lucasdemarchi/codespell/blob/master/codespell_lib/data/dictionary.txt>
++ kde-spellcheck <https://github.com/KDE/kde-dev-scripts/blob/master/kde-spellcheck.pl>
 + plain word list
 '''
+
+import re
 
 def normalize_case(s):
     return s.lower().replace('-', '').replace(' ', '')
@@ -74,7 +77,12 @@ class Dictionary(object):
 
     def _read_fp(self, file):
         add = self._add
+        kde = None
         for line in file:
+            if kde is None:
+                kde = re.match(r'\A#!.*\bperl\b', line)
+                if kde:
+                    return self._read_fp_kde(file)
             if line[:1] == '#':
                 continue
             line = line.strip()
@@ -82,6 +90,18 @@ class Dictionary(object):
                 continue
             for word in parse_line(line):
                 add(word)
+
+    def _read_fp_kde(self, file):
+        add = self._add
+        for line in file:
+            if line.strip() == '__DATA__':
+                break
+        for line in file:
+            if line[:1] == '#':
+                continue
+            line = line.split()
+            if line:
+                add(line[0])
 
 __all__ = ['Dictionary']
 

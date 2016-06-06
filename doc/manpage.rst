@@ -33,7 +33,8 @@ Options
 --blacklist file
    Treat words from the external dictionary as misspelled.
    The dictionary can be in the format used by *Lintian*,
-   or in the format used by *codespell*;
+   or in the format used by *codespell*,
+   or in the format used by *kde-spellcheck* (part of *kde-dev-scripts*);
    or it can be plain newline-separated word list.
    This option can be used multiple times.
 
@@ -114,6 +115,10 @@ but it can use a number of dictionaries from third-party projects:
 * codespell:
 
   | https://github.com/lucasdemarchi/codespell/raw/master/codespell_lib/data/dictionary.txt
+
+* kde-dev-scripts:
+
+  | https://github.com/KDE/kde-dev-scripts/raw/master/kde-spellcheck.pl
 
 Example
 -------

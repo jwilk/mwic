@@ -95,6 +95,26 @@ LV
    If this variable in unset, and the output is in color,
    mwic sets this variable to ``-c``.
 
+Files
+-----
+
+Spell-checking can be eased by using dictionaries of commonly misspelled words.
+**mwic** doesn't ship with one,
+but it can use a number of dictionaries from third-party projects:
+
+* Lintian:
+
+  | https://anonscm.debian.org/cgit/lintian/lintian.git/plain/data/spelling/corrections
+  | https://anonscm.debian.org/cgit/lintian/lintian.git/plain/data/spelling/corrections-case
+
+* Linux kernel:
+
+  | https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/plain/scripts/spelling.txt
+
+* codespell:
+
+  | https://github.com/lucasdemarchi/codespell/raw/master/codespell_lib/data/dictionary.txt
+
 Example
 -------
 

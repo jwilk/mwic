@@ -7,7 +7,7 @@ Misspelled Words In Context
 ---------------------------
 
 :manual section: 1
-:version: mwic 0.6
+:version: mwic 0.6.1
 :date: |date|
 
 Synopsis

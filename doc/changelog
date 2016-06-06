@@ -1,4 +1,4 @@
-mwic (0.5.2) UNRELEASED; urgency=low
+mwic (0.6) UNRELEASED; urgency=low
 
   * Add Makefile.
   * Add new multi-word misspellings to the dictionary.
@@ -7,7 +7,7 @@ mwic (0.5.2) UNRELEASED; urgency=low
     (part of kde-dev-scripts).
   * Document where to get third-party misspelling dictionaries.
 
- -- Jakub Wilk <jwilk@jwilk.net>  Mon, 06 Jun 2016 11:59:48 +0200
+ -- Jakub Wilk <jwilk@jwilk.net>  Mon, 06 Jun 2016 12:27:05 +0200
 
 mwic (0.5.1) unstable; urgency=low
 

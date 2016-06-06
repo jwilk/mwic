@@ -23,7 +23,7 @@ external (codespell, Lintian) misspelling dictionary
 
 Supported dictionary formats:
 + Lintian <https://anonscm.debian.org/cgit/lintian/lintian.git/tree/data/spelling/corrections>
-+ codespell <https://github.com/lucasdemarchi/codespell/blob/master/data/dictionary.txt>
++ codespell <https://github.com/lucasdemarchi/codespell/blob/master/codespell_lib/data/dictionary.txt>
 + plain word list
 '''
 

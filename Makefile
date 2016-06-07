@@ -39,14 +39,9 @@ install:
 	$(INSTALL) -d -m755 $(DESTDIR)$(bindir)
 	sed -e "s#^basedir = .*#basedir = '$(basedir)/'#" $(exe) > $(DESTDIR)$(bindir)/$(exe)
 	chmod 0755 $(DESTDIR)$(bindir)/$(exe)
-	# library:
-	( cd lib && find . -type f ! -name '*.py[co]' ) \
-	| sed -e 's#^[.]/##' \
-	| xargs -t -I {} $(INSTALL) -p -D -m644 lib/{} $(DESTDIR)$(basedir)/lib/{}
-	# data:
-	( cd dict && find . -type f ) \
-	| sed -e 's#^[.]/##' \
-	| xargs -t -I {} $(INSTALL) -p -D -m644 dict/{} $(DESTDIR)$(basedir)/dict/{}
+	# library + data:
+	( find lib dict -type f ! -name '*.py[co]' ) \
+	| xargs -t -I {} $(INSTALL) -p -D -m644 {} $(DESTDIR)$(basedir)/{}
 	# manual page:
 	$(INSTALL) -p -D -m644 doc/$(exe).1 $(DESTDIR)$(mandir)/man1/$(exe).1
 

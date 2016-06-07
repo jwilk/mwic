@@ -80,6 +80,11 @@ comprised of
 # Oh, well. → Oh well.
 oh, well(?=[.])
 
+# e.g → e.g.
+# i.e → i.e.
+e[.]g(?![.])
+i[.]e(?![.])
+
 # an → a
 an unary
 an uniform(ly)?

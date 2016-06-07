@@ -1,8 +1,12 @@
 mwic (0.6.1) UNRELEASED; urgency=low
 
-  * 
+  [ Jakub Wilk ]
+  * Add new multi-word misspellings to the dictionary.
 
- -- Jakub Wilk <jwilk@jwilk.net>  Mon, 06 Jun 2016 12:32:09 +0200
+  [ Dwayne Bailey ]
+  * Use /usr/bin/env in shebangs.
+
+ -- Jakub Wilk <jwilk@jwilk.net>  Tue, 07 Jun 2016 12:09:53 +0200
 
 mwic (0.6) unstable; urgency=low
 

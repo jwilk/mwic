@@ -85,6 +85,10 @@ oh, well(?=[.])
 e[.]g(?![.])
 i[.]e(?![.])
 
+# each others → each other's
+each others
+* other's
+
 # an → a
 an unary
 an uniform(ly)?

@@ -1,4 +1,4 @@
-# Copyright © 2014-2015 Jakub Wilk <jwilk@jwilk.net>
+# Copyright © 2014-2016 Jakub Wilk <jwilk@jwilk.net>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the “Software”), to deal
@@ -22,14 +22,19 @@ import os
 import sys
 import io
 import glob
+import unittest
 
 import lib.cli as M
 
+import nose
 from nose.tools import (
     assert_multi_line_equal,
 )
 
 assert_multi_line_equal.__self__.maxDiff = None
+
+here = os.path.dirname(__file__)
+here = os.path.relpath(here)
 
 def _get_output(path, language):
     binstdout = io.BytesIO()
@@ -46,24 +51,55 @@ def _get_output(path, language):
     finally:
         [sys.stdout, sys.argv] = [old_stdout, old_argv]
 
-def _test_text(ipath, xpath):
+def _test_text(xpath):
     assert xpath.endswith('.exp')
     if '@' in xpath:
-        language = xpath[:-4].rsplit('@')[1]
+        [ipath, language] = xpath[:-4].rsplit('@')
     else:
         language = 'en-US'
+        ipath = xpath[:-4]
+    ipath += '.txt'
     text = _get_output(ipath, language)
     with open(xpath, 'rt', encoding='utf-8') as file:
         expected = file.read()
     assert_multi_line_equal(text, expected)
 
 def test_text():
-    here = os.path.dirname(__file__)
-    here = os.path.relpath(here)
-    ipaths = glob.glob(os.path.join(here, '*.txt'))
-    for ipath in ipaths:
-        pathbase, pathsuffix = os.path.splitext(ipath)
-        for xpath in glob.glob(pathbase + '*.exp'):
-            yield _test_text, ipath, xpath
+    for xpath in glob.glob(here + '/*.exp'):
+        yield _test_text, xpath
+test_text.redundant = True  # not needed if the plugin is enabled
+
+class Plugin(nose.plugins.Plugin):
+
+    name = 'mwic-plugin'
+    enabled = True
+
+    def options(self, parser, env):
+        pass
+
+    def wantFile(self, path):
+        abs_here = os.path.abspath(here)
+        abs_here = os.path.join(abs_here, '')
+        if path.startswith(abs_here) and path.endswith('.exp'):
+            return True
+
+    def loadTestsFromFile(self, path):
+        yield TestCase(path)
+
+    def wantFunction(self, func):
+        if getattr(func, 'redundant', False):
+            return False
+
+class TestCase(unittest.TestCase):
+
+    def __init__(self, path):
+        super().__init__('_test')
+        self.path = os.path.relpath(path)
+
+    def _test(self):
+        _test_text(self.path)
+
+    def __str__(self):
+        return self.path
 
 # vim:ts=4 sts=4 sw=4 et

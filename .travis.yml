@@ -19,7 +19,7 @@ install:
 - pip install pyflakes
 - pip install docutils
 script:
-- nosetests --verbose
+- ./tests/run-tests --verbose
 - ./private/run-pyflakes
 - find -name "*.rst" | xargs -L1 -t -I{} rst2xml.py --strict {} /dev/null
 - make -C doc

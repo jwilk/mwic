@@ -14,7 +14,7 @@ mwic (0.6) unstable; urgency=low
   * Add Makefile.
   * Add new multi-word misspellings to the dictionary.
   * Add new words to the whitelist.
-  * Add support for using misspelling dictionary form kde-spellcheck
+  * Add support for using misspelling dictionary from kde-spellcheck
     (part of kde-dev-scripts).
   * Document where to get third-party misspelling dictionaries.
 

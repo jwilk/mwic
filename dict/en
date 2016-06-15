@@ -89,6 +89,9 @@ i[.]e(?![.])
 each others
 * other's
 
+# also X also → X also | also X
+also [A-Za-z]+(['’][a-z]+)* also
+
 # an → a
 an unary
 an uniform(ly)?

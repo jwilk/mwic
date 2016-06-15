@@ -41,11 +41,11 @@ def _get_output(path, language):
     [old_stdout, old_argv] = [sys.stdout, sys.argv]
     try:
         sys.argv = ['mwic', '--language', language, path]
-        textstdout = sys.stdout = io.TextIOWrapper(binstdout, encoding='utf-8')
+        textstdout = sys.stdout = io.TextIOWrapper(binstdout, encoding='UTF-8')
         try:
             M.main()
             sys.stdout.flush()
-            return binstdout.getvalue().decode('utf-8')
+            return binstdout.getvalue().decode('UTF-8')
         finally:
             textstdout.close()
     finally:
@@ -60,7 +60,7 @@ def _test_text(xpath):
         ipath = xpath[:-4]
     ipath += '.txt'
     text = _get_output(ipath, language)
-    with open(xpath, 'rt', encoding='utf-8') as file:
+    with open(xpath, 'rt', encoding='UTF-8') as file:
         expected = file.read()
     assert_multi_line_equal(text, expected)
 

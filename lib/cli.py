@@ -47,7 +47,7 @@ def main():
     ap.add_argument('--list-languages', nargs=0, action=list_languages)
     ap.add_argument('--blacklist', metavar='FILE', action='append', default=[])
     ap.add_argument('--camel-case', action='store_true')
-    ap.add_argument('--input-encoding', metavar='ENC', default='utf-8:replace')
+    ap.add_argument('--input-encoding', metavar='ENC', default='UTF-8:replace')
     default_output_format = 'color' if sys.stdout.isatty() else 'plain'
     ap.add_argument('-f', '--output-format', choices=('plain', 'color'), default=default_output_format)
     ap.add_argument('-r', '--reverse', action='store_true')
@@ -56,7 +56,7 @@ def main():
     ap.add_argument('--max-context-width', metavar='N', default=30)
     ap.add_argument('--suggest', metavar='N', type=int, default=0)
     options = ap.parse_args()
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, 'utf-8')
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, 'UTF-8')
     try:
         split_words = enchant.tokenize.get_tokenizer(options.language)
     except enchant.errors.TokenizerNotFoundError:

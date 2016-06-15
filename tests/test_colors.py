@@ -23,7 +23,6 @@ try:
 except ImportError:
     import mock
 
-import mock
 import io
 
 from nose.tools import (

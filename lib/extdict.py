@@ -19,7 +19,7 @@
 # SOFTWARE.
 
 '''
-external (codespell, Lintian) misspelling dictionary
+external misspelling dictionary
 
 Supported dictionary formats:
 + Lintian <https://anonscm.debian.org/cgit/lintian/lintian.git/tree/data/spelling/corrections>

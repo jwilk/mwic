@@ -1,4 +1,4 @@
-# Copyright © 2014 Jakub Wilk <jwilk@jwilk.net>
+# Copyright © 2014-2016 Jakub Wilk <jwilk@jwilk.net>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the “Software”), to deal
@@ -42,7 +42,7 @@ def test_ltrim():
         'eggs',
     ]
     for n, s in enumerate(truncations):
-        yield t, truncations[-1], n, s
+        t(truncations[-1], n, s)
 
 def test_rtrim():
     def t(s, n, expected):
@@ -57,6 +57,6 @@ def test_rtrim():
         'eggs',
     ]
     for n, s in enumerate(truncations):
-        yield t, truncations[-1], n, s
+        t(truncations[-1], n, s)
 
 # vim:ts=4 sts=4 sw=4 et

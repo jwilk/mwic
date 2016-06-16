@@ -92,6 +92,9 @@ each others
 # also X also → X also | also X
 also [A-Za-z]+(['’][a-z]+)* also
 
+# e.t.c. → etc.
+e[.]t[.]c
+
 # an → a
 an unary
 an uniform(ly)?

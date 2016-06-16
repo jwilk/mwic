@@ -3,11 +3,12 @@ mwic (0.6.1) UNRELEASED; urgency=low
   [ Jakub Wilk ]
   * Add new multi-word misspellings to the dictionary.
   * Improve the test suite.
+  * Fix handling case-sensitivity in Lintian and codespell dictionaries.
 
   [ Dwayne Bailey ]
   * Use /usr/bin/env in shebangs.
 
- -- Jakub Wilk <jwilk@jwilk.net>  Wed, 15 Jun 2016 22:05:49 +0200
+ -- Jakub Wilk <jwilk@jwilk.net>  Thu, 16 Jun 2016 17:07:04 +0200
 
 mwic (0.6) unstable; urgency=low
 

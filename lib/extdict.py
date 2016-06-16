@@ -32,33 +32,33 @@ Supported dictionary formats:
 
 import re
 
-def normalize_case(s):
-    return s.lower().replace('-', '').replace(' ', '')
-
 separators = {
     '||',  # Lintian
     '->',  # codespell
 }
 
+def case_variants(word, correction=None):
+    yield word
+    if not word.islower():
+        return
+    correction = correction or ''
+    if word.title() != correction.title():
+        yield word.title()
+    if word.upper() != correction.upper():
+        yield word.upper()
+
 def parse_line(line):
-    left = line
+    word = line
     for sep in separators:
         try:
-            [left, right] = line.split(sep, 1)
+            [word, correction] = line.split(sep, 1)
         except ValueError:
             pass
         else:
             break
     else:
-        sep = ''
-    yield left
-    if not left.islower():
-        return
-    if sep == '||' and normalize_case(left) == normalize_case(right):
-        # Lintian's “correction-case” format
-        return
-    yield left.title()
-    yield left.upper()
+        correction = None
+    return case_variants(word, correction)
 
 class Dictionary(object):
 

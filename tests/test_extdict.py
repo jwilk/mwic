@@ -62,7 +62,7 @@ def test_lintian():
     t = functools.partial(_test_dict, d=d)
     t({'abandonned', 'Abandonned', 'ABANDONNED'}, {'abandoned'})
     t({'portugese', 'Portugese', 'PORTUGESE'}, {'Portuguese'})
-    t({'upto'}, {'up to'})  # FIXME? 'Upto', 'UPTO'
+    t({'upto', 'Upto', 'UPTO'}, {'up to'})
 
 lintian_case_dict = '''\
 # Picky corrections, applied before lowercasing the word. ...

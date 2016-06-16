@@ -2,8 +2,8 @@ mwic (0.6.1) UNRELEASED; urgency=low
 
   [ Jakub Wilk ]
   * Add new multi-word misspellings to the dictionary.
-  * Improve the test suite.
   * Fix handling case-sensitivity in Lintian and codespell dictionaries.
+  * Improve the test suite.
 
   [ Dwayne Bailey ]
   * Use /usr/bin/env in shebangs.

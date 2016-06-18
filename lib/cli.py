@@ -160,7 +160,7 @@ def print_common_misspellings(ctxt):
             if suggestions:
                 extra = ' ({sug})'.format(sug=', '.join(suggestions))
         print(word + extra + ':')
-        hightlight_color = 'error' if occurrences.certainty > 0 else 'warn'
+        highlight_color = 'error' if occurrences.certainty > 0 else 'warn'
         occurrences = [
             (
                 lib.text.ltrim(lcontext, options.max_context_width),
@@ -175,7 +175,7 @@ def print_common_misspellings(ctxt):
             lcontext = lcontext.rjust(lwidth)
             if options.output_format == 'color':
                 lcontext = lib.colors.escape(lcontext)
-                word = lib.colors.highlight(word, hightlight_color)
+                word = lib.colors.highlight(word, highlight_color)
                 rcontext = lib.colors.escape(rcontext)
                 print(lib.colors.dim('|'), end=' ')
             else:

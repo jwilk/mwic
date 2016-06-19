@@ -33,7 +33,7 @@ mwic (0.5.1) unstable; urgency=low
 
   * Update the description in the manual page.
   * Add new multi-word misspellings to the dictionary.
-  * Fall back to "more" if $PAGER is not set and "pager" doesn't exist.
+  * Fall back to “more” if $PAGER is not set and “pager” doesn't exist.
     Thanks to John Vandenberg for the bug report.
     https://github.com/jwilk/mwic/issues/1
 

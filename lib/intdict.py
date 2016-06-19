@@ -27,7 +27,8 @@ internal dictionary, which can contain:
 
 import errno
 import os
-import re
+
+import regex as re
 
 basedir = os.path.normpath(os.path.join(
     os.path.dirname(__file__),

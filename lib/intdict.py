@@ -66,7 +66,7 @@ class Dictionary(object):
                         continue
                     if line[0] == '*':
                         [word] = line[1:]
-                        self._whitelist.add(word.lower())
+                        self._whitelist.add(word)
                         self._whitelist.add(word.upper())
                         self._whitelist.add(word.title())
                     else:

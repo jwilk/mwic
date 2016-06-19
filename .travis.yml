@@ -16,6 +16,7 @@ cache:
   - $HOME/.cache/pip
 install:
 - pip install pyenchant
+- pip install regex
 - pip install pyflakes
 - pip install docutils
 script:

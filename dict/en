@@ -98,6 +98,8 @@ e[.]t[.]c
 # Blu-Ray → Blu-ray
 # Blue-ray → Blu-ray
 (?-i:Blu-Ray)
+(?-i:Blu(?!-ray))
+* Blu
 Blue-ray
 
 # an → a

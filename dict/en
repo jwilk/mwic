@@ -95,6 +95,11 @@ also [A-Za-z]+(['’][a-z]+)* also
 # e.t.c. → etc.
 e[.]t[.]c
 
+# Blu-Ray → Blu-ray
+# Blue-ray → Blu-ray
+(?-i:Blu-Ray)
+Blue-ray
+
 # an → a
 an unary
 an uniform(ly)?

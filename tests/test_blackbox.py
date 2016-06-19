@@ -62,7 +62,7 @@ def _test_text(xpath):
     text = _get_output(ipath, language)
     with open(xpath, 'rt', encoding='UTF-8') as file:
         expected = file.read()
-    assert_multi_line_equal(text, expected)
+    assert_multi_line_equal(expected, text)
 
 def test_text():
     for xpath in glob.glob(here + '/*.exp'):

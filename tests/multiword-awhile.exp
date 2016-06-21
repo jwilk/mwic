@@ -1,0 +1,28 @@
+take awhile:
+| It can take awhile.
+         ^^^^^^^^^^^
+
+takes awhile:
+| It takes awhile.
+     ^^^^^^^^^^^^
+
+took awhile:
+| It took awhile.
+     ^^^^^^^^^^^
+
+after awhile:
+| It will be done after awhile.
+                  ^^^^^^^^^^^^
+
+in awhile:
+| It will be done in awhile.
+                  ^^^^^^^^^
+
+taking awhile:
+| It's taking awhile.
+       ^^^^^^^^^^^^^
+
+for awhile:
+| Please wait for awhile.
+              ^^^^^^^^^^
+

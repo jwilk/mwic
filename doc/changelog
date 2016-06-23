@@ -1,4 +1,4 @@
-mwic (0.7) UNRELEASED; urgency=low
+mwic (0.7) unstable; urgency=low
 
   * Fix spurious output for languages that didn't have multi-word misspelling
     dictionaries.
@@ -8,7 +8,7 @@ mwic (0.7) UNRELEASED; urgency=low
   * Document runtime dependencies.
   * Improve the test suite.
 
- -- Jakub Wilk <jwilk@jwilk.net>  Sun, 19 Jun 2016 16:46:19 +0200
+ -- Jakub Wilk <jwilk@jwilk.net>  Thu, 23 Jun 2016 22:11:33 +0200
 
 mwic (0.6.1) unstable; urgency=low
 

@@ -64,11 +64,11 @@ def main():
     if options.camel_case:
         split_words = lib.text.camel_case_tokenizer(split_words)
     dictionary = enchant.Dict(options.language)
-    intdict = lib.intdict.Dictionary(options.language)
-    extdict = lib.extdict.Dictionary(*options.blacklist)
     spellcheck = functools.lru_cache(maxsize=None)(
         dictionary.check
     )
+    intdict = lib.intdict.Dictionary(options.language)
+    extdict = lib.extdict.Dictionary(*options.blacklist)
     misspellings = lib.data.Misspellings()
     encoding = options.input_encoding
     enc_errors = 'strict'

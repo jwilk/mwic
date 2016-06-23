@@ -1,0 +1,20 @@
+Lovely:
+| Lovely spam!
+  ^^^^^^
+
+Spam:
+| Spam spam spam spam.
+  ^^^^
+
+Wonderful:
+| Wonderful spam!
+  ^^^^^^^^^
+
+spam:
+|           Spam spam spam spam.
+|      Spam spam spam spam.
+|      Wonderful spam!
+|         Lovely spam!
+| Spam spam spam spam.
+                 ^^^^
+

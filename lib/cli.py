@@ -63,10 +63,15 @@ def main():
         split_words = enchant.tokenize.get_tokenizer(None)
     if options.camel_case:
         split_words = lib.text.camel_case_tokenizer(split_words)
-    dictionary = enchant.Dict(options.language)
-    spellcheck = functools.lru_cache(maxsize=None)(
-        dictionary.check
-    )
+    if options.language == 'und':
+        dictionary = None
+        spellcheck = ''.__gt__  # always returns False
+        options.suggest = 0
+    else:
+        dictionary = enchant.Dict(options.language)
+        spellcheck = functools.lru_cache(maxsize=None)(
+            dictionary.check
+        )
     intdict = lib.intdict.Dictionary(options.language)
     extdict = lib.extdict.Dictionary(*options.blacklist)
     misspellings = lib.data.Misspellings()
@@ -105,7 +110,10 @@ def main():
         print_misspellings(ctxt)
 
 def spellcheck_file(ctxt, file):
-    force_ucs2 = ctxt.dictionary.provider.name == 'myspell'
+    force_ucs2 = (
+        ctxt.dictionary is not None and
+        ctxt.dictionary.provider.name == 'myspell'
+    )
     for line in file:
         if force_ucs2:
             # https://github.com/rfk/pyenchant/issues/58

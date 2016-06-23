@@ -1,3 +1,9 @@
+mwic (0.7.1) UNRELEASED; urgency=low
+
+  * 
+
+ -- Jakub Wilk <jwilk@jwilk.net>  Thu, 23 Jun 2016 22:33:09 +0200
+
 mwic (0.7) unstable; urgency=low
 
   * Fix spurious output for languages that didn't have multi-word misspelling

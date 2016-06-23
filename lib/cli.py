@@ -122,6 +122,7 @@ def spellcheck_file(ctxt, file):
         line = line.expandtabs()
         taken = bytearray(len(line))
         for word, pos in ctxt.split_words(line):
+            assert len(word) >= 1
             if word in ctxt.extdict:
                 certainty = 1
             elif ctxt.spellcheck(word):
@@ -134,6 +135,7 @@ def spellcheck_file(ctxt, file):
                 taken[i] = True
             ctxt.misspellings.add(word, line, pos, certainty)
         for word, pos in ctxt.intdict.find(line):
+            assert len(word) >= 1
             for i, ch in enumerate(word, start=pos):
                 if taken[i]:
                     break

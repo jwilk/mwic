@@ -39,6 +39,9 @@ datadir = os.path.join(basedir, 'dict', '')
 
 os.stat(datadir)
 
+def _find_nothing(s):
+    return ()
+
 class Dictionary(object):
 
     def __init__(self, lang):
@@ -74,10 +77,13 @@ class Dictionary(object):
                             r'\s+'.join(line)
                         ]
             break
-        regex = r'\b(?:(?i){0})\b'.format(
-            '|'.join(regexes)
-        )
-        self._find = re.compile(regex).finditer
+        if regexes:
+            regex = r'\b(?:(?i){0})\b'.format(
+                '|'.join(regexes)
+            )
+            self._find = re.compile(regex).finditer
+        else:
+            self._find = _find_nothing
 
     def find(self, s):
         for match in self._find(s):

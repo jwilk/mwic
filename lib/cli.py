@@ -24,8 +24,8 @@ the command-line interface
 
 import argparse
 import io
+import multiprocessing
 import sys
-import functools
 
 import enchant.tokenize
 
@@ -35,9 +35,22 @@ import lib.extdict
 import lib.intdict
 import lib.ns
 import lib.pager
+import lib.spell
 import lib.text
 
 __version__ = '0.7.1'
+
+def parse_jobs(s):
+    if s == 'auto':
+        try:
+            return multiprocessing.cpu_count()
+        except NotImplementedError:
+            return 1
+    n = int(s)
+    if n <= 0:
+        raise ValueError
+    return n
+parse_jobs.__name__ = 'jobs'
 
 def main():
     ap = argparse.ArgumentParser()
@@ -55,6 +68,7 @@ def main():
     ap.add_argument('--limit', metavar='N', type=int, default=1e999)
     ap.add_argument('--max-context-width', metavar='N', default=30)
     ap.add_argument('--suggest', metavar='N', type=int, default=0)
+    ap.add_argument('-j', '--jobs', metavar='N', type=parse_jobs, default=1, help='use N processes')
     options = ap.parse_args()
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, 'UTF-8')
     try:
@@ -65,13 +79,11 @@ def main():
         split_words = lib.text.camel_case_tokenizer(split_words)
     if options.language == 'und':
         dictionary = None
-        spellcheck = ''.__gt__  # always returns False
+        spellchecker = lib.spell.DummySpellChecker()
         options.suggest = 0
     else:
         dictionary = enchant.Dict(options.language)
-        spellcheck = functools.lru_cache(maxsize=None)(
-            dictionary.check
-        )
+        spellchecker = lib.spell.SpellChecker(dictionary.check, njobs=options.jobs)
     intdict = lib.intdict.Dictionary(options.language)
     extdict = lib.extdict.Dictionary(*options.blacklist)
     misspellings = lib.data.Misspellings()
@@ -84,7 +96,7 @@ def main():
         intdict=intdict,
         extdict=extdict,
         split_words=split_words,
-        spellcheck=spellcheck,
+        spellchecker=spellchecker,
         misspellings=misspellings,
         options=options,
     )
@@ -122,10 +134,13 @@ def spellcheck_file(ctxt, file):
         line = line.expandtabs()
         taken = bytearray(len(line))
         for word, pos in ctxt.split_words(line):
+            if word not in ctxt.extdict:
+                ctxt.spellchecker.queue(word)
+        for word, pos in ctxt.split_words(line):
             assert len(word) >= 1
             if word in ctxt.extdict:
                 certainty = 1
-            elif ctxt.spellcheck(word):
+            elif ctxt.spellchecker.check(word):
                 continue
             elif ctxt.intdict.is_whitelisted(word):
                 continue

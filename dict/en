@@ -21,6 +21,10 @@ let['’]s (a|an|the)
 (be|is|are|was|were|been|being) (enable|disable)
 (be|is|are|was|were|been|being) not (enable|disable)
 
+# BE consisted of → BE consist of
+(be|is|are|was|were|been|being) consisted of
+(be|is|are|was|were|been|being) not consisted of
+
 # GNU Public License → GNU General Public License
 GNU Lesser Public Licen[cs]e
 GNU Library Public Licen[cs]e

@@ -110,6 +110,10 @@ Blue-ray
 (take|takes|taking|took) awhile
 (after|for|in) awhile
 
+# to X extend → to X extent
+to (some|certain) extend
+to an extend(?=[,;.])
+
 # an → a
 an unary
 an uniform(ly)?

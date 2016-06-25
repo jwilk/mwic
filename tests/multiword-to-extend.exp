@@ -1,0 +1,12 @@
+to an extend:
+| ... to an extend, ...
+      ^^^^^^^^^^^^
+
+to certain extend:
+| ... to certain extend...
+      ^^^^^^^^^^^^^^^^^
+
+to some extend:
+| ... to some extend...
+      ^^^^^^^^^^^^^^
+

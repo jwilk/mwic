@@ -39,7 +39,7 @@ datadir = os.path.join(basedir, 'dict', '')
 
 os.stat(datadir)
 
-def _find_nothing(s):
+def _find_nothing(s):  # pylint: disable=unused-argument
     return ()
 
 class Dictionary(object):

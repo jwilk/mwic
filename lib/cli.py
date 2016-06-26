@@ -131,7 +131,7 @@ def spellcheck_file(ctxt, file):
                 continue
             else:
                 certainty = 0
-            for i, ch in enumerate(word, start=pos):
+            for i, ch in enumerate(word, start=pos):  # pylint: disable=unused-variable
                 taken[i] = True
             ctxt.misspellings.add(word, line, pos, certainty)
         for word, pos in ctxt.intdict.find(line):

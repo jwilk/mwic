@@ -31,7 +31,7 @@ from nose.tools import (
 
 import lib.cli as M
 
-assert_multi_line_equal.__self__.maxDiff = None
+assert_multi_line_equal.__self__.maxDiff = None  # pylint: disable=no-member
 
 here = os.path.dirname(__file__)
 here = os.path.relpath(here)

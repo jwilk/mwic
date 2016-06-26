@@ -18,12 +18,11 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+import io
 try:
     import unittest.mock as mock
 except ImportError:
     import mock
-
-import io
 
 from nose.tools import (
     assert_equal,

@@ -24,12 +24,12 @@ import io
 import glob
 import unittest
 
-import lib.cli as M
-
 import nose
 from nose.tools import (
     assert_multi_line_equal,
 )
+
+import lib.cli as M
 
 assert_multi_line_equal.__self__.maxDiff = None
 

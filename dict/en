@@ -114,6 +114,9 @@ Blue-ray
 to (some|certain) extend
 to an extend(?=[,;.])
 
+# it's own → its own
+it['’]s own
+
 # an → a
 an unary
 an uniform(ly)?

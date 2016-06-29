@@ -1,8 +1,8 @@
 mwic (0.7.1) UNRELEASED; urgency=low
 
-  * 
+  * Add new multi-word misspellings to the dictionary.
 
- -- Jakub Wilk <jwilk@jwilk.net>  Thu, 23 Jun 2016 22:33:09 +0200
+ -- Jakub Wilk <jwilk@jwilk.net>  Wed, 29 Jun 2016 20:52:59 +0200
 
 mwic (0.7) unstable; urgency=low
 

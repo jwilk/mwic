@@ -25,3 +25,11 @@ It was not disable
 They were not disable.
 It has been not disable.
 It is being not disable.
+
+It isn't enable.
+It wasn't enable.
+They weren't enable.
+
+It isn't disable.
+It wasn't disable.
+They weren't disable.

@@ -10,9 +10,25 @@ is consisted of:
 | It is consisted of two parts.
      ^^^^^^^^^^^^^^^
 
+is not consisted of:
+| It is not consisted of two parts.
+     ^^^^^^^^^^^^^^^^^^^
+
+isn't consisted of:
+| It isn't consisted of two parts.
+     ^^^^^^^^^^^^^^^^^^
+
 was consisted of:
 | It was consisted of two parts.
      ^^^^^^^^^^^^^^^^
+
+was not consisted of:
+| It was not consisted of two parts.
+     ^^^^^^^^^^^^^^^^^^^^
+
+wasn't consisted of:
+| It wasn't consisted of two parts.
+     ^^^^^^^^^^^^^^^^^^^
 
 be consisted of:
 | It will be consisted of two parts.
@@ -21,4 +37,12 @@ be consisted of:
 were consisted of:
 | They were consisted of two parts.
        ^^^^^^^^^^^^^^^^^
+
+were not consisted of:
+| They were not consisted of two parts.
+       ^^^^^^^^^^^^^^^^^^^^^
+
+weren't consisted of:
+| They weren't consisted of two parts.
+       ^^^^^^^^^^^^^^^^^^^^
 

@@ -46,6 +46,14 @@ is not enable:
 | It is not enable.
      ^^^^^^^^^^^^^
 
+isn't disable:
+| It isn't disable.
+     ^^^^^^^^^^^^^
+
+isn't enable:
+| It isn't enable.
+     ^^^^^^^^^^^^
+
 was enable:
 | It was enable.
      ^^^^^^^^^^
@@ -57,6 +65,14 @@ was not disable:
 was not enable:
 | It was not enable.
      ^^^^^^^^^^^^^^
+
+wasn't disable:
+| It wasn't disable.
+     ^^^^^^^^^^^^^^
+
+wasn't enable:
+| It wasn't enable.
+     ^^^^^^^^^^^^^
 
 be disable:
 | It will be disable.
@@ -89,6 +105,14 @@ were not disable:
 were not enable:
 | They were not enable.
        ^^^^^^^^^^^^^^^
+
+weren't disable:
+| They weren't disable.
+       ^^^^^^^^^^^^^^^
+
+weren't enable:
+| They weren't enable.
+       ^^^^^^^^^^^^^^
 
 was disable:
 | it was disable.

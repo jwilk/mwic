@@ -20,10 +20,12 @@ let['’]s (a|an|the)
 # BE enable → BE enabled
 (be|is|are|was|were|been|being) (enable|disable)
 (be|is|are|was|were|been|being) not (enable|disable)
+(is|are|was|were)n['’]t (enable|disable)
 
 # BE consisted of → BE consist of
 (be|is|are|was|were|been|being) consisted of
 (be|is|are|was|were|been|being) not consisted of
+(is|are|was|were)n['’]t consisted of
 
 # GNU Public License → GNU General Public License
 GNU Lesser Public Licen[cs]e

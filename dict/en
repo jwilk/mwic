@@ -140,6 +140,12 @@ a old
 # a → an
 a eight(h)?
 
+# a → an
+a HTML
+a HTTP
+a HTTPS
+* HTTPS
+
 # whitelist:
 * backend
 * backends

@@ -1,0 +1,12 @@
+a HTML:
+| a HTML document
+  ^^^^^^
+
+a HTTP:
+| a HTTP request
+  ^^^^^^
+
+a HTTPS:
+| a HTTPS request
+  ^^^^^^^
+

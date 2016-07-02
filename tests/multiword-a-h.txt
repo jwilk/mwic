@@ -1,0 +1,3 @@
+a HTML document
+a HTTP request
+a HTTPS request

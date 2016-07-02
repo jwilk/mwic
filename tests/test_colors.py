@@ -32,7 +32,7 @@ from lib import colors as M
 
 def with_stdout(encoding):
     stdout = io.TextIOWrapper(
-        io.StringIO(),
+        io.BytesIO(),
         encoding=encoding,
     )
     return mock.patch('sys.stdout', stdout)

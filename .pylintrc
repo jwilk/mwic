@@ -1,5 +1,6 @@
 [MESSAGES CONTROL]
 disable =
+    bad-builtin,
     bad-continuation,
     fixme,
     invalid-name,
@@ -11,9 +12,6 @@ disable =
     too-many-branches,
     too-many-locals,
     too-many-statements,
-
-[BASIC]
-bad-functions = filter, input
 
 [REPORTS]
 reports = no

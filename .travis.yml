@@ -25,9 +25,9 @@ install:
 - \[ "$TRAVIS_PYTHON_VERSION" = "3.2" ] || pip install pylint
 - pip install docutils
 script:
-- ./tests/run-tests --verbose
-- ./private/run-pyflakes
-- \[ "$TRAVIS_PYTHON_VERSION" = "3.2" ] || ./private/run-pylint
+- tests/run-tests --verbose
+- private/run-pyflakes
+- \[ "$TRAVIS_PYTHON_VERSION" = "3.2" ] || private/run-pylint
 - find -name "*.rst" | xargs -L1 -t -I{} rst2xml.py --strict {} /dev/null
 - make -C doc
 

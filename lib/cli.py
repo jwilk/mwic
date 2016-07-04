@@ -58,21 +58,37 @@ class VersionAction(argparse._VersionAction):  # pylint: disable=protected-acces
         parser.exit(message=version)
 
 def main():
-    ap = argparse.ArgumentParser()
+    ap = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter)
     ap.add_argument('--version', action=VersionAction)
-    ap.add_argument('files', metavar='FILE', nargs='*', default=['-'])
-    ap.add_argument('-l', '--language', metavar='LANG', default='en')
-    ap.add_argument('--list-languages', nargs=0, action=list_languages)
-    ap.add_argument('--blacklist', metavar='FILE', action='append', default=[])
-    ap.add_argument('--camel-case', action='store_true')
-    ap.add_argument('--input-encoding', metavar='ENC', default='UTF-8:replace')
+    ap.add_argument('files', metavar='FILE', nargs='*', default=['-'],
+        help='file to process (default: stdin)')
+    ap.add_argument('-l', '--language', metavar='LANG', default='en',
+        help='spell-check for this language (default: "en")')
+    ap.add_argument('--list-languages', nargs=0, action=list_languages,
+        help='print list of available languages')
+    ap.add_argument('--blacklist', metavar='FILE', action='append', default=[],
+        help='use misspelling dictionary')
+    ap.add_argument('--camel-case', action='store_true',
+        help='split camel-cased compound words')
+    ap.add_argument('--input-encoding', metavar='ENC', default='UTF-8:replace',
+        help='assume input encoding ENC (default: "UTF-8:replace")')
     default_output_format = 'color' if sys.stdout.isatty() else 'plain'
-    ap.add_argument('-f', '--output-format', choices=('plain', 'color'), default=default_output_format)
-    ap.add_argument('-r', '--reverse', action='store_true')
-    ap.add_argument('--compact', action='store_true')
-    ap.add_argument('--limit', metavar='N', type=int, default=1e999)
-    ap.add_argument('--max-context-width', metavar='N', default=30)
-    ap.add_argument('--suggest', metavar='N', type=int, default=0)
+    ap.add_argument('-f', '--output-format', choices=('plain', 'color'), default=default_output_format,
+        help=(
+            '"plain" = use "^" to emphasize words\n'
+            '"color" = highlight words in color (default on tty)\n'
+        )
+    )
+    ap.add_argument('-r', '--reverse', action='store_true',
+        help='print most frequent words first')
+    ap.add_argument('--compact', action='store_true',
+        help='omit blank lines in output')
+    ap.add_argument('--limit', metavar='N', type=int, default=1e999,
+        help='skip words that have >N instances')
+    ap.add_argument('--max-context-width', metavar='N', default=30,
+        help='limit context width to N chars')
+    ap.add_argument('--suggest', metavar='N', type=int, default=0,
+        help='suggest up to N corrections')
     options = ap.parse_args()
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, 'UTF-8')
     try:

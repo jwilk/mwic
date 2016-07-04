@@ -2,7 +2,7 @@ The following software is needed to run mwic:
 
 * Python ≥ 3.2;
 
-* pyenchant_, Python bindings for the Enchant_ spellchecking system;
+* PyEnchant_, Python bindings for the Enchant_ spellchecking system;
 
 * regex_, alternative regular expression module for Python.
 

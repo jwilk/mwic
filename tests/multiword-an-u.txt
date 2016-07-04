@@ -1,13 +1,17 @@
 an unary object
+an unified object
 an uniform object
 an uniformly sized object
 an union
 an unique object
 an uniquely named object
 an unit
+an universal object
+an universally unique identifier
 an usage
 an use
 an useful object
 an useless object
 an user
 an username
+an utility

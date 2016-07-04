@@ -54,8 +54,9 @@ class VersionAction(argparse._VersionAction):  # pylint: disable=protected-acces
                 enchant_version = enchant_version.decode('ASCII', 'replace')
             lines += ['  + Enchant {0}'.format(enchant_version)]
         lines += ['+ regex {0}'.format(lib.intdict.re.__version__)]
-        version = ''.join(line + '\n' for line in lines)
-        parser.exit(message=version)
+        for line in lines:
+            print(line)
+        parser.exit()
 
 def main():
     ap = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter)

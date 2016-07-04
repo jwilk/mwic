@@ -2,9 +2,11 @@ mwic (0.7.1) UNRELEASED; urgency=low
 
   * Add new multi-word misspellings to the dictionary.
   * Make --version print also versions of Python and the libraries.
+  * Make --version print to stdout, not stderr.
+    https://bugs.python.org/issue18920
   * Make the --help message include option descriptions.
 
- -- Jakub Wilk <jwilk@jwilk.net>  Mon, 04 Jul 2016 15:42:40 +0200
+ -- Jakub Wilk <jwilk@jwilk.net>  Mon, 04 Jul 2016 18:44:06 +0200
 
 mwic (0.7) unstable; urgency=low
 

@@ -42,9 +42,9 @@ __version__ = '0.7.1'
 class VersionAction(argparse._VersionAction):  # pylint: disable=protected-access
 
     def __call__(self, parser, namespace, values, option_string=None):
-        lines = ['{prog} {0}'.format(__version__, prog=parser.prog)]
-        lines += ['+ Python {0}.{1}.{2}'.format(*sys.version_info)]
-        lines += ['+ PyEnchant {0}'.format(__version__)]
+        print('{prog} {0}'.format(__version__, prog=parser.prog))
+        print('+ Python {0}.{1}.{2}'.format(*sys.version_info))
+        print('+ PyEnchant {0}'.format(__version__))
         try:
             enchant_version = enchant.get_enchant_version()
         except AttributeError:
@@ -52,10 +52,8 @@ class VersionAction(argparse._VersionAction):  # pylint: disable=protected-acces
         else:
             if isinstance(enchant_version, bytes):
                 enchant_version = enchant_version.decode('ASCII', 'replace')
-            lines += ['  + Enchant {0}'.format(enchant_version)]
-        lines += ['+ regex {0}'.format(lib.intdict.re.__version__)]
-        for line in lines:
-            print(line)
+            print('  + Enchant {0}'.format(enchant_version))
+        print('+ regex {0}'.format(lib.intdict.re.__version__))
         parser.exit()
 
 def main():

@@ -39,7 +39,15 @@ import lib.text
 
 __version__ = '0.7.1'
 
-class VersionAction(argparse._VersionAction):  # pylint: disable=protected-access
+class VersionAction(argparse.Action):
+
+    def __init__(self, option_strings, dest=argparse.SUPPRESS):
+        super(VersionAction, self).__init__(
+            option_strings=option_strings,
+            dest=dest,
+            nargs=0,
+            help="show program's version information and exit"
+        )
 
     def __call__(self, parser, namespace, values, option_string=None):
         print('{prog} {0}'.format(__version__, prog=parser.prog))

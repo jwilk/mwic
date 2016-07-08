@@ -78,7 +78,7 @@ Options
    Show the help message and exit.
 
 --version
-   Show the program's version number and exit.
+   Show the program's version information and exit.
 
 Environment
 -----------

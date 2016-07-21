@@ -157,6 +157,13 @@ a HTTP
 a HTTPS
 * HTTPS
 
+# a → an
+a XML
+a XSL
+* XSL
+a XSLT
+* XSLT
+
 # whitelist:
 * backend
 * backends

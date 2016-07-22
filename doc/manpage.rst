@@ -125,32 +125,29 @@ Example
 
 ::
 
-   $ mwic debian-social-contract.txt
-   GPL:
-   | The "GPL", "BSD", and "Artistic" lice…
-          ^^^
+   $ mwic --blacklist /usr/share/lintian/data/spelling/corrections --compact rfc1927.txt
+   heirarchical:
+   | …g paper clips vs small ones; heirarchical assembly
+                                   ^^^^^^^^^^^^
+   multipart:
+   | …tes the degree of binding of multipart documents:
+                                   ^^^^^^^^^
+   reycled:
+   | 1) staples could be reycled for a small credit
+                         ^^^^^^^
 
-   contrib:
-   | created "contrib" and "non-free" areas in our…
-              ^^^^^^^
+*...*
 
-   CDs:
-   | their CDs. Thus, although non-free wor…
-           ^^^
+::
 
-   Ean, Schuessler:
-   | community" was suggested by Ean Schuessler. This document was drafted
-                                 ^^^ ^^^^^^^^^^
+   EMail, edu, isi:
+   | EMail: rogers@isi.edu
+     ^^^^^         ^^^ ^^^
+   electonic:
+   | drawer of the electonic desk on home PCs
+   |            3) electonic staples should have a standa…
+                   ^^^^^^^^^
 
-   DFSG:
-   | …an Free Software Guidelines (DFSG)
-   | …an Free Software Guidelines (DFSG) part of the
-                                   ^^^^
-
-   Perens:
-   |    Bruce Perens later removed the Debian-spe…
-   | by Bruce Perens, refined by the other Debian…
-              ^^^^^^
 
 See also
 --------

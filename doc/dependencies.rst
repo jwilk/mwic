@@ -12,6 +12,17 @@ source:
 * docutils_ ≥ 0.6.
 
 
+For pip users::
+
+   python3 -m pip install pyenchant regex
+   python3 -m pip install docutils
+
+For Debian users::
+
+   apt-get install python3-enchant python3-regex
+   apt-get install python3-docutils
+
+
 .. _regex:
    https://pypi.python.org/pypi/regex
 .. _pyenchant:

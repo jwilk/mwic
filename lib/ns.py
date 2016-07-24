@@ -36,7 +36,7 @@ class Namespace(object):
 Namespace()  # make pyflakes and coverage.py happy
 
 if sys.version_info >= (3, 3):  # <no-coverage>
-    Namespace = types.SimpleNamespace
+    Namespace = types.SimpleNamespace  # pylint: disable=no-member
 
 __all__ = ['Namespace']
 

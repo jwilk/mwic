@@ -21,14 +21,15 @@
 # SOFTWARE.
 
 set -e -u
-python3 -m pylint --version >/dev/null
+PYTHON=${PYTHON:-python3}
+"$PYTHON" -m pylint --version >/dev/null
 if [ $# -eq 0 ]
 then
     pyscripts=$(grep -l -r '^#!.*python' .)
     set -- lib tests $pyscripts
 fi
 set -- --load-plugins=pylint.extensions.check_elif "$@"
-! python3 -m pylint "$@" \
+! "$PYTHON" -m pylint "$@" \
 | grep '^\w:' \
 | grep -v ': missing-docstring \[\w' \
 | grep -v -P '^\w: (?!lib/).*: missing-docstring ' \

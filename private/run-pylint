@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-opts='-j0 --load-plugins=pylint.extensions.check_elif'
+opts='--load-plugins=pylint.extensions.check_elif'
 pylint=$(which pylint) || { echo pylint not found >&2; exit 1; }
 ! python3 "$pylint" $opts lib tests $(grep -l -r '^#!.*python' .) \
 | grep '^\w:' \

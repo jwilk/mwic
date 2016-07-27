@@ -126,6 +126,10 @@ its the
 # its not → it's not
 its not(?!-)
 
+# some times → sometimes
+
+some times(?! of)
+
 # an → a
 an Unicode
 an unary

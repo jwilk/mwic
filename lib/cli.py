@@ -29,13 +29,14 @@ import functools
 
 import enchant.tokenize
 
-import lib.colors
-import lib.data
-import lib.extdict
-import lib.intdict
-import lib.ns
-import lib.pager
-import lib.text
+class lib:
+    from . import colors
+    from . import data
+    from . import extdict
+    from . import intdict
+    from . import ns
+    from . import pager
+    from . import text
 
 __version__ = '0.7.1'
 

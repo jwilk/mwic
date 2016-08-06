@@ -1,4 +1,4 @@
-mwic (0.7.1) UNRELEASED; urgency=low
+mwic (0.7.1) unstable; urgency=low
 
   * Add new multi-word misspellings to the dictionary.
   * Make --version print also versions of Python and the libraries.
@@ -10,7 +10,7 @@ mwic (0.7.1) UNRELEASED; urgency=low
     + Make the example more realistic.
   * Document how to install dependencies with pip or apt-get.
 
- -- Jakub Wilk <jwilk@jwilk.net>  Fri, 22 Jul 2016 19:54:57 +0200
+ -- Jakub Wilk <jwilk@jwilk.net>  Sat, 06 Aug 2016 13:12:03 +0200
 
 mwic (0.7) unstable; urgency=low
 

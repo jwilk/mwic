@@ -5,7 +5,10 @@ mwic (0.7.1) UNRELEASED; urgency=low
   * Make --version print to stdout, not stderr.
     https://bugs.python.org/issue18920
   * Make the --help message include option descriptions.
-  * Make the example in the manual page more realistic.
+  * Improve the manual page:
+    + Update the description.
+    + Make the example more realistic.
+  * Document how to install dependencies with pip or apt-get.
 
  -- Jakub Wilk <jwilk@jwilk.net>  Fri, 22 Jul 2016 19:54:57 +0200
 

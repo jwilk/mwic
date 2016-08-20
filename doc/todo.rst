@@ -1,4 +1,5 @@
 Whitelist long hex strings.
+(``[0-9a-f]{10,}`` is unlikely to match any real word.)
 
 Whitelist long base64 strings.
 

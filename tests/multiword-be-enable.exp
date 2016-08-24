@@ -1,3 +1,27 @@
+ain't disable:
+| I ain't disable.
+    ^^^^^^^^^^^^^
+
+ain't enable:
+| I ain't enable.
+    ^^^^^^^^^^^^
+
+am disable:
+| I am disable.
+    ^^^^^^^^^^
+
+am enable:
+| I am enable.
+    ^^^^^^^^^
+
+am not disable:
+| I am not disable.
+    ^^^^^^^^^^^^^^
+
+am not enable:
+| I am not enable.
+    ^^^^^^^^^^^^^
+
 been disable:
 | It has been disable.
          ^^^^^^^^^^^^

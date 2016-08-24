@@ -18,19 +18,19 @@ let['’]s (me|you|him|her|it|us|them)
 let['’]s (a|an|the)
 
 # BE enable → BE enabled
-(be|is|are|was|were|been|being) (enable|disable)
-(be|is|are|was|were|been|being) not (enable|disable)
-(is|are|was|were)n['’]t (enable|disable)
+(be|am|is|are|was|were|been|being) (enable|disable)
+(be|am|is|are|was|were|been|being) not (enable|disable)
+(ai|is|are|was|were)n['’]t (enable|disable)
 
 # BE consisted of → BE consist of
-(be|is|are|was|were|been|being) consisted of
-(be|is|are|was|were|been|being) not consisted of
-(is|are|was|were)n['’]t consisted of
+(be|am|is|are|was|were|been|being) consisted of
+(be|am|is|are|was|were|been|being) not consisted of
+(ai|is|are|was|were)n['’]t consisted of
 
 # BE ran → BE run
-(be|is|are|was|were|been|being) ran
-(be|is|are|was|were|been|being) not ran
-(is|are|was|were)n['’]t ran
+(be|am|is|are|was|were|been|being) ran
+(be|am|is|are|was|were|been|being) not ran
+(ai|is|are|was|were)n['’]t ran
 
 # GNU Public License → GNU General Public License
 GNU Lesser Public Licen[cs]e
@@ -69,7 +69,7 @@ rational for
 fist time
 
 # know as → known as
-(be|is|are|was|were|been|being) know as
+(be|am|is|are|was|were|been|being) know as
 also know as
 better know as
 

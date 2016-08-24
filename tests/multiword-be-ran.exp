@@ -1,3 +1,11 @@
+ain't ran:
+| I ain't ran.
+    ^^^^^^^^^
+
+am ran:
+| I am ran.
+    ^^^^^^
+
 been ran:
 | It has been ran.
          ^^^^^^^^

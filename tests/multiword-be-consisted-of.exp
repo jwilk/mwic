@@ -1,3 +1,11 @@
+ain't consisted of:
+| I ain't consisted of two parts.
+    ^^^^^^^^^^^^^^^^^^
+
+am consisted of:
+| I am consisted of two parts.
+    ^^^^^^^^^^^^^^^
+
 been consisted of:
 | It has been consisted of two parts.
          ^^^^^^^^^^^^^^^^^

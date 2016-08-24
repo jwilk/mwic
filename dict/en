@@ -27,6 +27,11 @@ let['’]s (a|an|the)
 (be|is|are|was|were|been|being) not consisted of
 (is|are|was|were)n['’]t consisted of
 
+# BE ran → BE run
+(be|is|are|was|were|been|being) ran
+(be|is|are|was|were|been|being) not ran
+(is|are|was|were)n['’]t ran
+
 # GNU Public License → GNU General Public License
 GNU Lesser Public Licen[cs]e
 GNU Library Public Licen[cs]e

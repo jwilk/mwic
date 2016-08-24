@@ -1,0 +1,12 @@
+It will be ran.
+It is ran.
+It isn't ran.
+It is not ran.
+It was ran.
+It wasn't ran.
+It was not ran.
+They were ran.
+They weren't ran.
+They were not ran.
+It has been ran.
+It is being ran.

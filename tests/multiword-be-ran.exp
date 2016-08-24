@@ -1,0 +1,48 @@
+been ran:
+| It has been ran.
+         ^^^^^^^^
+
+being ran:
+| It is being ran.
+        ^^^^^^^^^
+
+is not ran:
+| It is not ran.
+     ^^^^^^^^^^
+
+is ran:
+| It is ran.
+     ^^^^^^
+
+isn't ran:
+| It isn't ran.
+     ^^^^^^^^^
+
+was not ran:
+| It was not ran.
+     ^^^^^^^^^^^
+
+was ran:
+| It was ran.
+     ^^^^^^^
+
+wasn't ran:
+| It wasn't ran.
+     ^^^^^^^^^^
+
+be ran:
+| It will be ran.
+          ^^^^^^
+
+were not ran:
+| They were not ran.
+       ^^^^^^^^^^^^
+
+were ran:
+| They were ran.
+       ^^^^^^^^
+
+weren't ran:
+| They weren't ran.
+       ^^^^^^^^^^^
+

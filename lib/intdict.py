@@ -42,6 +42,45 @@ os.stat(datadir)
 def _find_nothing(s):  # pylint: disable=unused-argument
     return ()
 
+class Macros(object):
+
+    def __init__(self):
+        self._defs = {}
+        self._regex = None
+        self._substs = None
+
+    def __setitem__(self, name, definition):
+        if name in self._defs:
+            raise KeyError(name)
+        self._defs[name] = definition
+        self._regex = None
+        self._substs = None
+
+    def expand(self, s):
+        if not self._defs:
+            return s
+        if self._regex is not None:
+            regex = self._regex
+            substs = self._substs
+        else:
+            substs = []
+            regex = []
+            for i, (name, definition) in enumerate(self._defs.items()):
+                substs += [definition]
+                regex += ['(?P<mwic{i}>{name})'.format(i=i, name=re.escape(name))]
+            regex = '|'.join(regex)
+            regex = re.compile(regex)
+            self._regex = regex
+            self._substs = substs
+        assert self._regex is not None
+        assert self._substs is not None
+        def replace(match):
+            for i, subst in enumerate(substs):
+                if match.group('mwic{i}'.format(i=i)) is not None:
+                    return subst
+            assert False
+        return self._regex.sub(replace, s)
+
 class Dictionary(object):
 
     def __init__(self, lang):
@@ -60,8 +99,13 @@ class Dictionary(object):
                     continue
                 else:
                     break
+            macros = Macros()
+            n = None  # hi, pylint
+            def error(reason):
+                return SyntaxError(reason, (file.name, n, 0, whole_line))
             with file:
-                for line in file:
+                for n, line in enumerate(file, 1):
+                    whole_line = line
                     if line.startswith('#'):
                         continue
                     line = line.split()
@@ -72,10 +116,20 @@ class Dictionary(object):
                         self._whitelist.add(word)
                         self._whitelist.add(word.upper())
                         self._whitelist.add(word.title())
+                    elif line[0][0] == '@':
+                        if (len(line) >= 4) and (line[0] == '@define') and (line[2] == '='):
+                            (_, name, _, *definition) = line
+                            definition = r'(?:{re})'.format(re=r'\s+'.join(definition))
+                            try:
+                                macros[name] = macros.expand(definition)  # pylint: disable=unsubscriptable-object
+                            except KeyError:
+                                raise error('duplicate macro definition: {}'.format(name))
+                        else:
+                            raise error('malformed @-command')
                     else:
-                        regexes += [
-                            r'\s+'.join(line)
-                        ]
+                        regex = r'\s+'.join(line)
+                        regex = macros.expand(regex)
+                        regexes += [regex]
             break
         if regexes:
             regex = r'\b(?:(?i){0})\b'.format(

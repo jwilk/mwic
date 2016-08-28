@@ -121,6 +121,10 @@ class Dictionary(object):
                             (_, name, _, *definition) = line
                             definition = r'(?:{re})'.format(re=r'\s+'.join(definition))
                             try:
+                                re.compile(definition)
+                            except re.error as exc:  # no coverage
+                                raise error(exc)
+                            try:
                                 macros[name] = macros.expand(definition)  # pylint: disable=unsubscriptable-object
                             except KeyError:  # no coverage
                                 raise error('duplicate macro definition: {}'.format(name))
@@ -129,6 +133,10 @@ class Dictionary(object):
                     else:
                         regex = r'\s+'.join(line)
                         regex = macros.expand(regex)
+                        try:
+                            re.compile(regex)
+                        except re.error as exc:  # no coverage
+                            raise error(exc)
                         regexes += [regex]
             break
         if regexes:

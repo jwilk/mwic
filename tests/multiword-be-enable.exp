@@ -1,77 +1,41 @@
-ain't disable:
-| I ain't disable.
-    ^^^^^^^^^^^^^
+He's enable:
+| He's enable.
+  ^^^^^^^^^^^
+
+He's not enable:
+| He's not enable.
+  ^^^^^^^^^^^^^^^
 
 ain't enable:
 | I ain't enable.
     ^^^^^^^^^^^^
 
-am disable:
-| I am disable.
-    ^^^^^^^^^^
-
 am enable:
 | I am enable.
     ^^^^^^^^^
 
-am not disable:
-| I am not disable.
-    ^^^^^^^^^^^^^^
+I'm enable:
+| I'm enable.
+  ^^^^^^^^^^
 
-am not enable:
-| I am not enable.
-    ^^^^^^^^^^^^^
-
-been disable:
-| It has been disable.
-         ^^^^^^^^^^^^
+I'm not enable:
+| I'm not enable.
+  ^^^^^^^^^^^^^^
 
 been enable:
 | It has been enable.
          ^^^^^^^^^^^
 
-been not disable:
-| It has been not disable.
-         ^^^^^^^^^^^^^^^^
-
-been not enable:
-| It has been not enable.
-         ^^^^^^^^^^^^^^^
-
-being disable:
-| It is being disable.
-        ^^^^^^^^^^^^^
-
 being enable:
 | It is being enable.
         ^^^^^^^^^^^^
-
-being not disable:
-| It is being not disable.
-        ^^^^^^^^^^^^^^^^^
-
-being not enable:
-| It is being not enable.
-        ^^^^^^^^^^^^^^^^
-
-is disable:
-| It is disable.
-     ^^^^^^^^^^
 
 is enable:
 | It is enable.
      ^^^^^^^^^
 
-is not disable:
-| It is not disable
-     ^^^^^^^^^^^^^^
-
 is not enable:
 | It is not enable.
-     ^^^^^^^^^^^^^
-
-isn't disable:
-| It isn't disable.
      ^^^^^^^^^^^^^
 
 isn't enable:
@@ -82,63 +46,67 @@ was enable:
 | It was enable.
      ^^^^^^^^^^
 
-was not disable:
-| It was not disable
-     ^^^^^^^^^^^^^^^
-
 was not enable:
 | It was not enable.
-     ^^^^^^^^^^^^^^
-
-wasn't disable:
-| It wasn't disable.
      ^^^^^^^^^^^^^^
 
 wasn't enable:
 | It wasn't enable.
      ^^^^^^^^^^^^^
 
-be disable:
-| It will be disable.
-          ^^^^^^^^^^
-
 be enable:
 | It will be enable.
           ^^^^^^^^^
 
-be not disable:
-| It will be not disable.
-          ^^^^^^^^^^^^^^
+It's enable:
+| It's enable.
+  ^^^^^^^^^^^
 
-be not enable:
-| It will be not enable.
-          ^^^^^^^^^^^^^
+It's not enable:
+| It's not enable.
+  ^^^^^^^^^^^^^^^
 
-were disable:
-| They were disable
-       ^^^^^^^^^^^^
+She's enable:
+| She's enable.
+  ^^^^^^^^^^^^
+
+She's not enable:
+| She's not enable.
+  ^^^^^^^^^^^^^^^^
 
 were enable:
 | They were enable.
        ^^^^^^^^^^^
 
-were not disable:
-| They were not disable.
-       ^^^^^^^^^^^^^^^^
-
 were not enable:
 | They were not enable.
-       ^^^^^^^^^^^^^^^
-
-weren't disable:
-| They weren't disable.
        ^^^^^^^^^^^^^^^
 
 weren't enable:
 | They weren't enable.
        ^^^^^^^^^^^^^^
 
-was disable:
-| it was disable.
-     ^^^^^^^^^^^
+They're enable:
+| They're enable.
+  ^^^^^^^^^^^^^^
+
+They're not enable:
+| They're not enable.
+  ^^^^^^^^^^^^^^^^^^
+
+We're enable:
+| We're enable.
+  ^^^^^^^^^^^^
+
+We're not enable:
+| We're not enable.
+  ^^^^^^^^^^^^^^^^
+
+You're enable:
+| You're enable.
+  ^^^^^^^^^^^^^
+
+You're not enable:
+| You're not enable.
+  ^^^^^^^^^^^^^^^^^
 

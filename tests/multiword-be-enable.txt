@@ -1,41 +1,29 @@
+I'm enable.
 I am enable.
-It will be enable.
+He's enable.
+She's enable.
+It's enable.
 It is enable.
 It was enable.
+You're enable.
+We're enable.
+They're enable.
 They were enable.
+It will be enable.
 It has been enable.
 It is being enable.
 
-I am disable.
-It will be disable.
-It is disable.
-it was disable.
-They were disable
-It has been disable.
-It is being disable.
-
-I am not enable.
-It will be not enable.
-It is not enable.
-It was not enable.
-They were not enable.
-It has been not enable.
-It is being not enable.
-
-I am not disable.
-It will be not disable.
-It is not disable
-It was not disable
-They were not disable.
-It has been not disable.
-It is being not disable.
-
+I'm not enable.
 I ain't enable.
+He's not enable.
+She's not enable.
+It's not enable.
 It isn't enable.
+It is not enable.
 It wasn't enable.
+It was not enable.
+You're not enable.
+We're not enable.
+They're not enable.
 They weren't enable.
-
-I ain't disable.
-It isn't disable.
-It wasn't disable.
-They weren't disable.
+They were not enable.

@@ -1,3 +1,11 @@
+He's not ran:
+| He's not ran.
+  ^^^^^^^^^^^^
+
+He's ran:
+| He's ran.
+  ^^^^^^^^
+
 ain't ran:
 | I ain't ran.
     ^^^^^^^^^
@@ -5,6 +13,14 @@ ain't ran:
 am ran:
 | I am ran.
     ^^^^^^
+
+I'm not ran:
+| I'm not ran.
+  ^^^^^^^^^^^
+
+I'm ran:
+| I'm ran.
+  ^^^^^^^
 
 been ran:
 | It has been ran.
@@ -42,6 +58,22 @@ be ran:
 | It will be ran.
           ^^^^^^
 
+It's not ran:
+| It's not ran.
+  ^^^^^^^^^^^^
+
+It's ran:
+| It's ran.
+  ^^^^^^^^
+
+She's not ran:
+| She's not ran.
+  ^^^^^^^^^^^^^
+
+She's ran:
+| She's ran.
+  ^^^^^^^^^
+
 were not ran:
 | They were not ran.
        ^^^^^^^^^^^^
@@ -53,4 +85,28 @@ were ran:
 weren't ran:
 | They weren't ran.
        ^^^^^^^^^^^
+
+They're not ran:
+| They're not ran.
+  ^^^^^^^^^^^^^^^
+
+They're ran:
+| They're ran.
+  ^^^^^^^^^^^
+
+We're not ran:
+| We're not ran.
+  ^^^^^^^^^^^^^
+
+We're ran:
+| We're ran.
+  ^^^^^^^^^
+
+You're not ran:
+| You're not ran.
+  ^^^^^^^^^^^^^^
+
+You're ran:
+| You're ran.
+  ^^^^^^^^^^
 

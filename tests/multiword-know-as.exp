@@ -1,6 +1,26 @@
+He's know as:
+| He's know as ...
+  ^^^^^^^^^^^^
+
+He's not know as:
+| He's not know as ...
+  ^^^^^^^^^^^^^^^^
+
+ain't know as:
+| I ain't know as ...
+    ^^^^^^^^^^^^^
+
 am know as:
 | I am know as ...
     ^^^^^^^^^^
+
+I'm know as:
+| I'm know as ...
+  ^^^^^^^^^^^
+
+I'm not know as:
+| I'm not know as ...
+  ^^^^^^^^^^^^^^^
 
 been know as:
 | It has been know as ...
@@ -22,19 +42,79 @@ is know as:
 | It is know as ...
      ^^^^^^^^^^
 
+is not know as:
+| It is not know as ...
+     ^^^^^^^^^^^^^^
+
+isn't know as:
+| It isn't know as ...
+     ^^^^^^^^^^^^^
+
 was know as:
 | It was know as ...
      ^^^^^^^^^^^
+
+was not know as:
+| It was not know as ...
+     ^^^^^^^^^^^^^^^
+
+wasn't know as:
+| It wasn't know as ...
+     ^^^^^^^^^^^^^^
 
 be know as:
 | It will be know as ...
           ^^^^^^^^^^
 
-are know as:
-| They are know as ...
-       ^^^^^^^^^^^
+It's know as:
+| It's know as ...
+  ^^^^^^^^^^^^
+
+It's not know as:
+| It's not know as ...
+  ^^^^^^^^^^^^^^^^
+
+She's know as:
+| She's know as ...
+  ^^^^^^^^^^^^^
+
+She's not know as:
+| She's not know as ...
+  ^^^^^^^^^^^^^^^^^
 
 were know as:
 | They were know as ...
        ^^^^^^^^^^^^
+
+were not know as:
+| They were not know as ...
+       ^^^^^^^^^^^^^^^^
+
+weren't know as:
+| They weren't know as ...
+       ^^^^^^^^^^^^^^^
+
+They're know as:
+| They're know as ...
+  ^^^^^^^^^^^^^^^
+
+They're not know as:
+| They're not know as ...
+  ^^^^^^^^^^^^^^^^^^^
+
+We're know as:
+| We're know as ...
+  ^^^^^^^^^^^^^
+
+We're not know as:
+| We're not know as ...
+  ^^^^^^^^^^^^^^^^^
+
+You're know as:
+| You're know as ...
+  ^^^^^^^^^^^^^^
+
+You're not know as:
+| You're not know as ...
+  ^^^^^^^^^^^^^^^^^^
 

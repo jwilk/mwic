@@ -51,7 +51,7 @@ class Macros(object):
 
     def __setitem__(self, name, definition):
         if name in self._defs:
-            raise KeyError(name)
+            raise KeyError(name)  # no coverage
         self._defs[name] = definition
         self._regex = None
         self._substs = None
@@ -78,7 +78,7 @@ class Macros(object):
             for i, subst in enumerate(substs):
                 if match.group('mwic{i}'.format(i=i)) is not None:
                     return subst
-            assert False
+            assert False  # no coverage
         return self._regex.sub(replace, s)
 
 class Dictionary(object):
@@ -101,7 +101,7 @@ class Dictionary(object):
                     break
             macros = Macros()
             n = None  # hi, pylint
-            def error(reason):
+            def error(reason):  # no coverage
                 return SyntaxError(reason, (file.name, n, 0, whole_line))
             with file:
                 for n, line in enumerate(file, 1):
@@ -122,10 +122,10 @@ class Dictionary(object):
                             definition = r'(?:{re})'.format(re=r'\s+'.join(definition))
                             try:
                                 macros[name] = macros.expand(definition)  # pylint: disable=unsubscriptable-object
-                            except KeyError:
+                            except KeyError:  # no coverage
                                 raise error('duplicate macro definition: {}'.format(name))
                         else:
-                            raise error('malformed @-command')
+                            raise error('malformed @-command')  # no coverage
                     else:
                         regex = r'\s+'.join(line)
                         regex = macros.expand(regex)

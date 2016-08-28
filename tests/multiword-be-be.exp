@@ -1,0 +1,48 @@
+He's is:
+| He's is a duplicate.
+  ^^^^^^^
+
+am been:
+| I am been a duplicate.
+    ^^^^^^^
+
+I'm am:
+| I'm am a duplicate.
+  ^^^^^^
+
+is been:
+| It is been a duplicate.
+     ^^^^^^^
+
+being being:
+| It is being being a duplicate.
+        ^^^^^^^^^^^
+
+was been:
+| It was been a duplicate.
+     ^^^^^^^^
+
+It's is:
+| It's is a duplicate.
+  ^^^^^^^
+
+She's is:
+| She's is a duplicate.
+  ^^^^^^^^
+
+were been:
+| They were been a duplicate.
+       ^^^^^^^^^
+
+They're are:
+| They're are duplicates.
+  ^^^^^^^^^^^
+
+We're are:
+| We're are duplicates.
+  ^^^^^^^^^
+
+You're are:
+| You're are a duplicate.
+  ^^^^^^^^^^
+

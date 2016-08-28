@@ -13,6 +13,9 @@ the an
 
 [a-z]+n't not
 
+$BE (?!being|been)$BE
+$BE(?<!’s) been
+
 # allow VERB to → allow VERBing | allow SB VERB
 allow(ing|s)? to
 permit(ing|s)? to

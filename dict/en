@@ -1,5 +1,5 @@
 @define ’ = ['’]
-@define $BE = be|am|ain’t|I’m|is(n’t)?|(he|she|it)’s|are(n’t)?|we’re|was(n’t)?|were(n’t)?|(you|we)’re|been|being
+@define $BE = be|am|ain’t|I’m|is(n’t)?|(he|she|it)’s|are(n’t)?|was(n’t)?|were(n’t)?|(you|we)’re|been|being
 
 # X X → X
 (?P<dupl>[A-Za-z]+(’[a-z]+)*) (?P=dupl)

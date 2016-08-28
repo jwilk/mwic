@@ -1,0 +1,64 @@
+ain't not:
+| I ain't not duplicate.
+    ^^^^^^^^^
+
+couldn't not:
+| It couldn't not duplicate.
+     ^^^^^^^^^^^^
+
+didn't not:
+| It didn't not duplicate.
+     ^^^^^^^^^^
+
+doesn't not:
+| It doesn't not duplicate.
+     ^^^^^^^^^^^
+
+hasn't not:
+| It hasn't not duplicated.
+     ^^^^^^^^^^
+
+isn't not:
+| It isn't not duplicate.
+     ^^^^^^^^^
+
+mustn't not:
+| It mustn't not duplicate.
+     ^^^^^^^^^^^
+
+oughtn't not:
+| It oughtn't not duplicate.
+     ^^^^^^^^^^^^
+
+shouldn't not:
+| It shouldn't not duplicate.
+     ^^^^^^^^^^^^^
+
+wasn't not:
+| It wasn't not duplicate.
+     ^^^^^^^^^^
+
+wouldn't not:
+| It wouldn't not duplicate.
+     ^^^^^^^^^^^^
+
+aren't not:
+| They aren't not duplicates.
+       ^^^^^^^^^^
+
+can't not:
+| They can't not be duplicates.
+       ^^^^^^^^^
+
+don't not:
+| They don't not duplicate.
+       ^^^^^^^^^
+
+haven't not:
+| They haven't not duplicated.
+       ^^^^^^^^^^^
+
+weren't not:
+| They weren't not duplicates.
+       ^^^^^^^^^^^
+

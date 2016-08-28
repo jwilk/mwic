@@ -11,6 +11,8 @@ an the
 the a
 the an
 
+[a-z]+n't not
+
 # allow VERB to → allow VERBing | allow SB VERB
 allow(ing|s)? to
 permit(ing|s)? to

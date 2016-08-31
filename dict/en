@@ -1,15 +1,11 @@
 @define ’ = ['’]
 @define $BE = be|am|ain’t|I’m|is(n’t)?|(he|she|it)’s|are(n’t)?|was(n’t)?|were(n’t)?|(you|we|they)’re|been|being
+@define $ART = a|an|the
 
 # X X → X
 (?P<dupl>[A-Za-z]+(’[a-z]+)*) (?P=dupl)
 
-a an
-a the
-an a
-an the
-the a
-the an
+$ART $ART
 
 [a-z]+n't not
 
@@ -23,7 +19,7 @@ permit(ing|s)? to
 # let's SB → lets SB
 let’s one
 let’s (me|you|him|her|it|us|them)
-let’s (a|an|the)
+let’s $ART
 
 # BE enable → BE enabled
 $BE (enable|disable)
@@ -131,8 +127,7 @@ to an extend(?=[,;.])
 it’s own
 
 # its ART → it's ART
-its an?
-its the
+its $ART
 
 # its not → it's not
 its not(?!-)

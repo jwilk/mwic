@@ -135,6 +135,9 @@ its not(?!-)
 # some times → sometimes
 some times(?! of)
 
+# an other → another
+an? other
+
 # an → a
 an Unicode
 an unary

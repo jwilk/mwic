@@ -2,8 +2,8 @@ allow to:
 | I allow to go.
     ^^^^^^^^
 
-authorize to:
-| I authorize to go.
+authorise to:
+| I authorise to go.
     ^^^^^^^^^^^^
 
 permit to:
@@ -14,35 +14,35 @@ allowing to:
 | I'm allowing to go.
       ^^^^^^^^^^^
 
-authorizing to:
-| I'm authorizing to go.
+authorising to:
+| I'm authorising to go.
       ^^^^^^^^^^^^^^
 
 allows to:
 | It allows to go.
      ^^^^^^^^^
 
-authorizes to:
-| It authorizes to go.
+authorises to:
+| It authorises to go.
      ^^^^^^^^^^^^^
 
 permits to:
 | It permits to go.
      ^^^^^^^^^^
 
-authorise:
-| I authorise to go.
+authorize:
+| I authorize to go.
     ^^^^^^^^^
 
-authorised:
-| I'm authorised to go.
+authorized:
+| I'm authorized to go.
       ^^^^^^^^^^
 
-authorising:
-| I'm authorising to go.
+authorizing:
+| I'm authorizing to go.
       ^^^^^^^^^^^
 
-authorises:
-| It authorises to go.
+authorizes:
+| It authorizes to go.
      ^^^^^^^^^^
 

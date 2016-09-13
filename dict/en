@@ -14,6 +14,8 @@ $BE(?<!’s) been
 
 # allow VERB to → allow VERBing | allow SB VERB
 allow(ing|s)? to
+authoris(e|ing|es) to
+authoriz(e|ing|es) to
 permit(ing|s)? to
 
 # let's SB → lets SB

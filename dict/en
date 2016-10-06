@@ -7,7 +7,7 @@
 
 $ART $ART
 
-[a-z]+n't not
+[a-z]+n’t not
 
 $BE (?!being|been)$BE
 $BE(?<!’s) been

@@ -2,8 +2,9 @@ mwic (0.7.2) UNRELEASED; urgency=low
 
   * Add new multi-word misspellings to the dictionary.
   * Add new words to the whitelist.
+  * Put license into a separate file.
 
- -- Jakub Wilk <jwilk@jwilk.net>  Thu, 15 Sep 2016 21:29:20 +0200
+ -- Jakub Wilk <jwilk@jwilk.net>  Fri, 21 Oct 2016 13:24:41 +0200
 
 mwic (0.7.1) unstable; urgency=low
 

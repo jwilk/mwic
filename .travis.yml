@@ -5,7 +5,7 @@ python:
 - "3.4"
 - "3.5"
 - "3.6-dev"
-- nightly
+- "3.7-dev"
 - pypy3
 matrix:
   allow_failures:

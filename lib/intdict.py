@@ -102,7 +102,7 @@ class Dictionary(object):
             macros = Macros()
             n = None  # hi, pylint
             def error(reason):  # no coverage
-                return SyntaxError(reason, (file.name, n, 0, whole_line))
+                return SyntaxError(reason, (file.name, n, 1, whole_line))
             with file:
                 for n, line in enumerate(file, 1):
                     whole_line = line

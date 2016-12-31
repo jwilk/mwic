@@ -33,6 +33,7 @@ basedir = '{here}/..'.format(here=here)
 def find_files(root, ext):
     suffix = '.' + ext
     for root, dirs, files in os.walk(root):
+        del dirs
         for path in files:
             if not path.endswith(suffix):
                 continue

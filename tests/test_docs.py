@@ -48,14 +48,17 @@ def test_rst():
         except ImportError as exc:
             raise nose.SkipTest(exc)
         try:
-            with open(path, 'rb') as file:
-                docutils.core.publish_file(file, settings_overrides=dict(
+            docutils.core.publish_file(
+                source_path=path,
+                destination_path=os.devnull,
+                settings_overrides=dict(
                     input_encoding='UTF-8',
                     output_encoding='UTF-8',
                     report_level=999,
                     halt_level=0,
                     warning_stream=os.devnull,
-                ))
+                )
+            )
         except docutils.utils.SystemMessage as exc:
             match = re.match(r'\A([^\s:]+):(\d+): (.+)', str(exc))
             if match is None:

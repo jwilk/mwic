@@ -150,6 +150,9 @@ oft he
 ont he
 tot he
 
+# it us → it is
+(?<!$BE )it us
+
 # an → a
 an Unicode
 an unary

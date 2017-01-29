@@ -1,5 +1,5 @@
-food (e.g, spam)
-food (e.g., spam)
+food (e.g, sausage)
+food (e.g., sausage)
 
-spam (i.e, ham that didn't pass its physical)
-spam (i.e., ham that didn't pass its physical)
+sausage (i.e, highly seasoned minced meat stuffed in casings)
+sausage (i.e., highly seasoned minced meat stuffed in casings)

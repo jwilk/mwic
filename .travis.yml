@@ -27,6 +27,7 @@ install:
 - \[ "$TRAVIS_PYTHON_VERSION" = "3.2" ] || pip install pylint
 - pip install docutils
 script:
+- ./mwic --version
 - tests/run-tests --verbose
 - private/run-pyflakes
 - \[ "$TRAVIS_PYTHON_VERSION" = "3.2" ] || private/run-pylint

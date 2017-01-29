@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Copyright © 2015 Jakub Wilk <jwilk@jwilk.net>
+# Copyright © 2016 Jakub Wilk <jwilk@jwilk.net>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the “Software”), to deal
@@ -20,7 +20,14 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-pyflakes=$(command -v pyflakes) || { echo pyflakes not found >&2; exit 1; }
-exec python3 "$pyflakes" "$@" $(grep -l -r '^#!.*python' .) $(find -name '*.py')
+PYTHON=${PYTHON:-python3}
+"$PYTHON" -m pyflakes --version > /dev/null || exit 1
+if [ $# -eq 0 ]
+then
+    set -- \
+        $(grep -l -r '^#!.*python' .) \
+        $(find . -name '*.py')
+fi
+exec "$PYTHON" -m pyflakes "$@"
 
 # vim:ts=4 sts=4 sw=4 et

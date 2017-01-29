@@ -28,7 +28,7 @@ install:
 - pip install docutils
 script:
 - ./mwic --version
-- python3 -c 'import enchant, pprint; d = enchant.Dict("en"); pprint.pprint(vars(d))'
+- python3 -c 'import enchant, pprint; d = enchant.Dict("en-US"); pprint.pprint(vars(d))'
 - tests/run-tests --verbose
 - private/run-pyflakes
 - \[ "$TRAVIS_PYTHON_VERSION" = "3.2" ] || private/run-pylint

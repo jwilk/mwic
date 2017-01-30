@@ -68,7 +68,7 @@ def _test_text(xpath):
         try:
             file = open(altxpath, 'rt', encoding='UTF-8')
         except IOError as exc:
-            if exc.error == errno.ENOENT:
+            if exc.errno == errno.ENOENT:
                 pass
             else:
                 raise

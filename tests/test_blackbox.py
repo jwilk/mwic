@@ -18,6 +18,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+import errno
 import glob
 import io
 import os
@@ -62,6 +63,20 @@ def _test_text(xpath):
     text = _get_output(ipath, language)
     with open(xpath, 'rt', encoding='UTF-8') as file:
         expected = file.read()
+    if expected != text:
+        altxpath = xpath[:-4] + '.alt'
+        try:
+            file = open(altxpath, 'rt', encoding='UTF-8')
+        except IOError as exc:
+            if exc.error == errno.ENOENT:
+                pass
+            else:
+                raise
+        else:
+            with file:
+                alt_expected = file.read()
+            if alt_expected == text:
+                expected = alt_expected
     assert_multi_line_equal(expected, text)
 
 def test_text():

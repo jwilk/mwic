@@ -18,20 +18,25 @@ addons:
 cache:
   directories:
   - $HOME/.cache/pip
+before_install:
+- no_pylint=true
+- \[ "$TRAVIS_PYTHON_VERSION" = 3.2 ] ||
+  [[ "$TRAVIS_PYTHON_VERSION" =~ dev ]] ||
+  no_pylint=false
 install:
 - \[ "$TRAVIS_PYTHON_VERSION" = "3.2" ] || pip install --upgrade pip
 - pip install pyenchant
 - pip install regex
 - pip install nose
 - pip install pyflakes
-- \[ "$TRAVIS_PYTHON_VERSION" = "3.2" ] || pip install pylint
+- $no_pylint || pip install pylint
 - pip install docutils
 script:
 - ./mwic --version
 - python3 -c 'import enchant, pprint; d = enchant.Dict("en-US"); pprint.pprint(vars(d))'
 - tests/run-tests --verbose
 - private/run-pyflakes
-- \[ "$TRAVIS_PYTHON_VERSION" = "3.2" ] || private/run-pylint
+- $no_pylint || private/run-pylint
 - make -C doc
 
 # vim:ts=2 sts=2 sw=2 et

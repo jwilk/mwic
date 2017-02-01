@@ -33,7 +33,8 @@ install:
 - pip install docutils
 script:
 - ./mwic --version
-- python3 -c 'import enchant, pprint; d = enchant.Dict("en-US"); pprint.pprint(vars(d))'
+- ./mwic --debug-dict --lang en-US
+- ./mwic --debug-dict --lang en-GB
 - tests/run-tests --verbose
 - private/run-pyflakes
 - $no_pylint || private/run-pylint

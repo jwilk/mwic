@@ -97,6 +97,7 @@ def main():
         help='limit context width to N chars')
     ap.add_argument('--suggest', metavar='N', type=int, default=0,
         help='suggest up to N corrections')
+    ap.add_argument('--debug-dict', action='store_true', help=argparse.SUPPRESS)
     options = ap.parse_args()
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, 'UTF-8')
     try:
@@ -114,6 +115,14 @@ def main():
         spellcheck = functools.lru_cache(maxsize=None)(
             dictionary.check
         )
+    if options.debug_dict:
+        if dictionary is None:
+            dictvars = {}
+        else:
+            dictvars = vars(dictionary).items()
+        for key, value in sorted(dictvars):
+            print('{k} = {v!r}'.format(k=key, v=value))
+        sys.exit(0)
     intdict = lib.intdict.Dictionary(options.language)
     extdict = lib.extdict.Dictionary(*options.blacklist)
     misspellings = lib.data.Misspellings()

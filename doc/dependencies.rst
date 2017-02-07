@@ -28,7 +28,7 @@ For Debian users::
 .. _pyenchant:
    https://pypi.python.org/pypi/pyenchant
 .. _Enchant:
-   http://www.abisource.com/projects/enchant/
+   https://abiword.github.io/enchant/
 .. _docutils:
    http://docutils.sourceforge.net/
 

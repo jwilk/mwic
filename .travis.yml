@@ -28,6 +28,7 @@ install:
 - pip install pyenchant
 - pip install regex
 - pip install nose
+- pip install pydiatra
 - pip install pyflakes
 - $no_pylint || pip install pylint
 - pip install docutils
@@ -36,6 +37,7 @@ script:
 - ./mwic --debug-dict --lang en-US
 - ./mwic --debug-dict --lang en-GB
 - tests/run-tests --verbose
+- private/run-pydiatra
 - private/run-pyflakes
 - $no_pylint || private/run-pylint
 - make -C doc

@@ -143,6 +143,9 @@ some times(?! of)
 # an other → another
 an? other
 
+# an another → another
+an? another
+
 # Xt he → X the
 byt he
 fort he

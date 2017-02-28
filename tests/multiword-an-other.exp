@@ -1,6 +1,14 @@
+a another:
+| a another object
+  ^^^^^^^^^
+
 a other:
 | a other object
   ^^^^^^^
+
+an another:
+| an another object
+  ^^^^^^^^^^
 
 an other:
 | an other object

@@ -159,6 +159,9 @@ tot he
 # it us → it is
 (?<!$BE )it us
 
+# don't user → don't use
+do(es)?n’t user
+
 # an → a
 an Unicode
 an unary

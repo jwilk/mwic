@@ -1,6 +1,9 @@
 mwic (0.7.3) UNRELEASED; urgency=low
 
   * Add new multi-word misspellings to the dictionary.
+  * Add experimental script to spell-check PO files.
+  * Make the doc makefile more portable.
+  * Update Enchant homepage URL.
   * Improve the test suite.
 
  -- Jakub Wilk <jwilk@jwilk.net>  Fri, 17 Mar 2017 19:29:59 +0100

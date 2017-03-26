@@ -110,7 +110,7 @@ but it can use a number of dictionaries from third-party projects:
 
 * Linux kernel:
 
-  | https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/plain/scripts/spelling.txt
+  | https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/plain/scripts/spelling.txt
 
 * codespell:
 

@@ -1,8 +1,9 @@
 mwic (0.7.4) UNRELEASED; urgency=low
 
+  * Update Linux kernel URL in the manual page.
   * Add new multi-word misspellings to the dictionary.
 
- -- Jakub Wilk <jwilk@jwilk.net>  Sat, 08 Apr 2017 19:32:54 +0200
+ -- Jakub Wilk <jwilk@jwilk.net>  Sat, 08 Apr 2017 19:34:50 +0200
 
 mwic (0.7.3) unstable; urgency=low
 

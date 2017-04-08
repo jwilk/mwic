@@ -113,6 +113,9 @@ also [A-Za-z]+(’[a-z]+)* also
 # e.t.c. → etc.
 e[.]t[.]c
 
+# a.k.a → a.k.a.
+a[.]k[.]a(?![.])
+
 # Blu-Ray → Blu-ray
 # Blue-ray → Blu-ray
 (?-i:Blu-Ray)

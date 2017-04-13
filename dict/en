@@ -165,6 +165,9 @@ tot he
 # don't user → don't use
 do(es)?n’t user
 
+# ISO 8895 (etc.) → ISO 8859
+iso( |[_-])?(8858|8895|8559|5589)
+
 # an → a
 an Unicode
 an unary

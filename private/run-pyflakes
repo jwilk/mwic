@@ -21,7 +21,6 @@
 # SOFTWARE.
 
 PYTHON=${PYTHON:-python3}
-"$PYTHON" -m pyflakes --version > /dev/null || exit 1
 if [ $# -eq 0 ]
 then
     set -- \

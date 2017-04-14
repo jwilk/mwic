@@ -232,7 +232,7 @@ def print_common_misspellings(ctxt):
             in occurrences.sorted_context()
         ]
         lwidth = max(len(lcontext) for lcontext, _, _, in occurrences)
-        for lcontext, word, rcontext in occurrences:
+        for lcontext, word, rcontext in occurrences:  # pylint: disable=redefined-outer-name
             lcontext = lcontext.rjust(lwidth)
             if options.output_format == 'color':
                 lcontext = lib.colors.escape(lcontext)
@@ -257,7 +257,7 @@ def print_rare_misspellings(ctxt):
     for line, occurrences in ctxt.rare_misspellings.sorted_lines(reverse=options.reverse):
         header = []
         underline = bytearray(b' ' * len(line))
-        for word, line, positions in sorted(occurrences):
+        for word, line, positions in sorted(occurrences):  # pylint: disable=redefined-outer-name
             if use_color and (max(positions.values()) > 0):
                 underline_char = b'!'
             else:
@@ -305,7 +305,7 @@ def print_rare_misspellings(ctxt):
             print()
 
 class list_languages(argparse.Action):
-    def __call__(self, *args, **kwargs):
+    def __call__(self, *args, **kwargs):  # pylint: disable=arguments-differ
         for lang in sorted(enchant.list_languages()):
             print(lang)
         sys.exit(0)

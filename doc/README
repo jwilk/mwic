@@ -1,3 +1,12 @@
+Overview
+========
+
+**mwic** is a spell-checker that groups possible misspellings and shows them in their contexts.
+This is useful for checking technical documents that often contain words that are not included in standard dictionaries.
+
+Prerequisites
+=============
+
 The following software is needed to run mwic:
 
 * Python ≥ 3.2;
@@ -32,4 +41,4 @@ For Debian users::
 .. _docutils:
    http://docutils.sourceforge.net/
 
-.. vim:ts=3 sts=3 sw=3
+.. vim:ts=3 sts=3 sw=3 ft=rst

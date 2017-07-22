@@ -23,7 +23,8 @@ before_install:
   no_pylint=false
 install:
 - \[ "$TRAVIS_PYTHON_VERSION" = "3.2" ] || pip install --upgrade pip
-- pip install pyenchant
+- \[ "$TRAVIS_PYTHON_VERSION" != "3.2" ] || PYENCHANT_VERSION=1.6.8
+- pip install pyenchant${PYENCHANT_VERSION:+==$PYENCHANT_VERSION}
 - pip install regex
 - pip install nose
 - pip install pydiatra

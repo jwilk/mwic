@@ -33,6 +33,6 @@ $(exe).1: manpage.rst
 
 .PHONY: clean
 clean:
-	rm -f $(exe).1
+	rm -f $(exe).1 *.tmp
 
 # vim:ts=4 sts=4 sw=4 noet

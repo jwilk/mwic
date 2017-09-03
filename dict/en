@@ -27,6 +27,10 @@ let’s $ART
 $BE (enable|disable)
 $BE not (enable|disable)
 
+# BE suppose → BE supposed
+$BE suppose
+$BE not suppose
+
 # BE consisted of → BE consist of
 $BE consisted of
 $BE not consisted of

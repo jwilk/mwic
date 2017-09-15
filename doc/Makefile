@@ -29,6 +29,7 @@ all: $(exe).1
 $(exe).1: manpage.rst
 	$(rst2man) --input-encoding=UTF-8 < $(<) > $(@).tmp
 	perl -pi -e '/^[.]BI\b/ and s/\\fP/\\fR/g' $(@).tmp  # work-around for https://bugs.debian.org/806601
+	perl -pi -e 's/([a-z])\\[(]aq([a-z])/$$1\x27$$2/g' $(@).tmp  # prefer ' to \(aq when used as an apostrophe
 	mv $(@).tmp $(@)
 
 .PHONY: clean

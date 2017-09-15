@@ -27,12 +27,12 @@ import itertools
 import unicodedata
 
 class _seq:
-    dim = '\x1b[1;30m'
-    off = '\x1b[0m'
-    warn = '\x1b[30;43m'
-    error = '\x1b[30;41m'
-    reverse = '\x1b[7m'
-    unreverse = '\x1b[27m'
+    dim = '\x1B[1;30m'
+    off = '\x1B[0m'
+    warn = '\x1B[30;43m'
+    error = '\x1B[30;41m'
+    reverse = '\x1B[7m'
+    unreverse = '\x1B[27m'
 
 def dim(s):
     return _seq.dim + escape(s) + _seq.off

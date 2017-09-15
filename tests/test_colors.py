@@ -41,7 +41,7 @@ def with_stdout(encoding):
 def test_control_characters():
     def t(s, x):
         r = M.escape(s)
-        assert_equal(r, '\x1b[7m' + x + '\x1b[27m')
+        assert_equal(r, '\x1B[7m' + x + '\x1B[27m')
     t('\x00', '^@')
     t('\x01', '^A')
     t('\x02', '^B')

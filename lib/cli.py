@@ -23,9 +23,9 @@ the command-line interface
 '''
 
 import argparse
+import functools
 import io
 import sys
-import functools
 
 import enchant.tokenize
 

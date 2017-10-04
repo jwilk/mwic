@@ -25,6 +25,7 @@ the command-line interface
 import argparse
 import functools
 import io
+import signal
 import sys
 
 import enchant.tokenize
@@ -66,6 +67,7 @@ class VersionAction(argparse.Action):
         parser.exit()
 
 def main():
+    signal.signal(signal.SIGPIPE, signal.SIG_DFL)
     ap = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter)
     ap.add_argument('--version', action=VersionAction)
     ap.add_argument('files', metavar='FILE', nargs='*', default=['-'],

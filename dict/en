@@ -63,6 +63,14 @@ must of(?! course)
 should of(?! course)
 would of(?! course)
 
+# AUX't → AUXn't
+(ai|is|are|was|were)’t
+(does|do)’t
+(has|have)’t
+could’t
+should’t
+would’t
+
 # sneak peak → sneak peek
 sneak peak
 

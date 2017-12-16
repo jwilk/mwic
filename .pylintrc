@@ -3,6 +3,7 @@ disable =
     bad-builtin,
     bad-continuation,
     fixme,
+    inconsistent-return-statements,
     invalid-name,
     locally-disabled,
     no-self-use,

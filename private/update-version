@@ -4,5 +4,6 @@ version=${1:?"no version number provided"}
 PS4='$ '
 set -x
 dch -m -v "$version" -u low -c doc/changelog
-sed -i -E -e "s/(__version__) = '\S+'/\1 = '$version'/" lib/*.py
-sed -i -E -e "s/^(:version: \S+) \S+$/\1 $version/" doc/*.rst
+export version
+perl -pi -e 's/^__version__ = '"'"'\K[\w.]+/$ENV{version}/' lib/*.py
+perl -pi -e 's/^:version: \S+ \K[\w.]+/$ENV{version}/' doc/*.rst

@@ -22,7 +22,6 @@ before_install:
   [[ "$TRAVIS_PYTHON_VERSION" =~ dev ]] ||
   no_pylint=false
 install:
-- \[ "$TRAVIS_PYTHON_VERSION" = "3.2" ] || pip install --upgrade pip
 - \[ "$TRAVIS_PYTHON_VERSION" != "3.2" ] || PYENCHANT_VERSION=1.6.8
 - pip install pyenchant${PYENCHANT_VERSION:+==$PYENCHANT_VERSION}
 - pip install regex

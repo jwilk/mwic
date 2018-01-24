@@ -1,4 +1,4 @@
-mwic (0.7.4) UNRELEASED; urgency=low
+mwic (0.7.4) unstable; urgency=low
 
   * Update Linux kernel URL in the manual page.
   * Add new multi-word misspellings to the dictionary.
@@ -6,7 +6,7 @@ mwic (0.7.4) UNRELEASED; urgency=low
   * Reset the SIGPIPE signal disposition.
   * Improve the test suite.
 
- -- Jakub Wilk <jwilk@jwilk.net>  Wed, 24 Jan 2018 15:53:29 +0100
+ -- Jakub Wilk <jwilk@jwilk.net>  Wed, 24 Jan 2018 16:07:49 +0100
 
 mwic (0.7.3) unstable; urgency=low
 

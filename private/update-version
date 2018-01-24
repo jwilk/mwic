@@ -1,9 +1,8 @@
 #!/bin/sh
 set -e -u
-version=${1:?"no version number provided"}
+export version=${1:?"no version number provided"}
 PS4='$ '
 set -x
 dch -m -v "$version" -u low -c doc/changelog
-export version
 perl -pi -e 's/^__version__ = '"'"'\K[\w.]+/$ENV{version}/' lib/*.py
 perl -pi -e 's/^:version: \S+ \K[\w.]+/$ENV{version}/' doc/*.rst

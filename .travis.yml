@@ -22,8 +22,8 @@ before_install:
   [[ "$TRAVIS_PYTHON_VERSION" =~ dev ]] ||
   no_pylint=false
 install:
-- \[ "$TRAVIS_PYTHON_VERSION" != "3.2" ] || PYENCHANT_VERSION=1.6.8
-- pip install pyenchant${PYENCHANT_VERSION:+==$PYENCHANT_VERSION}
+- \[ "$TRAVIS_PYTHON_VERSION" != "3.2" ] || pyenchant_suffix===1.6.8
+- pip install pyenchant${pyenchant_suffix}
 - pip install regex
 - pip install nose
 - pip install pydiatra

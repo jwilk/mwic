@@ -25,9 +25,7 @@ install:
 - \[ "$TRAVIS_PYTHON_VERSION" != "3.2" ] || pyenchant_suffix===1.6.8
 - pip install pyenchant${pyenchant_suffix}
 - pip install regex
-- pip install nose
-- pip install pydiatra
-- pip install pyflakes
+- pip install pydiatra pyflakes
 - $no_pylint || pip install pylint
 - pip install docutils
 script:

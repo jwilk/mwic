@@ -39,6 +39,7 @@ script:
 - private/check-rst
 - make -C doc
 - make install PREFIX=~/.local
+- cd /
 - mwic --help
 - export MANPATH=~/.local/share/man MANWIDTH=80
 - man 1 mwic | grep -A 10 -w MWIC

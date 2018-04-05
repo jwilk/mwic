@@ -17,16 +17,14 @@ cache:
   directories:
   - $HOME/.cache/pip
 before_install:
-- no_pylint=true
-- \[ "$TRAVIS_PYTHON_VERSION" = 3.2 ] ||
-  [[ "$TRAVIS_PYTHON_VERSION" =~ dev ]] ||
-  no_pylint=false
+- if [[ $TRAVIS_PYTHON_VERSION = 3.2 ]]; then pyenchant_suffix===1.6.8; fi
+- if [[ $TRAVIS_PYTHON_VERSION = 3.2 ]]; then if_pylint=:; fi
+- if [[ $TRAVIS_PYTHON_VERSION =~ dev ]]; then if_pylint=:; fi
 install:
-- \[ "$TRAVIS_PYTHON_VERSION" != "3.2" ] || pyenchant_suffix===1.6.8
 - pip install pyenchant${pyenchant_suffix}
 - pip install regex
 - pip install pydiatra pyflakes
-- $no_pylint || pip install pylint
+- $if_pylint pip install pylint
 - pip install docutils
 script:
 - ./mwic --version
@@ -35,7 +33,7 @@ script:
 - tests/run-tests --verbose
 - python3 -m pydiatra .
 - python3 -m pyflakes .
-- $no_pylint || private/run-pylint
+- $if_pylint  private/run-pylint
 - private/check-rst
 - make -C doc
 - make install PREFIX=~/.local

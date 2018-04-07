@@ -42,7 +42,7 @@ install:
 	# library + data:
 	( find lib dict -type f ! -name '*.py[co]' ) \
 	| xargs -t -I {} $(INSTALL) -p -D -m644 {} $(DESTDIR)$(basedir)/{}
-ifeq "$(wildcard .git doc/$(exe).1)" ".git"
+ifeq "$(wildcard doc/$(exe).1)" ""
 	# run "$(MAKE) -C doc" to build the manpage
 else
 	# manual page:

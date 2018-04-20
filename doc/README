@@ -34,9 +34,9 @@ For Debian users::
 
 
 .. _regex:
-   https://pypi.python.org/pypi/regex
+   https://pypi.org/project/regex/
 .. _pyenchant:
-   https://pypi.python.org/pypi/pyenchant
+   https://pypi.org/project/pyenchant/
 .. _Enchant:
    https://abiword.github.io/enchant/
 .. _docutils:

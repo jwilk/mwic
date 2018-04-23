@@ -105,8 +105,8 @@ but it can use a number of dictionaries from third-party projects:
 
 * Lintian:
 
-  | https://anonscm.debian.org/cgit/lintian/lintian.git/plain/data/spelling/corrections
-  | https://anonscm.debian.org/cgit/lintian/lintian.git/plain/data/spelling/corrections-case
+  | https://salsa.debian.org/lintian/lintian/raw/master/data/spelling/corrections
+  | https://salsa.debian.org/lintian/lintian/raw/master/data/spelling/corrections-case
 
 * Linux kernel:
 

@@ -23,8 +23,8 @@ external misspelling dictionary
 
 Supported dictionary formats:
 + Lintian
-  - <https://anonscm.debian.org/cgit/lintian/lintian.git/tree/data/spelling/corrections>
-  - <https://anonscm.debian.org/cgit/lintian/lintian.git/tree/data/spelling/corrections-case>
+  - <https://salsa.debian.org/lintian/lintian/raw/master/data/spelling/corrections>
+  - <https://salsa.debian.org/lintian/lintian/raw/master/data/spelling/corrections-case>
 + codespell <https://github.com/lucasdemarchi/codespell/blob/master/codespell_lib/data/dictionary.txt>
 + kde-spellcheck <https://github.com/KDE/kde-dev-scripts/blob/master/kde-spellcheck.pl>
 + plain word list

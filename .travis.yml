@@ -2,7 +2,6 @@ dist: trusty
 sudo: false
 language: python
 python:
-- "3.2"
 - "3.3"
 - "3.4"
 - "3.5"
@@ -17,11 +16,9 @@ cache:
   directories:
   - $HOME/.cache/pip
 before_install:
-- if [[ $TRAVIS_PYTHON_VERSION = 3.2 ]]; then pyenchant_suffix===1.6.8; fi
-- if [[ $TRAVIS_PYTHON_VERSION = 3.2 ]]; then if_pylint=:; fi
 - if [[ $TRAVIS_PYTHON_VERSION =~ dev ]]; then if_pylint=:; fi
 install:
-- pip install pyenchant${pyenchant_suffix}
+- pip install pyenchant
 - pip install regex
 - pip install pydiatra pyflakes
 - $if_pylint pip install pylint

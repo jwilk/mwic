@@ -27,6 +27,7 @@ import functools
 import io
 import signal
 import sys
+import types
 
 import enchant.tokenize
 
@@ -35,7 +36,6 @@ class lib:
     from . import data
     from . import extdict
     from . import intdict
-    from . import ns
     from . import pager
     from . import text
 
@@ -132,7 +132,7 @@ def main():
     enc_errors = 'strict'
     if ':' in encoding:
         [encoding, enc_errors] = encoding.rsplit(':', 1)
-    ctxt = lib.ns.Namespace(
+    ctxt = types.SimpleNamespace(
         dictionary=dictionary,
         intdict=intdict,
         extdict=extdict,

@@ -12,9 +12,7 @@ addons:
     packages:
     - libenchant-dev
     - aspell-en
-cache:
-  directories:
-  - $HOME/.cache/pip
+cache: pip
 before_install:
 - if [[ $TRAVIS_PYTHON_VERSION =~ dev ]]; then if_pylint=:; fi
 install:

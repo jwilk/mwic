@@ -25,16 +25,13 @@ automatic pager
 import contextlib
 import io
 import os
+import shutil
 import subprocess as ipc
 import sys
 
 def _find_command(command):
-    PATH = os.environ.get('PATH', os.defpath)
-    directories = PATH.split(os.pathsep)
-    for directory in directories:
-        path = os.path.join(directory, command)
-        if os.access(path, os.X_OK):
-            return command
+    if shutil.which(command):
+        return command
 
 def get_default_pager():
     # Use "pager" if it exist:

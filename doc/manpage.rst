@@ -17,7 +17,8 @@ Synopsis
 Description
 -----------
 **mwic** is a spell-checker that groups possible misspellings and shows them in their contexts.
-This is useful for checking technical documents that often contain words that are not included in standard dictionaries.
+This is useful for checking technical documents,
+which often contain words that are not included in standard dictionaries.
 
 
 Options

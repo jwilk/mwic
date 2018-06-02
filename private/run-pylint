@@ -28,7 +28,6 @@ then
     pyscripts=$(grep -l -r '^#!.*python' .)
     set -- lib tests $pyscripts
 fi
-set -- --load-plugins=pylint.extensions.check_elif "$@"
 log=$(mktemp -t pylint.XXXXXX)
 "$PYTHON" -m pylint "$@" > "$log" || [ $? != 1 ]
 ! grep '^\w:' "$log" \

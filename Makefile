@@ -19,7 +19,7 @@
 # SOFTWARE.
 
 PYTHON = python3
-INSTALL = install
+INSTALL = $(if $(shell command -v ginstall;),ginstall,install)
 
 PREFIX = /usr/local
 DESTDIR =

@@ -115,7 +115,7 @@ but it can use a number of dictionaries from third-party projects:
 
 * codespell:
 
-  | https://github.com/lucasdemarchi/codespell/raw/master/codespell_lib/data/dictionary.txt
+  | https://github.com/codespell-project/codespell/raw/master/codespell_lib/data/dictionary.txt
 
 * kde-dev-scripts:
 

@@ -25,7 +25,7 @@ Supported dictionary formats:
 + Lintian
   - <https://salsa.debian.org/lintian/lintian/raw/master/data/spelling/corrections>
   - <https://salsa.debian.org/lintian/lintian/raw/master/data/spelling/corrections-case>
-+ codespell <https://github.com/lucasdemarchi/codespell/blob/master/codespell_lib/data/dictionary.txt>
++ codespell <https://github.com/codespell-project/codespell/blob/master/codespell_lib/data/dictionary.txt>
 + kde-spellcheck <https://github.com/KDE/kde-dev-scripts/blob/master/kde-spellcheck.pl>
 + plain word list
 '''

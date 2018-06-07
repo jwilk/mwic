@@ -5,6 +5,15 @@ Overview
 their contexts. This is useful for checking technical documents, which often
 contain words that are not included in standard dictionaries.
 
+.. <git> (don't include in release tarballs)
+
+Example
+-------
+
+.. image:: doc/screenshot.svg
+
+.. </git>
+
 Prerequisites
 =============
 

@@ -23,30 +23,6 @@
 
 import sys
 
-# ----------------------------------------
-
-def error(message):
-    try:
-        import argparse
-        ap = argparse.ArgumentParser()
-        prog = ap.prog
-    except ImportError:
-        import optparse  # pylint: disable=deprecated-module
-        ap = optparse.OptionParser()
-        prog = ap.get_prog_name()
-    message = ''.join((prog, ': error: ', message, '\n'))
-    ap.exit(1, message)
-
-def require_python(*version):
-    if sys.version_info < version:
-        version_str = '.'.join(map(str, version))
-        message = 'Python >= %s is required' % version_str
-        error(message)
-
-require_python(3, 3)
-
-# ----------------------------------------
-
 basedir = None
 if basedir is not None:
     sys.path[:0] = [basedir]

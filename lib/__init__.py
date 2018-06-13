@@ -2,4 +2,4 @@
 mwic's private modules
 '''
 
-type(...)  # Python >= 3 is required
+lambda: (yield from 0)  # Python >= 3.3 is required

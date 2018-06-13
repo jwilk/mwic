@@ -32,7 +32,7 @@ rst2xml=${rst2xml##*/}
 options='--input-encoding=UTF-8 --strict'
 if [ $# -eq 0 ]
 then
-    find "${root:-.}" -type f -name '*.rst'
+    find "${root}doc" -type f -name '*.rst'
     grep -rwl 'ft[=]rst' "${root:-.}"
 else
     printf '%s\n' "$@"

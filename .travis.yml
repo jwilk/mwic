@@ -16,6 +16,7 @@ cache: pip
 before_install:
 - pyflakes=pyflakes
 - if [[ $TRAVIS_PYTHON_VERSION = 3.3 ]]; then pyflakes='pyflakes<2'; fi
+- if [[ $TRAVIS_PYTHON_VERSION = 3.3 ]]; then if_pylint=:; fi
 - if [[ $TRAVIS_PYTHON_VERSION =~ dev ]]; then if_pylint=:; fi
 install:
 - pip install pyenchant

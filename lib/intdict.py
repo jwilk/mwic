@@ -42,7 +42,7 @@ os.stat(datadir)
 def _find_nothing(s):  # pylint: disable=unused-argument
     return ()
 
-class Macros(object):
+class Macros():
 
     def __init__(self):
         self._defs = {}
@@ -81,7 +81,7 @@ class Macros(object):
             assert False  # no coverage
         return self._regex.sub(replace, s)
 
-class Dictionary(object):
+class Dictionary():
 
     def __init__(self, lang):
         self._whitelist = set()

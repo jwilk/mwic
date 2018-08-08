@@ -44,7 +44,7 @@ printf 'Commit: %s\nVersion: %s\n' "$commit" "$version" >&2
 set -x
 sourceroot=$(mktemp -d -t "$name-source-XXXXXX")
 tar_options='--owner root --group root --mode a+rX --format ustar --sort name'
-export GZIP='-9 -n'
+gzip='gzip -9 -n'
 git archive "$commit" --prefix="$name-$version/" | tar -C "$sourceroot" -xf -
 cd "$sourceroot"/*
 rm .git*
@@ -56,7 +56,7 @@ mv LICENSE doc/
 make -C doc/
 cd ..
 mkdir -p "$pwd/dist"
-tar $tar_options -czf "$pwd/dist/$name-$version.tar.gz" */
+tar $tar_options -I "$gzip" -cf "$pwd/dist/$name-$version.tar.gz" */
 rm -r "$sourceroot"
 set +x
 cd "$pwd"

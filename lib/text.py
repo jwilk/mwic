@@ -54,4 +54,10 @@ def camel_case_tokenizer(tokenizer):
                 offset += len(subword)
     return new_tokenizer
 
+__all__ = [
+    'camel_case_tokenizer',
+    'ltrim',
+    'rtrim',
+]
+
 # vim:ts=4 sts=4 sw=4 et

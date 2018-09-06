@@ -1,4 +1,4 @@
-mwic (0.7.6) UNRELEASED; urgency=low
+mwic (0.7.6) unstable; urgency=low
 
   * Improve documentation:
     + Fix grammar in the description.
@@ -11,7 +11,7 @@ mwic (0.7.6) UNRELEASED; urgency=low
     Thanks to Daniel M. Capella for the bug report.
     https://github.com/jwilk/mwic/issues/7
 
- -- Jakub Wilk <jwilk@jwilk.net>  Thu, 06 Sep 2018 21:12:27 +0200
+ -- Jakub Wilk <jwilk@jwilk.net>  Thu, 06 Sep 2018 21:23:51 +0200
 
 mwic (0.7.5) unstable; urgency=low
 

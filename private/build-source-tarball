@@ -51,7 +51,7 @@ rm .git*
 rm .travis.yml
 rm private/build-source-tarball
 rm doc/README
-sed -e '/<git>/,/<\/git>/d' < README.rst> doc/README
+sed -e '/<git>/,/<\/git>/d' < README.rst > doc/README
 mv LICENSE doc/
 make -C doc/
 cd ..

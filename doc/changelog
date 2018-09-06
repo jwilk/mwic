@@ -1,8 +1,17 @@
 mwic (0.7.6) UNRELEASED; urgency=low
 
-  * 
+  * Improve documentation:
+    + Fix grammar in the description.
+    + Update codespell URLs.
+    + Add example screenshot.
+  * Improve the build system:
+    + Add checks against BSD make. (Only GNU make is supported.)
+    + Use “command -v” instead of which(1).
+    + Use ginstall(1), instead of install(1), if it exists.
+  * Fix test failure (multiword-is-t).
+    Thanks to Daniel M. Capella for the bug report.
 
- -- Jakub Wilk <jwilk@jwilk.net>  Fri, 15 Jun 2018 22:15:31 +0200
+ -- Jakub Wilk <jwilk@jwilk.net>  Thu, 06 Sep 2018 20:53:23 +0200
 
 mwic (0.7.5) unstable; urgency=low
 

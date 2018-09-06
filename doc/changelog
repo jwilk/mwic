@@ -10,8 +10,9 @@ mwic (0.7.6) UNRELEASED; urgency=low
     + Use ginstall(1), instead of install(1), if it exists.
   * Fix test failure (multiword-is-t).
     Thanks to Daniel M. Capella for the bug report.
+    https://github.com/jwilk/mwic/issues/7
 
- -- Jakub Wilk <jwilk@jwilk.net>  Thu, 06 Sep 2018 20:53:23 +0200
+ -- Jakub Wilk <jwilk@jwilk.net>  Thu, 06 Sep 2018 21:12:27 +0200
 
 mwic (0.7.5) unstable; urgency=low
 

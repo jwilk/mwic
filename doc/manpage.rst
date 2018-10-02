@@ -8,7 +8,7 @@ Misspelled Words In Context
 
 :manual section: 1
 :version: mwic 0.7.6
-:date: |date|
+:date: 2018-09-06
 
 Synopsis
 --------
@@ -159,7 +159,5 @@ See also
 “English for software localisation”
 <http://jbr.me.uk/linux/esl.html>
 by Justin B Rye
-
-.. |date| date:: %Y-%m-%d
 
 .. vim:ts=3 sts=3 sw=3

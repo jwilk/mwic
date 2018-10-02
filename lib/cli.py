@@ -39,7 +39,7 @@ class lib:
     from . import pager
     from . import text
 
-__version__ = '0.7.6'
+__version__ = '0.7.7'
 
 class VersionAction(argparse.Action):
 

@@ -31,7 +31,6 @@ fi
 log=$(mktemp -t pylint.XXXXXX)
 "$PYTHON" -m pylint "$@" > "$log" || [ $? != 1 ]
 ! grep '^\w:' "$log" \
-| grep -v ': missing-docstring \[\w' \
 | grep -v -P '^\w: (?!lib/).*: missing-docstring ' \
 | grep '.' || exit 1
 rm "$log"

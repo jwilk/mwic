@@ -39,7 +39,7 @@ script:
 - tests/run-tests --verbose
 - python3 -m pydiatra .
 - python3 -m pyflakes .
-- $if_pylint  private/run-pylint
+- $if_pylint private/run-pylint
 - private/check-rst
 - make -C doc
 - make install PREFIX=~/.local

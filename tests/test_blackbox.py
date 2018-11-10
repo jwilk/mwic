@@ -44,7 +44,11 @@ def _get_output(path, language):
         sys.argv = ['mwic', '--language', language, path]
         textstdout = sys.stdout = io.TextIOWrapper(binstdout, encoding='UTF-8')
         try:
-            M.main()
+            try:
+                M.main()
+            except SystemExit as exc:
+                if exc.code != 0:
+                    raise
             sys.stdout.flush()
             return binstdout.getvalue().decode('UTF-8')
         finally:

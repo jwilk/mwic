@@ -100,6 +100,7 @@ def main():
     ap.add_argument('--suggest', metavar='N', type=int, default=0,
         help='suggest up to N corrections')
     ap.add_argument('--debug-dict', action='store_true', help=argparse.SUPPRESS)
+    ap.add_argument('--traceback', action='store_true', help=argparse.SUPPRESS)
     options = ap.parse_args()
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, 'UTF-8')
     try:
@@ -157,6 +158,8 @@ def main():
                     errors=enc_errors,
                 )
             except IOError as exc:
+                if options.traceback:
+                    raise
                 msg = '{prog}: {path}: {exc}'.format(prog=ap.prog, path=path, exc=exc.strerror)
                 print(msg, file=sys.stderr)
                 rc = 1

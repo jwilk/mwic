@@ -141,6 +141,7 @@ def main():
         misspellings=misspellings,
         options=options,
     )
+    rc = 0
     for path in options.files:
         if path == '-':
             file = io.TextIOWrapper(
@@ -149,18 +150,25 @@ def main():
                 errors=enc_errors,
             )
         else:
-            file = open(
-                path, 'rt',
-                encoding=encoding,
-                errors=enc_errors,
-            )
+            try:
+                file = open(
+                    path, 'rt',
+                    encoding=encoding,
+                    errors=enc_errors,
+                )
+            except IOError as exc:
+                msg = '{prog}: {path}: {exc}'.format(prog=ap.prog, path=path, exc=exc.strerror)
+                print(msg, file=sys.stderr)
+                rc = 1
+                continue
         with file:
             spellcheck_file(ctxt, file)
     if not misspellings:
-        return
+        sys.exit(rc)
     raw_cc = options.output_format == 'color'
     with lib.pager.autopager(raw_control_chars=raw_cc):
         print_misspellings(ctxt)
+    sys.exit(rc)
 
 def spellcheck_file(ctxt, file):
     force_ucs2 = (

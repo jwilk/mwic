@@ -25,12 +25,12 @@ before_install:
 - if [[ $TRAVIS_PYTHON_VERSION = 3.3 ]]; then if_pylint=:; fi
 - if [[ $TRAVIS_PYTHON_VERSION =~ dev ]]; then if_pylint=:; fi
 install:
-- pip install pyenchant
-- pip install regex
-- pip install pydiatra
-- pip install $pyflakes
-- $if_pylint pip install pylint
-- pip install docutils
+- python3 -m pip install pyenchant
+- python3 -m pip install regex
+- python3 -m pip install pydiatra
+- python3 -m pip install $pyflakes
+- $if_pylint python3 -m pip install pylint
+- python3 -m pip install docutils
 script:
 - dpkg-parsechangelog -ldoc/changelog --all 2>&1 >/dev/null | { ! grep .; }
 - ./mwic --version

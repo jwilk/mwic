@@ -1,10 +1,10 @@
-mwic (0.7.7) UNRELEASED; urgency=low
+mwic (0.7.7) unstable; urgency=low
 
   * Don't die with exception when a file cannot be opened.
     (If there are many input files, it's helpful to continue when one of them
     cannot be opened.)
 
- -- Jakub Wilk <jwilk@jwilk.net>  Sat, 10 Nov 2018 21:36:10 +0100
+ -- Jakub Wilk <jwilk@jwilk.net>  Mon, 12 Nov 2018 17:42:25 +0100
 
 mwic (0.7.6) unstable; urgency=low
 

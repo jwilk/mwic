@@ -35,6 +35,7 @@ all: ;
 
 .PHONY: install
 install:
+	$(PYTHON) - < lib/__init__.py  # Python version check
 	# binary:
 	$(INSTALL) -d -m755 $(DESTDIR)$(bindir)
 	sed -e "s#^basedir = .*#basedir = '$(basedir)/'#" $(exe) > $(DESTDIR)$(bindir)/$(exe)

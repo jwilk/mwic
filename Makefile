@@ -44,6 +44,9 @@ install:
 	install -p -m644 dict/* $(DESTDIR)$(basedir)/dict/
 	install -d $(DESTDIR)$(basedir)/lib
 	install -p -m644 lib/*.py $(DESTDIR)$(basedir)/lib/
+ifeq "$(DESTDIR)" ""
+	umask 022 && $(PYTHON) -m compileall $(basedir)/lib/
+endif
 ifeq "$(wildcard doc/$(exe).1)" ""
 	# run "$(MAKE) -C doc" to build the manpage
 else

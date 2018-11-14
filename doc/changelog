@@ -1,3 +1,9 @@
+mwic (0.7.8) UNRELEASED; urgency=low
+
+  * 
+
+ -- Jakub Wilk <jwilk@jwilk.net>  Wed, 14 Nov 2018 18:07:07 +0100
+
 mwic (0.7.7) unstable; urgency=low
 
   * Don't die with exception when a file cannot be opened.

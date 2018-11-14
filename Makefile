@@ -23,22 +23,20 @@ PYTHON = python3
 PREFIX = /usr/local
 DESTDIR =
 
-exe = mwic
-
 bindir = $(PREFIX)/bin
-basedir = $(PREFIX)/share/$(exe)
+basedir = $(PREFIX)/share/mwic
 mandir = $(PREFIX)/share/man
 
 .PHONY: all
 all: ;
 
 .PHONY: install
-install:
+install: mwic
 	$(PYTHON) - < lib/__init__.py  # Python version check
 	# binary:
 	install -d $(DESTDIR)$(bindir)
-	sed -e "s#^basedir = .*#basedir = '$(basedir)/'#" $(exe) > $(DESTDIR)$(bindir)/$(exe)
-	chmod 0755 $(DESTDIR)$(bindir)/$(exe)
+	sed -e "s#^basedir = .*#basedir = '$(basedir)/'#" $(<) > $(DESTDIR)$(bindir)/$(<)
+	chmod 0755 $(DESTDIR)$(bindir)/$(<)
 	# library + data:
 	install -d $(DESTDIR)$(basedir)/dict
 	install -p -m644 dict/* $(DESTDIR)$(basedir)/dict/
@@ -47,12 +45,12 @@ install:
 ifeq "$(DESTDIR)" ""
 	umask 022 && $(PYTHON) -m compileall $(basedir)/lib/
 endif
-ifeq "$(wildcard doc/$(exe).1)" ""
+ifeq "$(wildcard doc/*.1)" ""
 	# run "$(MAKE) -C doc" to build the manpage
 else
 	# manual page:
 	install -d $(DESTDIR)$(mandir)/man1
-	install -p -m644 doc/$(exe).1 $(DESTDIR)$(mandir)/man1/
+	install -p -m644 doc/$(<).1 $(DESTDIR)$(mandir)/man1/
 endif
 
 .PHONY: test

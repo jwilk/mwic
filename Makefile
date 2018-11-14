@@ -30,12 +30,17 @@ mandir = $(PREFIX)/share/man
 .PHONY: all
 all: ;
 
+python_exe = $(shell $(PYTHON) -c 'import sys; print(sys.executable)')
+
 .PHONY: install
 install: mwic
 	$(PYTHON) - < lib/__init__.py  # Python version check
 	# binary:
 	install -d $(DESTDIR)$(bindir)
-	sed -e "s#^basedir = .*#basedir = '$(basedir)/'#" $(<) > $(DESTDIR)$(bindir)/$(<)
+	sed \
+		-e "1 s@^#!.*@#!$(python_exe)@" \
+		-e "s#^basedir = .*#basedir = '$(basedir)/'#" \
+		$(<) > $(DESTDIR)$(bindir)/$(<)
 	chmod 0755 $(DESTDIR)$(bindir)/$(<)
 	# library + data:
 	install -d $(DESTDIR)$(basedir)/dict

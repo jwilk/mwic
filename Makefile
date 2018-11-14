@@ -19,7 +19,6 @@
 # SOFTWARE.
 
 PYTHON = python3
-INSTALL = $(if $(shell command -v ginstall;),ginstall,install)
 
 PREFIX = /usr/local
 DESTDIR =
@@ -37,17 +36,20 @@ all: ;
 install:
 	$(PYTHON) - < lib/__init__.py  # Python version check
 	# binary:
-	$(INSTALL) -d -m755 $(DESTDIR)$(bindir)
+	install -d $(DESTDIR)$(bindir)
 	sed -e "s#^basedir = .*#basedir = '$(basedir)/'#" $(exe) > $(DESTDIR)$(bindir)/$(exe)
 	chmod 0755 $(DESTDIR)$(bindir)/$(exe)
 	# library + data:
-	( find lib dict -type f ! -name '*.py[co]' ) \
-	| xargs -t -I {} $(INSTALL) -p -D -m644 {} $(DESTDIR)$(basedir)/{}
+	install -d $(DESTDIR)$(basedir)/dict
+	install -p -m644 dict/* $(DESTDIR)$(basedir)/dict/
+	install -d $(DESTDIR)$(basedir)/lib
+	install -p -m644 lib/*.py $(DESTDIR)$(basedir)/lib/
 ifeq "$(wildcard doc/$(exe).1)" ""
 	# run "$(MAKE) -C doc" to build the manpage
 else
 	# manual page:
-	$(INSTALL) -p -D -m644 doc/$(exe).1 $(DESTDIR)$(mandir)/man1/$(exe).1
+	install -d $(DESTDIR)$(mandir)/man1
+	install -p -m644 doc/$(exe).1 $(DESTDIR)$(mandir)/man1/
 endif
 
 .PHONY: test

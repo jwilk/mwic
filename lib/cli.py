@@ -157,7 +157,7 @@ def main():
                     encoding=encoding,
                     errors=enc_errors,
                 )
-            except IOError as exc:
+            except OSError as exc:
                 if options.traceback:
                     raise
                 msg = '{prog}: {path}: {exc}'.format(prog=ap.prog, path=path, exc=exc.strerror)

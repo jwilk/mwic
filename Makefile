@@ -40,8 +40,9 @@ install: mwic
 	sed \
 		-e "1 s@^#!.*@#!$(python_exe)@" \
 		-e "s#^basedir = .*#basedir = '$(basedir)/'#" \
-		$(<) > $(DESTDIR)$(bindir)/$(<)
-	chmod 0755 $(DESTDIR)$(bindir)/$(<)
+		$(<) > $(<).tmp
+	install $(<).tmp $(DESTDIR)$(bindir)/$(<)
+	rm -f $(<).tmp
 	# library + data:
 	install -d $(DESTDIR)$(basedir)/dict
 	install -p -m644 dict/* $(DESTDIR)$(basedir)/dict/
@@ -67,6 +68,7 @@ clean:
 	find . -type f -name '*.py[co]' -delete
 	find . -type d -name '__pycache__' -delete
 	rm -f .coverage
+	rm -f *.tmp
 
 .error = GNU make is required
 

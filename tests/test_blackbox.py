@@ -18,7 +18,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import errno
 import glob
 import io
 import os
@@ -71,11 +70,8 @@ def _test_text(xpath):
         altxpath = xpath[:-4] + '.alt'
         try:
             file = open(altxpath, 'rt', encoding='UTF-8')
-        except IOError as exc:
-            if exc.errno == errno.ENOENT:
-                pass
-            else:
-                raise
+        except FileNotFoundError:
+            pass
         else:
             with file:
                 alt_expected = file.read()

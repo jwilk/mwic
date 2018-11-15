@@ -25,7 +25,6 @@ internal dictionary, which can contain:
   but are not present in standard dictionaries.
 '''
 
-import errno
 import os
 
 import regex as re
@@ -91,9 +90,7 @@ class Dictionary():
             path = os.path.join(datadir, lang)
             try:
                 file = open(path, 'rt', encoding='UTF-8')
-            except IOError as exc:
-                if exc.errno != errno.ENOENT:
-                    raise
+            except FileNotFoundError:
                 [lang, *suffix] = lang.rsplit('-', 1)
                 if suffix:
                     continue

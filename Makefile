@@ -42,7 +42,7 @@ install: mwic
 		-e "s#^basedir = .*#basedir = '$(basedir)/'#" \
 		$(<) > $(<).tmp
 	install $(<).tmp $(DESTDIR)$(bindir)/$(<)
-	rm -f $(<).tmp
+	rm $(<).tmp
 	# library + data:
 	install -d $(DESTDIR)$(basedir)/dict
 	install -p -m644 dict/* $(DESTDIR)$(basedir)/dict/

@@ -48,9 +48,7 @@ install: mwic
 	install -p -m644 dict/* $(DESTDIR)$(basedir)/dict/
 	install -d $(DESTDIR)$(basedir)/lib
 	install -p -m644 lib/*.py $(DESTDIR)$(basedir)/lib/
-ifeq "$(DESTDIR)" ""
-	umask 022 && $(PYTHON) -m compileall -q $(basedir)/lib/
-endif
+	umask 022 && $(PYTHON) -m compileall -q -d $(basedir)/lib $(DESTDIR)$(basedir)/lib
 ifeq "$(wildcard doc/*.1)" ""
 	# run "$(MAKE) -C doc" to build the manpage
 else

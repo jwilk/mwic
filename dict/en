@@ -186,6 +186,9 @@ iso( |[_-])?(8858|8895|8559|5589)
 # lot's of → lots of
 lot’s of
 
+# pubic key → public keys
+pubic keys?
+
 # an → a
 an Unicode
 an unary

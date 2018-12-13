@@ -195,12 +195,12 @@ def spellcheck_file(ctxt, file):
                 continue
             else:
                 certainty = 0
-            for i, ch in enumerate(word, start=pos):  # pylint: disable=unused-variable
+            for i, dummy in enumerate(word, start=pos):
                 taken[i] = True
             ctxt.misspellings.add(word, line, pos, certainty)
         for word, pos in ctxt.intdict.find(line):
             assert len(word) >= 1
-            for i, ch in enumerate(word, start=pos):
+            for i, dummy in enumerate(word, start=pos):
                 if taken[i]:
                     break
             else:

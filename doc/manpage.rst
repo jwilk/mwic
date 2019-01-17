@@ -76,10 +76,10 @@ Options
    Suggest up to *n* corrections.
 
 -h, --help
-   Show the help message and exit.
+   Show help message and exit.
 
 --version
-   Show the program's version information and exit.
+   Show version information and exit.
 
 Environment
 -----------

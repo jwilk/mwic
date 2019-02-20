@@ -22,7 +22,7 @@ import glob
 import io
 import os
 import sys
-import unittest
+import unittest.mock
 
 import nose
 from nose.tools import (
@@ -37,11 +37,10 @@ here = os.path.dirname(__file__)
 here = os.path.relpath(here)
 
 def _get_output(path, language):
+    argv = ['mwic', '--language', language, path]
     binstdout = io.BytesIO()
-    [old_stdout, old_argv] = [sys.stdout, sys.argv]
-    try:
-        sys.argv = ['mwic', '--language', language, path]
-        textstdout = sys.stdout = io.TextIOWrapper(binstdout, encoding='UTF-8')
+    textstdout = io.TextIOWrapper(binstdout, encoding='UTF-8')
+    with unittest.mock.patch.multiple(sys, argv=argv, stdout=textstdout):
         try:
             try:
                 M.main()
@@ -52,8 +51,6 @@ def _get_output(path, language):
             return binstdout.getvalue().decode('UTF-8')
         finally:
             textstdout.close()
-    finally:
-        [sys.stdout, sys.argv] = [old_stdout, old_argv]
 
 def _test_text(xpath):
     assert xpath.endswith('.exp')

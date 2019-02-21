@@ -63,7 +63,8 @@ class VersionAction(argparse.Action):
             if isinstance(enchant_version, bytes):
                 enchant_version = enchant_version.decode('ASCII', 'replace')
             print('  + Enchant {0}'.format(enchant_version))
-        print('+ regex {0}'.format(lib.intdict.re.__version__))
+        regex = lib.intdict.re
+        print('+ regex {0}'.format(regex.__version__))  # pylint: disable=no-member
         parser.exit()
 
 def main():

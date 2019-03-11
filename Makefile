@@ -35,7 +35,7 @@ python_exe = $(shell $(PYTHON) -c 'import sys; print(sys.executable)')
 .PHONY: install
 install: mwic
 	$(PYTHON) - < lib/__init__.py  # Python version check
-	# binary:
+	# executable:
 	install -d $(DESTDIR)$(bindir)
 	sed \
 		-e "1 s@^#!.*@#!$(python_exe)@" \

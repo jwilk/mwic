@@ -27,7 +27,7 @@ import itertools
 import unicodedata
 
 class _seq:
-    dim = '\x1B[1;30m'
+    dim = '\x1B[90m'
     off = '\x1B[0m'
     warn = '\x1B[30;43m'
     error = '\x1B[30;41m'

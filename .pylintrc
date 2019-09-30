@@ -9,6 +9,7 @@ disable =
     inconsistent-return-statements,
     invalid-name,
     locally-disabled,
+    no-else-continue,
     no-self-use,
     redefined-variable-type,
     similarities,

@@ -32,12 +32,14 @@ import types
 import enchant.tokenize
 
 class lib:
+    # pylint: disable=import-outside-toplevel
     from . import colors
     from . import data
     from . import extdict
     from . import intdict
     from . import pager
     from . import text
+    # pylint: enable=import-outside-toplevel
 
 __version__ = '0.7.8'
 

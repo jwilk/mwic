@@ -149,6 +149,9 @@ to an extend(?=[,;.])
 # it's own → its own
 it’s own
 
+# it's goal → its goal
+it’s goal
+
 # its ART → it's ART
 its $ART
 

@@ -1,12 +1,15 @@
 mwic (0.7.8) UNRELEASED; urgency=low
 
   * Add new multi-word misspellings to the dictionary.
+  * Use the \e[90m sequence for for dark gray.
   * Improve the build system:
     + Check Python version on install.
     + Byte-compile Python code on install.
+      https://github.com/jwilk/mwic/issues/9
     + Don't require GNU install(1).
+  * Improve the test suite.
 
- -- Jakub Wilk <jwilk@jwilk.net>  Sat, 08 Dec 2018 21:53:36 +0100
+ -- Jakub Wilk <jwilk@jwilk.net>  Sat, 16 Nov 2019 17:58:31 +0100
 
 mwic (0.7.7) unstable; urgency=low
 

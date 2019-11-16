@@ -41,7 +41,7 @@ class lib:
     from . import text
     # pylint: enable=import-outside-toplevel
 
-__version__ = '0.7.8'
+__version__ = '0.7.9'
 
 class VersionAction(argparse.Action):
 

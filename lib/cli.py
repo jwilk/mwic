@@ -321,7 +321,7 @@ def print_rare_misspellings(ctxt):
             print()
 
 class list_languages(argparse.Action):
-    def __call__(self, *args, **kwargs):  # pylint: disable=arguments-differ
+    def __call__(self, *args, **kwargs):  # pylint: disable=arguments-differ,signature-differs
         for lang in sorted(enchant.list_languages()):
             print(lang)
         sys.exit(0)

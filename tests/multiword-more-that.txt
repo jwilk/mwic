@@ -1,0 +1,17 @@
+X is more that Y.
+X is less that Y.
+X is larger that Y.
+X is bigger that Y.
+X is smaller that Y.
+X is faster that Y.
+X is slower that Y.
+
+X is more than Y.
+X is less than Y.
+X is larger than Y.
+X is bigger than Y.
+X is smaller than Y.
+X is faster than Y.
+X is slower than Y.
+
+It's faster that way.

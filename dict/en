@@ -195,6 +195,9 @@ pubic keys?
 # regarding to X → regarding X
 regarding to
 
+# more that → more than
+(more|less|larger|bigger|smaller|faster|slower) that(?! way)
+
 # an → a
 an Unicode
 an unary

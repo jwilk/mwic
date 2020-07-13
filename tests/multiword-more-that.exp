@@ -1,0 +1,28 @@
+bigger that:
+| X is bigger that Y.
+       ^^^^^^^^^^^
+
+faster that:
+| X is faster that Y.
+       ^^^^^^^^^^^
+
+larger that:
+| X is larger that Y.
+       ^^^^^^^^^^^
+
+less that:
+| X is less that Y.
+       ^^^^^^^^^
+
+more that:
+| X is more that Y.
+       ^^^^^^^^^
+
+slower that:
+| X is slower that Y.
+       ^^^^^^^^^^^
+
+smaller that:
+| X is smaller that Y.
+       ^^^^^^^^^^^^
+

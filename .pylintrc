@@ -12,6 +12,7 @@ disable =
     locally-disabled,
     no-else-continue,
     no-self-use,
+    raise-missing-from,
     redefined-variable-type,
     similarities,
     too-few-public-methods,

@@ -49,6 +49,6 @@ For Debian users::
 .. _Enchant:
    https://abiword.github.io/enchant/
 .. _docutils:
-   http://docutils.sourceforge.net/
+   https://docutils.sourceforge.io/
 
 .. vim:ts=3 sts=3 sw=3 ft=rst

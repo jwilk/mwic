@@ -22,6 +22,7 @@ before_install:
 - if [[ $TRAVIS_PYTHON_VERSION = 3.3 ]]; then pyflakes='pyflakes<2'; fi
 - if [[ $TRAVIS_PYTHON_VERSION = 3.3 ]]; then if_pylint=:; fi
 - if [[ $TRAVIS_PYTHON_VERSION =~ dev ]]; then if_pylint=:; fi
+- if [[ $TRAVIS_PYTHON_VERSION = 3.10-* ]]; then pip install --upgrade --no-deps --force-reinstall --no-binary ':all:' nose; fi
 install:
 - python3 -m pip install pyenchant
 - python3 -m pip install regex

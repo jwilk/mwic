@@ -66,7 +66,7 @@ def _test_text(xpath):
     if expected != text:
         altxpath = xpath[:-4] + '.alt'
         try:
-            file = open(altxpath, 'rt', encoding='UTF-8')
+            file = open(altxpath, 'rt', encoding='UTF-8')  # pylint: disable=consider-using-with
         except FileNotFoundError:
             pass
         else:

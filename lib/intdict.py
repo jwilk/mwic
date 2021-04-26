@@ -89,7 +89,7 @@ class Dictionary():
         while True:
             path = os.path.join(datadir, lang)
             try:
-                file = open(path, 'rt', encoding='UTF-8')
+                file = open(path, 'rt', encoding='UTF-8')  # pylint: disable=consider-using-with
             except FileNotFoundError:
                 [lang, *suffix] = lang.rsplit('-', 1)
                 if suffix:

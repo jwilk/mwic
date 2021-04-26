@@ -155,7 +155,7 @@ def main():
             )
         else:
             try:
-                file = open(
+                file = open(  # pylint: disable=consider-using-with
                     path, 'rt',
                     encoding=encoding,
                     errors=enc_errors,

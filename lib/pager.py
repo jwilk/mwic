@@ -61,8 +61,7 @@ def autopager(*, raw_control_chars=False):
         env = dict(env or os.environ, LV='-c')
     orig_stdout = sys.stdout
     try:
-        pager = ipc.Popen(cmdline, shell=True, stdin=ipc.PIPE, env=env)
-        try:
+        with ipc.Popen(cmdline, shell=True, stdin=ipc.PIPE, env=env) as pager:
             sys.stdout = io.TextIOWrapper(pager.stdin,
                 encoding=orig_stdout.encoding,
             )
@@ -70,8 +69,6 @@ def autopager(*, raw_control_chars=False):
                 yield
             finally:
                 sys.stdout.close()
-        finally:
-            pager.wait()
     finally:
         sys.stdout = orig_stdout
 

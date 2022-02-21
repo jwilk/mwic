@@ -66,7 +66,7 @@ class Macros():
             regex = []
             for i, (name, definition) in enumerate(self._defs.items()):
                 substs += [definition]
-                regex += ['(?P<mwic{i}>{name})'.format(i=i, name=re.escape(name))]
+                regex += [f'(?P<mwic{i}>{re.escape(name)})']
             regex = '|'.join(regex)
             regex = re.compile(regex)
             self._regex = regex
@@ -75,7 +75,7 @@ class Macros():
         assert self._substs is not None
         def replace(match):
             for i, subst in enumerate(substs):
-                if match.group('mwic{i}'.format(i=i)) is not None:
+                if match.group(f'mwic{i}') is not None:
                     return subst
             assert False  # no coverage
         return self._regex.sub(replace, s)
@@ -116,7 +116,8 @@ class Dictionary():
                     elif line[0][0] == '@':
                         if (len(line) >= 4) and (line[0] == '@define') and (line[2] == '='):
                             (_, name, _, *definition) = line
-                            definition = r'(?:{re})'.format(re=r'\s+'.join(definition))
+                            definition = str.join(r'\s+', definition)
+                            definition = fr'(?:{definition})'
                             try:
                                 re.compile(definition)
                             except re.error as exc:  # no coverage
@@ -124,7 +125,7 @@ class Dictionary():
                             try:
                                 macros[name] = macros.expand(definition)  # pylint: disable=unsubscriptable-object
                             except KeyError:  # no coverage
-                                raise error('duplicate macro definition: {}'.format(name))
+                                raise error(f'duplicate macro definition: {name}')
                         else:
                             raise error('malformed @-command')  # no coverage
                     else:
@@ -137,9 +138,8 @@ class Dictionary():
                         regexes += [regex]
             break
         if regexes:
-            regex = r'\b(?:(?i){0})\b'.format(
-                '|'.join(regexes)
-            )
+            regex = str.join('|', regexes)
+            regex = fr'\b(?:(?i){regex})\b'
             self._find = re.compile(regex).finditer
         else:
             self._find = _find_nothing

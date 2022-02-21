@@ -55,8 +55,8 @@ def highlight(s, w):
             if cs < ' ' or cs == '\x7F':
                 cs = '^' + chr(ord(cs) ^ ord('@'))
             else:
-                cs = '<U+{0:04X}>'.format(ord(cs))
-            cs = '{t.reverse}{c}{t.unreverse}'.format(c=cs, t=_seq)
+                cs = f'<U+{ord(cs):04X}>'
+            cs = f'{_seq.reverse}{cs}{_seq.unreverse}'
         fp.write(cs)
     if old_color != off:
         fp.write(off)

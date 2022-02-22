@@ -56,7 +56,7 @@ class VersionAction(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
         print('{prog} {0}'.format(__version__, prog=parser.prog))
         print('+ Python {0}.{1}.{2}'.format(*sys.version_info))
-        print('+ PyEnchant {0}'.format(__version__))
+        print('+ PyEnchant {0}'.format(enchant.__version__))
         try:
             enchant_version = enchant.get_enchant_version()
         except AttributeError:

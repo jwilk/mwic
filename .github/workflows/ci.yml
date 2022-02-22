@@ -1,0 +1,97 @@
+name: CI
+on:
+- push
+- pull_request
+jobs:
+  main:
+    strategy:
+      matrix:
+        include:
+        - python-version: '3.6'
+          os: ubuntu-18.04
+        - python-version: '3.7'
+          os: ubuntu-20.04
+        - python-version: '3.8'
+          os: ubuntu-20.04
+        - python-version: '3.9'
+          os: ubuntu-20.04
+        - python-version: '3.10'
+          os: ubuntu-20.04
+        - python-version: '3.11-dev'
+          os: ubuntu-20.04
+    runs-on: ${{matrix.os}}
+    steps:
+    - uses: actions/checkout@v2
+    - name: set up Python ${{matrix.python-version}}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{matrix.python-version}}
+    - name: set up APT
+      run: |
+        printf 'Apt::Install-Recommends "false";\n' | sudo tee -a /etc/apt/apt.conf
+        sudo apt-get update
+    - name: APT install deps
+      run:
+        sudo apt-get install
+          aspell-en
+          libenchant-dev
+    - name: pip install deps
+      run: |
+        python3 -m pip install pyenchant
+        python3 -m pip install regex
+    - name: dump version and dictionary info
+      run: |
+        ./mwic --version
+        ./mwic --debug-dict --lang en-US
+        ./mwic --debug-dict --lang en-GB
+    - name: pip install nose
+      run: |
+        # work-around for <https://github.com/nose-devs/nose/issues/1115>:
+        pip install 'setuptools<58'
+        # work-around for <https://github.com/nose-devs/nose/issues/1099>:
+        python3 -m pip install --no-binary ':all:' nose
+        # work-around for <https://github.com/nose-devs/nose/issues/1116>:
+        sed -i -e 's/ from unittest import _TextTestResult$/ from unittest import TextTestResult as _TextTestResult/' ${{env.pythonLocation}}/lib/python*/site-packages/nose/result.py
+    - name: run tests
+      run: |
+        tests/run-tests --verbose
+    - name: run pydiatra
+      run: |
+        python3 -m pip install pydiatra
+        python3 -m pydiatra -v .
+    - name: run pyflakes
+      run: |
+        python3 -m pip install pyflakes
+        python3 -m pyflakes .
+    - name: run pylint
+      run: |
+        python3 -m pip install pylint
+        private/run-pylint
+      if:
+        matrix.python-version != '3.11-dev'
+    - name: build docs
+      run: |
+        python3 -m pip install docutils
+        make -C doc
+    - name: check docs
+      run: |
+        python3 -m pip install pygments
+        private/check-rst
+        dpkg-parsechangelog -ldoc/changelog --all 2>&1 >/dev/null | { ! grep .; }
+    - name: install
+      run:
+        make install PREFIX=~/.local
+    - name: check whether the executable was installed correctly
+      run: |
+        cd /
+        mwic --version
+        mwic --help
+    - name: check whether the man page was installed correctly
+      env:
+        MANPATH: /home/runner/.local/share/man
+        MANWIDTH: 80
+      run: |
+        cd /
+        man 1 mwic | grep -A 10 -w MWIC
+
+# vim:ts=2 sts=2 sw=2 et

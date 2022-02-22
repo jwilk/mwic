@@ -54,6 +54,7 @@ class VersionAction(argparse.Action):
         )
 
     def __call__(self, parser, namespace, values, option_string=None):
+        # pylint: disable=consider-using-f-string
         print(f'{parser.prog} {__version__}')
         print('+ Python {0}.{1}.{2}'.format(*sys.version_info))
         print(f'+ PyEnchant {enchant.__version__}')

@@ -1,1 +1,1 @@
-type(...)  # Python >= 3 is required
+type(0_0)  # Python >= 3.6 is required

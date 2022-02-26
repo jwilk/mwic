@@ -18,15 +18,19 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from nose.tools import (  # pylint: disable=unused-import
-    assert_equal,
-    assert_greater_equal,
-    assert_in,
-    assert_is_instance,
-    assert_multi_line_equal,
-    assert_not_equal,
-    assert_not_in,
-)
+import unittest
+
+tc = unittest.TestCase('__hash__')
+
+assert_equal = tc.assertEqual
+assert_greater_equal = tc.assertGreaterEqual
+assert_in = tc.assertIn
+assert_is_instance = tc.assertIsInstance
+assert_multi_line_equal = tc.assertMultiLineEqual
+assert_not_equal = tc.assertNotEqual
+assert_not_in = tc.assertNotIn
+
+del tc
 
 assert_multi_line_equal.__self__.maxDiff = None  # pylint: disable=no-member
 

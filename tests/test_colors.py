@@ -21,11 +21,11 @@
 import io
 import unittest.mock
 
-from nose.tools import (
+from lib import colors as M
+
+from .tools import (
     assert_equal,
 )
-
-from lib import colors as M
 
 def with_stdout(encoding):
     stdout = io.TextIOWrapper(

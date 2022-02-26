@@ -22,12 +22,13 @@ import contextlib
 import functools
 import tempfile
 
-from nose.tools import (
+import lib.extdict as M
+
+from .tools import (
     assert_in,
     assert_not_in,
 )
 
-import lib.extdict as M
 
 @contextlib.contextmanager
 def tmpdict(data):

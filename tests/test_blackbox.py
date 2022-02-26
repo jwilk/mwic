@@ -25,13 +25,12 @@ import sys
 import unittest.mock
 
 import nose
-from nose.tools import (
-    assert_multi_line_equal,
-)
 
 import lib.cli as M
 
-assert_multi_line_equal.__self__.maxDiff = None  # pylint: disable=no-member
+from .tools import (
+    assert_multi_line_equal,
+)
 
 here = os.path.dirname(__file__)
 here = os.path.relpath(here)

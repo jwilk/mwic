@@ -18,11 +18,11 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from nose.tools import (
+import lib.text as M
+
+from .tools import (
     assert_equal,
 )
-
-import lib.text as M
 
 def naive_tokenizer(s):
     offset = 0

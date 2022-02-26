@@ -22,13 +22,13 @@ import argparse
 import io
 import unittest.mock
 
-from nose.tools import (
+import lib.cli
+
+from .tools import (
     assert_equal,
     assert_is_instance,
     assert_not_equal,
 )
-
-import lib.cli
 
 def test_version_action():
     action = lib.cli.VersionAction(['--version'])

@@ -18,12 +18,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from nose.tools import (
+import lib.text as M
+
+from .tools import (
     assert_equal,
     assert_greater_equal,
 )
-
-import lib.text as M
 
 def test_ltrim():
     def t(s, n, expected):

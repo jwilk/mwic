@@ -1,4 +1,4 @@
-# Copyright © 2012-2015 Jakub Wilk <jwilk@jwilk.net>
+# Copyright © 2022 Jakub Wilk <jwilk@jwilk.net>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the “Software”), to deal
@@ -18,32 +18,16 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import os
-
-from lib.cli import __version__
-
-from .tools import (
+from nose.tools import (  # pylint: disable=unused-import
     assert_equal,
+    assert_greater_equal,
+    assert_in,
+    assert_is_instance,
+    assert_multi_line_equal,
+    assert_not_equal,
+    assert_not_in,
 )
 
-here = os.path.dirname(__file__)
-docdir = os.path.join(here, os.pardir, 'doc')
-
-def test_changelog():
-    path = os.path.join(docdir, 'changelog')
-    with open(path, 'rt', encoding='UTF-8') as file:
-        line = file.readline()
-    changelog_version = line.split()[1].strip('()')
-    assert_equal(changelog_version, __version__)
-
-def test_manpage():
-    path = os.path.join(docdir, 'manpage.rst')
-    manpage_version = None
-    with open(path, 'rt', encoding='UTF-8') as file:
-        for line in file:
-            if line.startswith(':version:'):
-                manpage_version = line.split()[-1]
-                break
-    assert_equal(manpage_version, __version__)
+assert_multi_line_equal.__self__.maxDiff = None  # pylint: disable=no-member
 
 # vim:ts=4 sts=4 sw=4 et

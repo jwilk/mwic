@@ -24,8 +24,6 @@ import os
 import sys
 import unittest.mock
 
-import nose
-
 import lib.cli as M
 
 from .tools import (
@@ -80,38 +78,44 @@ def test_text():
         yield _test_text, xpath
 test_text.redundant = True  # not needed if the plugin is enabled
 
-class Plugin(nose.plugins.Plugin):
+def nose_plugin():
 
-    name = 'mwic-plugin'
-    enabled = True
+    import nose.plugins  # pylint: disable=import-outside-toplevel
 
-    def options(self, parser, env):
-        pass
+    class Plugin(nose.plugins.Plugin):
 
-    def wantFile(self, path):
-        abs_here = os.path.abspath(here)
-        abs_here = os.path.join(abs_here, '')
-        if path.startswith(abs_here) and path.endswith('.exp'):
-            return True
+        name = 'mwic-plugin'
+        enabled = True
 
-    def loadTestsFromFile(self, path):
-        if self.wantFile(path):
-            yield TestCase(path)
+        def options(self, parser, env):
+            pass
 
-    def wantFunction(self, func):
-        if getattr(func, 'redundant', False):
-            return False
+        def wantFile(self, path):
+            abs_here = os.path.abspath(here)
+            abs_here = os.path.join(abs_here, '')
+            if path.startswith(abs_here) and path.endswith('.exp'):
+                return True
 
-class TestCase(unittest.TestCase):
+        def loadTestsFromFile(self, path):
+            if self.wantFile(path):
+                yield TestCase(path)
 
-    def __init__(self, path):
-        super().__init__('_test')
-        self.path = os.path.relpath(path)
+        def wantFunction(self, func):
+            if getattr(func, 'redundant', False):
+                return False
 
-    def _test(self):
-        _test_text(self.path)
+    class TestCase(unittest.TestCase):
 
-    def __str__(self):
-        return self.path
+        def __init__(self, path):
+            super().__init__('_test')
+            self.path = os.path.relpath(path)
+
+        def _test(self):
+            _test_text(self.path)
+
+        def __str__(self):
+            return self.path
+
+    return Plugin()
 
 # vim:ts=4 sts=4 sw=4 et

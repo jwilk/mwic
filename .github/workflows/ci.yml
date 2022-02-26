@@ -14,10 +14,13 @@ jobs:
         - python-version: '3.8'
           os: ubuntu-20.04
         - python-version: '3.9'
+          pytest: pytest-3.0.7
           os: ubuntu-20.04
         - python-version: '3.10'
+          pytest: pytest
           os: ubuntu-20.04
         - python-version: '3.11-dev'
+          pytest: pytest
           os: ubuntu-20.04
     runs-on: ${{matrix.os}}
     steps:
@@ -44,17 +47,17 @@ jobs:
         ./mwic --version
         ./mwic --debug-dict --lang en-US
         ./mwic --debug-dict --lang en-GB
-    - name: pip install nose
-      run: |
-        # work-around for <https://github.com/nose-devs/nose/issues/1115>:
-        pip install 'setuptools<58'
-        # work-around for <https://github.com/nose-devs/nose/issues/1099>:
-        python3 -m pip install --no-binary ':all:' nose
-        # work-around for <https://github.com/nose-devs/nose/issues/1116>:
-        sed -i -e 's/ from unittest import _TextTestResult$/ from unittest import TextTestResult as _TextTestResult/' ${{env.pythonLocation}}/lib/python*/site-packages/nose/result.py
     - name: run tests
+      if: ${{! matrix.pytest}}
       run: |
+        python3 -m pip install nose
         tests/run-tests --verbose
+    - name: run tests
+      if: ${{matrix.pytest}}
+      run: |
+        pytest=${{matrix.pytest}}
+        python3 -m pip install ${pytest/-/==}
+        python3 -m pytest -v
     - name: run pydiatra
       run: |
         python3 -m pip install pydiatra
@@ -63,6 +66,16 @@ jobs:
       run: |
         python3 -m pip install pyflakes
         python3 -m pyflakes .
+    - name: pip install nose
+      run: |
+        # work-around for <https://github.com/nose-devs/nose/issues/1115>:
+        pip install 'setuptools<58'
+        # work-around for <https://github.com/nose-devs/nose/issues/1099>:
+        python3 -m pip install --no-binary ':all:' nose
+        # work-around for <https://github.com/nose-devs/nose/issues/1116>:
+        sed -i -e 's/ from unittest import _TextTestResult$/ from unittest import TextTestResult as _TextTestResult/' ${{env.pythonLocation}}/lib/python*/site-packages/nose/result.py
+      if:
+        matrix.python-version != '3.11-dev'
     - name: run pylint
       run: |
         python3 -m pip install pylint

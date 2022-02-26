@@ -73,10 +73,31 @@ def _test_text(xpath):
                 expected = alt_expected
     assert_multi_line_equal(expected, text)
 
-def test_text():
-    for xpath in glob.glob(here + '/*.exp'):
-        yield _test_text, xpath
-test_text.redundant = True  # not needed if the plugin is enabled
+class TestText(unittest.TestCase):
+
+    def __str__(self):
+        return self._testMethodName.split("'")[1]
+
+    @classmethod
+    def _add_test(cls, xpath):
+        def method(self):
+            del self
+            return _test_text(xpath)
+        name = f'test[{xpath!r}]'
+        pytest = sys.modules.get('pytest')
+        if pytest and int(pytest.__version__.split('.', 1)[0]) < 6:
+            # pytest before 6.0 doesn't like "[" in the test name
+            # https://github.com/pytest-dev/pytest/commit/8b9b81c3c04399d0
+            name = name.replace('[', '(').replace(']', ')')
+        method.__name__ = name
+        setattr(cls, name, method)
+
+    @classmethod
+    def _add_tests(cls, xpaths):
+        for xpath in xpaths:
+            cls._add_test(xpath)
+
+TestText._add_tests(glob.glob(here + '/*.exp'))  # pylint: disable=protected-access
 
 def nose_plugin():
 
@@ -100,9 +121,8 @@ def nose_plugin():
             if self.wantFile(path):
                 yield TestCase(path)
 
-        def wantFunction(self, func):
-            if getattr(func, 'redundant', False):
-                return False
+        def wantClass(self, cls):
+            return f'{cls.__module__}.{cls.__name__}' != 'tests.test_blackbox.TestText'
 
     class TestCase(unittest.TestCase):
 

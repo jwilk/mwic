@@ -29,8 +29,9 @@ then
     exit 1
 fi
 pofile="$1"
+exec 3<"$pofile"
 lang=$(
-    msggrep -K -e '^$' --force-po < "$pofile" \
+    msggrep -K -e '^$' --force-po <&3 \
     | msgexec cat \
     | sed -n -e 's/^Language: *//p'
 )

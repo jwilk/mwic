@@ -25,7 +25,7 @@ set -e -u
 prog=${0##*/}
 if [ $# -ne 1 ]
 then
-    printf 'Usage: %s <pofile>\n' "$prog" >&2
+    printf 'Usage: %s PO-FILE\n' "$prog" >&2
     exit 1
 fi
 pofile="$1"

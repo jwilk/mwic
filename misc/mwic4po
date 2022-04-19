@@ -22,7 +22,7 @@
 
 set -e -u
 
-prog=$(basename "$0")
+prog=${0##*/}
 if [ $# -ne 1 ]
 then
     printf 'Usage: %s <pofile>\n' "$prog" >&2

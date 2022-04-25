@@ -1,4 +1,4 @@
-mwic (0.7.9) UNRELEASED; urgency=low
+mwic (0.7.9) unstable; urgency=low
 
   * Add new multi-word misspellings to the dictionary.
   * Fix printing PyEnchant version.
@@ -9,7 +9,7 @@ mwic (0.7.9) UNRELEASED; urgency=low
   * Update Docutils homepage URL.
   * Make it possible use pytest as the test harness.
 
- -- Jakub Wilk <jwilk@jwilk.net>  Mon, 25 Apr 2022 08:26:58 +0200
+ -- Jakub Wilk <jwilk@jwilk.net>  Mon, 25 Apr 2022 14:33:05 +0200
 
 mwic (0.7.8) unstable; urgency=low
 

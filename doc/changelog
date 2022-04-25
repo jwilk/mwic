@@ -1,8 +1,15 @@
 mwic (0.7.9) UNRELEASED; urgency=low
 
   * Add new multi-word misspellings to the dictionary.
+  * Fix printing PyEnchant version.
+  * Improve mwic4po:
+    + Improve error handling.
+    + Use uppercase for CLI metavar.
+  * Drop support for Python < 3.6.
+  * Update Docutils homepage URL.
+  * Make it possible use pytest as the test harness.
 
- -- Jakub Wilk <jwilk@jwilk.net>  Mon, 13 Jul 2020 14:49:58 +0200
+ -- Jakub Wilk <jwilk@jwilk.net>  Mon, 25 Apr 2022 08:26:58 +0200
 
 mwic (0.7.8) unstable; urgency=low
 

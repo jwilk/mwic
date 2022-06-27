@@ -7,8 +7,8 @@ Misspelled Words In Context
 ---------------------------
 
 :manual section: 1
-:version: mwic 0.7.9
-:date: 2022-04-25
+:version: mwic 0.7.10
+:date: 2022-06-27
 
 Synopsis
 --------

@@ -7,7 +7,7 @@ mwic (0.7.9) unstable; urgency=low
     + Use uppercase for CLI metavar.
   * Drop support for Python < 3.6.
   * Update Docutils homepage URL.
-  * Make it possible use pytest as the test harness.
+  * Make it possible to use pytest as the test harness.
 
  -- Jakub Wilk <jwilk@jwilk.net>  Mon, 25 Apr 2022 14:33:05 +0200
 

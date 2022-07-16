@@ -59,7 +59,7 @@ endif
 
 .PHONY: test
 test:
-	$(PYTHON) tests/run-tests --verbose
+	$(PYTHON) -m pytest -v
 
 .PHONY: clean
 clean:

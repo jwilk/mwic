@@ -51,7 +51,7 @@ jobs:
       if: ${{! matrix.pytest}}
       run: |
         python3 -m pip install nose
-        tests/run-tests --verbose
+        tests/run-nose --verbose
     - name: run tests
       if: ${{matrix.pytest}}
       run: |

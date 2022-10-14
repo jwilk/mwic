@@ -35,7 +35,7 @@ def _find_command(command):
 
 def get_default_pager():
     # Use "pager" if it exist:
-    # https://www.debian.org/doc/debian-policy/#document-ch-customized-programs
+    # https://www.debian.org/doc/debian-policy/ch-customized-programs.html#editors-and-pagers
     # Fall back to "more", which is in POSIX.
     return (
         _find_command('pager')

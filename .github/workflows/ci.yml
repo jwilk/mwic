@@ -86,11 +86,6 @@ jobs:
       run: |
         python3 -m pip install docutils
         make -C doc
-    - name: check docs
-      run: |
-        python3 -m pip install pygments
-        private/check-rst
-        dpkg-parsechangelog -ldoc/changelog --all 2>&1 >/dev/null | { ! grep .; }
     - name: install
       run:
         make install PREFIX=~/.local
@@ -106,5 +101,16 @@ jobs:
       run: |
         cd /
         man 1 mwic | grep -A 10 -w MWIC
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: check reST syntax
+      run: |
+        python3 -m pip install docutils pygments
+        private/check-rst
+    - name: check changelog syntax
+      run: |
+        dpkg-parsechangelog -ldoc/changelog --all 2>&1 >/dev/null | { ! grep .; }
 
 # vim:ts=2 sts=2 sw=2 et

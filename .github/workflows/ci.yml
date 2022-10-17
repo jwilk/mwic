@@ -37,7 +37,7 @@ jobs:
       run:
         sudo apt-get install
           aspell-en
-          libenchant-dev
+          libenchant[0-9]*
     - name: pip install deps
       run: |
         python3 -m pip install pyenchant

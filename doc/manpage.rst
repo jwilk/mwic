@@ -90,8 +90,8 @@ PAGER
 
 LESS
    If this variable is unset, mwic sets it
-   to ``FX``,
-   or to ``FXR`` if the output is in color.
+   to ``-FX``,
+   or to ``-FXR`` if the output is in color.
 
 LV
    If this variable in unset, and the output is in color,

@@ -53,7 +53,7 @@ def autopager(*, raw_control_chars=False):
         return
     env = None
     if 'LESS' not in os.environ:
-        lessopt = 'FX'
+        lessopt = '-FX'
         if raw_control_chars:
             lessopt += 'R'
         env = dict(env or os.environ, LESS=lessopt)

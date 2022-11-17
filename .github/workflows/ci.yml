@@ -22,6 +22,9 @@ jobs:
         - python-version: '3.11'
           pytest: pytest
           os: ubuntu-22.04
+        - python-version: '3.12-dev'
+          pytest: pytest
+          os: ubuntu-22.04
     runs-on: ${{matrix.os}}
     steps:
     - uses: actions/checkout@v3

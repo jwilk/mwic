@@ -67,7 +67,7 @@ class Macros():
             for i, (name, definition) in enumerate(self._defs.items()):
                 substs += [definition]
                 regex += [f'(?P<mwic{i}>{re.escape(name)})']
-            regex = '|'.join(regex)
+            regex = str.join('|', regex)
             regex = re.compile(regex)
             self._regex = regex
             self._substs = substs
@@ -129,7 +129,7 @@ class Dictionary():
                         else:
                             raise error('malformed @-command')  # no coverage
                     else:
-                        regex = r'\s+'.join(line)
+                        regex = str.join(r'\s+', line)
                         regex = macros.expand(regex)
                         try:
                             re.compile(regex)

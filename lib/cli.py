@@ -290,7 +290,7 @@ def print_rare_misspellings(ctxt):
                 underline[x : x + len(word)] = underline_char * len(word)
         if not header:
             continue
-        print(', '.join(header) + ':')
+        print(str.join(', ', header) + ':')
         underline = underline.decode()
         lwidth = len(underline) - len(underline.lstrip())
         rwidth = len(underline) - len(underline.rstrip())

@@ -41,6 +41,10 @@ jobs:
         sudo apt-get install
           aspell-en
           libenchant[0-9]*
+    - name: set up pip
+      run: |
+        sed -i -e 's/ sys.exit(.*)/ raise/' ${{env.pythonLocation}}/lib/python*/site-packages/pip/_internal/utils/setuptools_build.py
+        python3 -m pip list
     - name: pip install deps
       run: |
         python3 -m pip install pyenchant

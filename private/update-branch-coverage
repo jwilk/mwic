@@ -1,6 +1,6 @@
-#!/usr/bin/env python3
+#!/bin/sh
 
-# Copyright © 2014 Jakub Wilk <jwilk@jwilk.net>
+# Copyright © 2022 Jakub Wilk <jwilk@jwilk.net>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the “Software”), to deal
@@ -20,51 +20,17 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import io
-import os
-import sys
-
-import nose
-import nose.plugins.cover
-
-class Coverage(nose.plugins.cover.Coverage):
-
-    stream = None
-
-    def report(self, stream):
-        return super().report(self.stream)
-
-basedir = os.path.join(
-    os.path.dirname(__file__),
-    os.pardir,
-)
-
-def main():
-    argv = [
-        sys.argv[0],
-        '--with-coverage',
-        '--cover-package=lib',
-        '--cover-erase',
-    ]
-    path = os.path.join(
-        'tests',
-        'coverage'
-    )
-    plugin = Coverage()
-    report_stream = plugin.stream = io.StringIO()
-    print('Generated automatically by private/update-branch-coverage. '
-        'Do not edit.\n', file=report_stream)
-    ok = nose.run(argv=argv, plugins=[plugin])
-    if not ok:
-        sys.exit(1)
-    report_stream.seek(0)
-    with open(path + '.tmp', 'wt', encoding='ASCII') as file:
-        for line in report_stream:
-            line = line.rstrip()
-            print(line, file=file)
-    os.rename(path + '.tmp', path)
-
-if __name__ == '__main__':
-    main()
+set -e -u
+here=${0%/*}
+cd "$here/.."
+python3 -m pytest --cov=lib --cov-branch --cov-report= -q
+true > tests/coverage.tmp
+printf 'Generated automatically by private/update-branch-coverage. ' >> tests/coverage.tmp
+printf 'Do not edit.\n\n' >> tests/coverage.tmp
+python3 -m coverage report >> tests/coverage.tmp || {
+    printf '"python3 -m coverage" failed\n' >&2
+    exit 1
+}
+mv tests/coverage.tmp tests/coverage
 
 # vim:ts=4 sts=4 sw=4 et

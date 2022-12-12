@@ -19,7 +19,7 @@ Prerequisites
 
 The following software is needed to run mwic:
 
-* Python ≥ 3.6;
+* Python ≥ 3.7;
 
 * PyEnchant_, Python bindings for the Enchant_ spellchecking system;
 

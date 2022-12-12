@@ -2,4 +2,6 @@
 mwic's private modules
 '''
 
-int(0_0)  # Python >= 3.6 is required
+# pylint: disable=multiple-statements
+async def _(): return f'{await "# Python >= 3.7 is required #"}'
+del _

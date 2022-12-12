@@ -107,7 +107,7 @@ def main():
     ap.add_argument('--debug-dict', action='store_true', help=argparse.SUPPRESS)
     ap.add_argument('--traceback', action='store_true', help=argparse.SUPPRESS)
     options = ap.parse_args()
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, 'UTF-8')
+    sys.stdout.reconfigure(encoding='UTF-8')
     try:
         split_words = enchant.tokenize.get_tokenizer(options.language)
     except enchant.errors.TokenizerNotFoundError:

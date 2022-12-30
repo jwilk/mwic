@@ -174,8 +174,15 @@ def main():
     if not misspellings:
         sys.exit(rc)
     raw_cc = options.output_format == 'color'
-    with lib.pager.autopager(raw_control_chars=raw_cc):
-        print_misspellings(ctxt)
+    try:
+        with lib.pager.autopager(raw_control_chars=raw_cc):
+            print_misspellings(ctxt)
+    except lib.pager.Error:
+        if options.traceback:
+            raise
+        msg = f'{ap.prog}: pager failed'
+        print(msg, file=sys.stderr)
+        rc = 1
     sys.exit(rc)
 
 def spellcheck_file(ctxt, file):

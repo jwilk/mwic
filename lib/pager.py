@@ -67,6 +67,7 @@ def autopager(*, raw_control_chars=False):
         with ipc.Popen(cmdline, shell=True, stdin=ipc.PIPE, env=env) as pager:
             sys.stdout = io.TextIOWrapper(pager.stdin,
                 encoding=orig_stdout.encoding,
+                errors=orig_stdout.errors,
             )
             try:
                 yield

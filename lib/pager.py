@@ -42,6 +42,9 @@ def get_default_pager():
         or 'more'
     )
 
+class Error(RuntimeError):
+    pass
+
 @contextlib.contextmanager
 def autopager(*, raw_control_chars=False):
     if not sys.stdout.isatty():
@@ -71,8 +74,11 @@ def autopager(*, raw_control_chars=False):
                 sys.stdout.close()
     finally:
         sys.stdout = orig_stdout
+    if pager.returncode:
+        raise Error
 
 __all__ = [
+    'Error',
     'autopager',
 ]
 

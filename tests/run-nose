@@ -20,11 +20,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+import pathlib
 import sys
 
 import nose
 
-sys.path[0] += '/..'
+sys.path[:0] = [str(pathlib.Path(__file__).parent.parent)]
 
 from tests import test_blackbox
 

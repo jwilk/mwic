@@ -27,7 +27,7 @@ import nose
 
 sys.path[:0] = [str(pathlib.Path(__file__).parent.parent)]
 
-from tests import test_blackbox
+from tests import test_blackbox  # pylint: disable=wrong-import-position
 
 if __name__ == '__main__':
     nose.main(addplugins=[test_blackbox.nose_plugin()])

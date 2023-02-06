@@ -90,6 +90,9 @@ jobs:
       run: |
         python3 -m pip install pylint
         private/run-pylint
+      continue-on-error:
+        ${{ endsWith(matrix.python-version, '-dev') }}
+        # FIXME: astroid.exceptions.InferenceError: StopIteration raised without any error information.
     - name: build docs
       run: |
         python3 -m pip install docutils

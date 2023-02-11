@@ -184,7 +184,9 @@ tot he
 do(es)?n’t user
 
 # ISO 8895 (etc.) → ISO 8859
+# ISO 8061 (etc.) → ISO 8601
 iso( |[_-])?(8858|8895|8559|5589)
+iso( |[_-])?(8061|8610)
 
 # lot's of → lots of
 lot’s of

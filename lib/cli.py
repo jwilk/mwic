@@ -100,7 +100,7 @@ def main():
         help='omit blank lines in output')
     ap.add_argument('--limit', metavar='N', type=int, default=1e999,
         help='skip words that have >N instances')
-    ap.add_argument('--max-context-width', metavar='N', default=30,
+    ap.add_argument('--max-context-width', type=int, metavar='N', default=30,
         help='limit context width to N chars')
     ap.add_argument('--suggest', metavar='N', type=int, default=0,
         help='suggest up to N corrections')

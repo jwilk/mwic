@@ -198,6 +198,9 @@ regarding to
 # more that → more than
 (more|less|larger|bigger|smaller|faster|slower) that(?! way)
 
+# no enough → not enough
+no enough
+
 # an → a
 an Unicode
 an unary

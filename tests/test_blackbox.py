@@ -21,6 +21,7 @@
 import glob
 import io
 import os
+import signal
 import sys
 import unittest.mock
 
@@ -37,13 +38,16 @@ def _get_output(path, language):
     argv = ['mwic', '--language', language, path]
     binstdout = io.BytesIO()
     textstdout = io.TextIOWrapper(binstdout, encoding='UTF-8')
-    with unittest.mock.patch.multiple(sys, argv=argv, stdout=textstdout):
+    stdio_patch = unittest.mock.patch.multiple(sys, argv=argv, stdout=textstdout)
+    signal_patch = unittest.mock.patch('signal.signal')
+    with stdio_patch, signal_patch:
         try:
             try:
                 M.main()
             except SystemExit as exc:
                 if exc.code != 0:
                     raise
+            signal.signal.assert_called_once()
             sys.stdout.flush()
             return binstdout.getvalue().decode('UTF-8')
         finally:

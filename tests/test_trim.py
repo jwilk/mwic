@@ -28,11 +28,11 @@ from .tools import (
 def test_ltrim():
     def t(s, n, expected):
         result = M.ltrim(s, n)
+        assert_equal(result, expected)
         assert_greater_equal(
             max(1, n),
             len(result)
         )
-        assert_equal(result, expected)
     t('', 0, '')
     truncations = [
         '…',

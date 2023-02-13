@@ -23,21 +23,29 @@ text manipulation functions
 '''
 
 import functools
-import re
+import regex as re
 
 def ltrim(s, n, *, char='…'):
-    if len(s) <= n:
+    if n <= 0:
+        return s and char
+    pat = re.compile(r'\X\X(\X{#})\Z'.replace('#', str(n - 1)))
+    match = pat.search(s)
+    if match is None:
         return s
     if n <= 1:
         return char
-    return char + s[-n+1:]
+    return char + match.group(1)
 
 def rtrim(s, n, *, char='…'):
-    if len(s) <= n:
+    if n <= 0:
+        return s and char
+    pat = re.compile(r'\A(\X{#})\X\X'.replace('#', str(n - 1)))
+    match = pat.match(s)
+    if match is None:
         return s
     if n <= 1:
         return char
-    return s[:n-1] + char
+    return match.group(1) + char
 
 _camel_case_split = re.compile('([A-Z][^A-Z]*)').split
 

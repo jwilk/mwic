@@ -34,11 +34,13 @@ from .tools import (
 here = os.path.dirname(__file__)
 here = os.path.relpath(here)
 
-def _get_output(*args):
+def _get_output(*args, stdin=''):
     argv = ['mwic', *args]
+    binstdin = io.BytesIO(stdin.encode('UTF-8'))
+    textstdin = io.TextIOWrapper(binstdin, encoding='UTF-8')
     binstdout = io.BytesIO()
     textstdout = io.TextIOWrapper(binstdout, encoding='UTF-8')
-    sys_patch = unittest.mock.patch.multiple(sys, argv=argv, stdout=textstdout)
+    sys_patch = unittest.mock.patch.multiple(sys, argv=argv, stdin=textstdin, stdout=textstdout)
     signal_patch = unittest.mock.patch('signal.signal')
     with sys_patch, signal_patch:
         try:

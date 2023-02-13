@@ -38,9 +38,9 @@ def _get_output(path, language):
     argv = ['mwic', '--language', language, path]
     binstdout = io.BytesIO()
     textstdout = io.TextIOWrapper(binstdout, encoding='UTF-8')
-    stdio_patch = unittest.mock.patch.multiple(sys, argv=argv, stdout=textstdout)
+    sys_patch = unittest.mock.patch.multiple(sys, argv=argv, stdout=textstdout)
     signal_patch = unittest.mock.patch('signal.signal')
-    with stdio_patch, signal_patch:
+    with sys_patch, signal_patch:
         try:
             try:
                 M.main()

@@ -34,8 +34,8 @@ from .tools import (
 here = os.path.dirname(__file__)
 here = os.path.relpath(here)
 
-def _get_output(path, language):
-    argv = ['mwic', '--language', language, path]
+def _get_output(*args):
+    argv = ['mwic', *args]
     binstdout = io.BytesIO()
     textstdout = io.TextIOWrapper(binstdout, encoding='UTF-8')
     sys_patch = unittest.mock.patch.multiple(sys, argv=argv, stdout=textstdout)
@@ -61,7 +61,7 @@ def _test_text(xpath):
         language = 'en-US'
         ipath = xpath[:-4]
     ipath += '.txt'
-    text = _get_output(ipath, language)
+    text = _get_output('--language', language, ipath)
     with open(xpath, 'rt', encoding='UTF-8') as file:
         expected = file.read()
     if expected != text:

@@ -49,6 +49,10 @@ def test_rtrim():
     def t(s, n, expected):
         result = M.rtrim(s, n)
         assert_equal(result, expected)
+        assert_greater_equal(
+            max(1, n),
+            len(result)
+        )
     t('', 0, '')
     truncations = [
         '…',

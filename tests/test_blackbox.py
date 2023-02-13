@@ -21,13 +21,16 @@
 import glob
 import io
 import os
+import random
 import signal
+import string
 import sys
 import unittest.mock
 
 import lib.cli as M
 
 from .tools import (
+    assert_in,
     assert_multi_line_equal,
 )
 
@@ -54,6 +57,17 @@ def _get_output(*args, stdin=''):
             return binstdout.getvalue().decode('UTF-8')
         finally:
             textstdout.close()
+
+def random_word():
+    return str.join('', [
+        random.choice(string.ascii_lowercase)
+        for x in range(32)
+    ])
+
+def test_max_context_width():
+    bad_word = random_word()
+    text = _get_output('--language', 'en', '--max-context-width=2', stdin=f'yes {bad_word} yes')
+    assert_in(f'… {bad_word} …', text)
 
 def _test_text(xpath):
     assert xpath.endswith('.exp')

@@ -2,4 +2,4 @@
 mwic's private modules
 '''
 
-type(0_0)  # Python >= 3.6 is required
+int(0_0)  # Python >= 3.6 is required

@@ -203,6 +203,12 @@ regarding to
 # no enough → not enough
 no enough
 
+# their BE → there BE
+their $BE
+their will be
+their will not be
+their won’t be
+
 # an → a
 an Unicode
 an unary

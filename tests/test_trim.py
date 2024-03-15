@@ -18,9 +18,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import re
-import sys
-
 import regex
 
 import lib.text as M
@@ -30,15 +27,9 @@ from .tools import (
     assert_greater_equal,
 )
 
-if sys.version_info >= (3, 7):
-    isascii = str.isascii  # pylint: disable=no-member
-else:
-    def isascii(s):
-        return re.fullmatch(r'[\0-\x7F]*', s) is not None
-
 def xlen(s):
     n = sum(1 if c else 0 for c in regex.split(r'(\X)', s))
-    if isascii(s):
+    if s.isascii():
         assert n == len(s)
     else:
         assert n <= len(s)

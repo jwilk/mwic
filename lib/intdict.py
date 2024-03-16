@@ -38,7 +38,8 @@ datadir = os.path.join(basedir, 'dict', '')
 
 os.stat(datadir)
 
-def _find_nothing(s):  # pylint: disable=unused-argument
+def _find_nothing(s):
+    del s
     return ()
 
 class Macros():

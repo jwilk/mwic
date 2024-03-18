@@ -79,7 +79,7 @@ jobs:
     - name: pip install nose (for pylint)
       run: |
         # work-around for <https://github.com/nose-devs/nose/issues/1115>:
-        pip install 'setuptools<58'
+        python3 -m pip install 'setuptools<58'
         # work-around for <https://github.com/nose-devs/nose/issues/1099>:
         python3 -m pip install --no-binary ':all:' nose
         # work-around for <https://github.com/nose-devs/nose/issues/1116>:

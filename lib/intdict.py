@@ -42,7 +42,7 @@ def _find_nothing(s):
     del s
     return ()
 
-class Macros():
+class Macros:
 
     def __init__(self):
         self._defs = {}
@@ -81,7 +81,7 @@ class Macros():
             assert False  # no coverage
         return self._regex.sub(replace, s)
 
-class Dictionary():
+class Dictionary:
 
     def __init__(self, lang):
         self._whitelist = set()

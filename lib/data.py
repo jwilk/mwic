@@ -25,7 +25,7 @@ collecting misspelling data
 import collections
 import sys
 
-class Occurrences():
+class Occurrences:
 
     def __init__(self):
         self._data = collections.defaultdict(dict)
@@ -67,7 +67,7 @@ class Occurrences():
     def sorted_context(self):
         return sorted(self._context(), key=self._sorting_key)
 
-class Misspellings():
+class Misspellings:
 
     def __init__(self):
         self._word_index = collections.defaultdict(Occurrences)

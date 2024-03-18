@@ -60,7 +60,7 @@ def parse_line(line):
         correction = None
     return case_variants(word, correction)
 
-class Dictionary():
+class Dictionary:
 
     def __init__(self, *paths):
         self._dict = set()

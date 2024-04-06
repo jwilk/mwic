@@ -119,7 +119,7 @@ def test_kde():
     with tmpdict(kde_dict) as path:
         d = M.Dictionary(path)
     t = functools.partial(_test_dict, d=d)
-    t({'aasumes'}, {'assumes'})  # FIXME? 'assumes'
+    t({'aasumes'}, {'assumes'})
     t({'Addtional'}, {'Additional'})  # FIXME? 'addtional'
 
 plain_dict = '''\

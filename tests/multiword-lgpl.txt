@@ -1,0 +1,2 @@
+Lesser GNU General Public License
+Library GNU General Public License

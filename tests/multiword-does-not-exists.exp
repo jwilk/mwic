@@ -1,0 +1,24 @@
+do exists:
+| do exists
+  ^^^^^^^^^
+
+do not exists:
+| do not exists
+  ^^^^^^^^^^^^^
+
+does exists:
+| does exists
+  ^^^^^^^^^^^
+
+does not exists:
+| does not exists
+  ^^^^^^^^^^^^^^^
+
+doesn't exists:
+| doesn't exists
+  ^^^^^^^^^^^^^^
+
+don't exists:
+| don't exists
+  ^^^^^^^^^^^^
+

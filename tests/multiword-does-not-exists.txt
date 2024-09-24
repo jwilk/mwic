@@ -1,0 +1,6 @@
+do exists
+don't exists
+do not exists
+does exists
+doesn't exists
+does not exists

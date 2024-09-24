@@ -56,6 +56,10 @@ per say
 # none existent → nonexistent
 none existent
 
+# does (not) exists → does (not) exist
+# do (not) exists → do (not) exist | does (not) exist
+do(es)?(n’t| not)? exists
+
 # none the less → nonetheless
 none? the less
 # never the less → nevertheless

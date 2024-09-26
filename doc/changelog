@@ -1,6 +1,7 @@
 mwic (0.7.11) UNRELEASED; urgency=low
 
   * Add new multi-word misspellings to the dictionary.
+    Thanks to Christoph Biedl for a suggestion.
   * Drop support for Python < 3.7.
 
  -- Jakub Wilk <jwilk@jwilk.net>  Fri, 25 Aug 2023 19:27:09 +0200

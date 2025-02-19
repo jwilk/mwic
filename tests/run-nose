@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# encoding=UTF-8
 
 # Copyright © 2016-2023 Jakub Wilk <jwilk@jwilk.net>
 #
@@ -24,6 +25,10 @@ import pathlib
 import sys
 
 import nose
+
+# pylint: disable=multiple-statements
+async def _(): return f'{await "# Python >= 3.7 is required #"}'
+del _
 
 sys.path[:0] = [str(pathlib.Path(__file__).parent.parent)]
 

@@ -40,7 +40,6 @@ class lib:
     from . import intdict
     from . import pager
     from . import text
-    # pylint: enable=import-outside-toplevel
 
 __version__ = '0.7.11'
 

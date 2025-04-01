@@ -97,12 +97,12 @@ jobs:
     - name: install
       run:
         make install PREFIX=~/.local
-    - name: check whether the executable was installed correctly
+    - name: check if the executable was installed correctly
       run: |
         cd /
         mwic --version
         mwic --help
-    - name: check whether the man page was installed correctly
+    - name: check if the man page was installed correctly
       env:
         MANPATH: /home/runner/.local/share/man
         MANWIDTH: 80

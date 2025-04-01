@@ -78,18 +78,6 @@ jobs:
       run: |
         python3 -m pip install pyflakes
         python3 -m pyflakes .
-    - name: pip install nose (for pylint)
-      run: |
-        # work-around for <https://github.com/nose-devs/nose/issues/1115>:
-        python3 -m pip install 'setuptools<58'
-        # work-around for <https://github.com/nose-devs/nose/issues/1099>:
-        python3 -m pip install --no-binary ':all:' nose
-        # work-around for <https://github.com/nose-devs/nose/issues/1116>:
-        sed -i -e 's/ from unittest import _TextTestResult$/ from unittest import TextTestResult as _TextTestResult/' ${{env.pythonLocation}}/lib/python*/site-packages/nose/result.py
-    - name: run pylint
-      run: |
-        python3 -m pip install pylint
-        private/run-pylint
     - name: build docs
       run: |
         python3 -m pip install docutils
@@ -109,6 +97,47 @@ jobs:
       run: |
         cd /
         man 1 mwic | grep -A 10 -w MWIC
+
+  pylint:
+    strategy:
+      matrix:
+        include:
+        - python-version: '3.8'
+          os: ubuntu-22.04
+        - python-version: '3.9'
+          os: ubuntu-22.04
+        - python-version: '3.10'
+          os: ubuntu-22.04
+        - python-version: '3.11'
+          os: ubuntu-22.04
+        - python-version: '3.12'
+          os: ubuntu-22.04
+        - python-version: '3.13'
+          os: ubuntu-24.04
+    runs-on: ${{matrix.os}}
+    steps:
+    - uses: actions/checkout@v4
+    - name: set up Python ${{matrix.python-version}}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{matrix.python-version}}
+    - name: pip install deps
+      run: |
+        python3 -m pip install pyenchant
+        python3 -m pip install regex
+    - name: pip install nose
+      run: |
+        # work-around for <https://github.com/nose-devs/nose/issues/1115>:
+        python3 -m pip install 'setuptools<58'
+        # work-around for <https://github.com/nose-devs/nose/issues/1099>:
+        python3 -m pip install --no-binary ':all:' nose
+        # work-around for <https://github.com/nose-devs/nose/issues/1116>:
+        sed -i -e 's/ from unittest import _TextTestResult$/ from unittest import TextTestResult as _TextTestResult/' ${{env.pythonLocation}}/lib/python*/site-packages/nose/result.py
+    - name: run pylint
+      run: |
+        python3 -m pip install pylint
+        private/run-pylint
+
   docs:
     runs-on: ubuntu-latest
     steps:

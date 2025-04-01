@@ -101,7 +101,7 @@ jobs:
       run: |
         cd /
         mwic --version
-        mwic --help
+        mwic < /dev/null
     - name: check if the man page was installed correctly
       env:
         MANPATH: /home/runner/.local/share/man

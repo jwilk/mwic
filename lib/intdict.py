@@ -29,11 +29,12 @@ import os
 
 import regex as re
 
-basedir = os.path.normpath(os.path.join(
-    os.path.dirname(__file__),
-    os.path.pardir,
-    '',
-))
+libdir = os.path.dirname(__file__)
+if __package__ == 'lib':
+    basedir = os.path.join(libdir, os.path.pardir)
+    basedir = os.path.normpath(basedir)
+else:
+    basedir = libdir
 datadir = os.path.join(basedir, 'dict', '')
 
 os.stat(datadir)

@@ -1,0 +1,26 @@
+# experimental support for building Python wheels
+
+# this project is NOT hosted on PyPI
+
+[project]
+name = "mwic"
+dynamic = ["version"]
+requires-python = ">= 3.7"
+dependencies = ["pyenchant", "regex"]
+scripts.mwic = "_mwic.cli:main"
+
+[build-system]
+requires = ["setuptools >= 61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+dynamic.version = {attr = "_mwic.cli.__version__"}
+packages = ["_mwic", "_mwic.dict"]
+package-dir = {"_mwic" = "lib", "_mwic.dict" = "dict"}
+package-data."_mwic.dict" = ["*"]
+
+[tool.distutils.sdist]
+# building sdist is not supported
+disabled = true
+
+# vim:ts=4 sts=4 sw=4 et

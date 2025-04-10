@@ -68,6 +68,7 @@ clean:
 	rm -rf .pytest_cache
 	rm -f .coverage
 	rm -f *.tmp
+	rm -rf build/ *.egg-info/
 
 .error = GNU make is required
 

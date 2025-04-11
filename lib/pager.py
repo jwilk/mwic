@@ -50,8 +50,10 @@ def autopager(*, raw_control_chars=False):
     if not sys.stdout.isatty():
         yield
         return
-    cmdline = os.environ.get('PAGER') or get_default_pager()
-    if cmdline == 'cat':
+    cmdline = os.environ.get('PAGER')
+    if cmdline is None:
+        cmdline = get_default_pager()
+    if cmdline in {'', 'cat'}:
         yield
         return
     env = None

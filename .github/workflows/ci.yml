@@ -96,7 +96,7 @@ jobs:
         MANWIDTH: 80
       run: |
         cd /
-        man 1 mwic | grep -A 10 -w MWIC
+        man 1 mwic | grep -A 10 -iw MWIC
 
   pylint:
     strategy:

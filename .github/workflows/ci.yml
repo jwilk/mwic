@@ -51,7 +51,8 @@ jobs:
         fi
     - name: set up pip
       run: |
-        sed -i -e 's/ sys.exit(.*)/ raise/' ${{env.pythonLocation}}/lib/python*/site-packages/pip/_internal/utils/setuptools_build.py
+        sb=${{env.pythonLocation}}/lib/python*/site-packages/pip/_internal/utils/setuptools_build.py
+        if ls "$sb"; then sed -i -e 's/ sys.exit(.*)/ raise/' "$sb"; fi
         python3 -m pip list
     - name: pip install deps
       run: |

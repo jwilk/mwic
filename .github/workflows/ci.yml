@@ -73,6 +73,7 @@ jobs:
       run: |
         pytest=${{matrix.pytest}}
         python3 -m pip install ${pytest/-/==}
+        sed -i -e 's#[^ ]*[.]load_setuptools_entrypoints(#None and &#' $(find ${{env.pythonLocation}}/lib/python*/site-packages/_pytest/ -name '*.py')
         python3 -m pytest -v
     - name: run pydiatra
       run: |

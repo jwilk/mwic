@@ -34,6 +34,7 @@ def test_version_action():
     action = lib.cli.VersionAction(['--version'])
     stdout = io.StringIO()
     ap = argparse.ArgumentParser()
+    ap.color = False
     with unittest.mock.patch('sys.stdout', stdout):
         try:
             action(ap, None, None)

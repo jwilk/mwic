@@ -73,6 +73,7 @@ class VersionAction(argparse.Action):
 def main():
     signal.signal(signal.SIGPIPE, signal.SIG_DFL)
     ap = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter)
+    ap.color = False
     ap.add_argument('--version', action=VersionAction)
     ap.add_argument('files', metavar='FILE', nargs='*', default=['-'],
         help='file to process (default: stdin)')
